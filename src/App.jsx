@@ -2,7 +2,7 @@ import axios from "axios";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 // Axios default
-axios.defaults.baseURL = "http://localhost:9001";
+axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app/";
 
 // Pages
 import Home from "./pages/Home";
