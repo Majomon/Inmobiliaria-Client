@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { Toaster, toast } from "sonner";
 import Logo from "../../assets/logo-removebg-preview.png";
 import WhatApp from "../../assets/whatsapp.png";
-import { useDispatch } from "react-redux";
 import { postResend } from "../../redux/actions";
-import { Toaster, toast } from "sonner";
 
 function FormContact() {
   const dispatch = useDispatch();
