@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-function CarouselVersion2({
-  dataAxiosImages,
-  handleImageClick,
-  currentImageIndex,
-}) {
+function CarouselVersion2({ handleImageClick, currentImageIndex }) {
+
+  const property = useSelector((state) => state.details);
+
   return (
     <div className="w-full h-[450px] relative flex flex-col items-center mt-2 shadow-md">
       <div className="w-full h-full">
-        {dataAxiosImages.map((image, index) => (
+        {property.images?.map((image, index) => (
           <img
             key={index}
             src={image}
@@ -20,7 +20,7 @@ function CarouselVersion2({
         ))}
       </div>
       <div className="absolute w-full justify-center items-center bottom-2 flex space-x-4">
-        {dataAxiosImages.map((_, index) => (
+        {property.images?.map((_, index) => (
           <button
             key={index}
             onClick={() => handleImageClick(index)}
@@ -37,7 +37,6 @@ function CarouselVersion2({
 }
 
 CarouselVersion2.propTypes = {
-  dataAxiosImages: PropTypes.array.isRequired,
   handleImageClick: PropTypes.func.isRequired,
   currentImageIndex: PropTypes.number.isRequired,
 };

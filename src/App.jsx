@@ -2,14 +2,16 @@ import axios from "axios";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 // Axios default
-axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app/";
+axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app";
 
 // Pages
-import Home from "./pages/Home";
-import Navbar from "./components/Navbar/Navbar";
-import Detail from "./pages/Detail";
-import Contact from "./pages/Contact";
 import { useEffect, useState } from "react";
+import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
+import Contact from "./pages/Contact";
+import Detail from "./pages/Detail";
+import Home from "./pages/Home";
 
 function App() {
   const location = useLocation();
@@ -36,7 +38,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }

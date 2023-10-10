@@ -1,59 +1,119 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
 function Filter() {
+  const properties = useSelector((state) => state.propiedades);
+  const [orderData, setOrderData] = useState({
+    operation: "",
+    typeProperty: "",
+    province: "",
+    zone: "",
+    bedrooms: "",
+  });
+
+  const uniqueOperations = [
+    ...new Set(properties.map((prop) => prop.operation)),
+  ];
+  const uniqueTypes = [...new Set(properties.map((prop) => prop.property))];
+  const uniqueProvinces = [
+    ...new Set(properties.map((prop) => prop.address.province)),
+  ];
+  const uniqueZones = [...new Set(properties.map((prop) => prop.address.zone))];
+  const uniqueBedrooms = [...new Set(properties.map((prop) => prop.bedrooms))];
+
+  const handlerChange = (event) => {
+    const { name, value } = event.target;
+    setOrderData({ ...orderData, [name]: value });
+  };
+
+  const handlerSubmit = (e) => {
+    e.preventDefault();
+    console.log("Hola");
+  };
+
   return (
-    <div className="w-11/12 mx-auto">
-      <form className="w-full px-10 flex flex-wrap justify-between items-center">
-        <div className="w-2/12 py-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Operación
-          </label>
-          <select className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300">
+    <div className="w-full absolute bottom-0 bg-black opacity-80">
+      <form className="w-9/12 mx-auto grid grid-cols-3 gap-4">
+        <div className="w-full py-2">
+          <select
+            className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
+            value={orderData.operation}
+            onChange={handlerChange}
+            name="operation"
+          >
             <option value="all">Operación</option>
-            <option value="A">Alquiler</option>
-            <option value="B">Venta</option>
+            {uniqueOperations.map((op) => (
+              <option key={op} value={op}>
+                {op}
+              </option>
+            ))}
           </select>
         </div>
-        <div className="w-2/12 py-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Tipo
-          </label>
-          <select className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300">
-            <option value="all">Tipo</option>
-            <option value="C">Casa</option>
-            <option value="D">Departamento</option>
+        <div className="w-full py-2">
+          <select
+            className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
+            value={orderData.uniqueTypes}
+            onChange={handlerChange}
+            name="typeProperty"
+          >
+            <option value="all">Propiedad</option>
+            {uniqueTypes.map((op) => (
+              <option key={op} value={op}>
+                {op}
+              </option>
+            ))}
           </select>
         </div>
-        <div className="w-2/12 py-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Zona
-          </label>
-          <select className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300">
-            <option value="all">Zona</option>
-            <option value="E">E</option>
-            <option value="F">F</option>
+        <div className="w-full py-2">
+          <select
+            className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
+            value={orderData.uniqueProvinces}
+            onChange={handlerChange}
+            name="province"
+          >
+            <option value="all">Provincia</option>
+            {uniqueProvinces.map((op) => (
+              <option key={op} value={op}>
+                {op}
+              </option>
+            ))}
           </select>
         </div>
-        <div className="w-2/12 py-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Barrio
-          </label>
-          <select className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300">
+        <div className="w-full py-2">
+          <select
+            className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
+            value={orderData.uniqueZones}
+            onChange={handlerChange}
+            name="zone"
+          >
             <option value="all">Barrio</option>
-            <option value="G">G</option>
-            <option value="H">H</option>
+            {uniqueZones.map((op) => (
+              <option key={op} value={op}>
+                {op}
+              </option>
+            ))}
           </select>
         </div>
-        <div className="w-2/12 py-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Ambientes
-          </label>
-          <select className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300">
+        <div className="w-full py-2">
+          <select
+            className="block w-full py-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
+            value={orderData.uniqueBedrooms}
+            onChange={handlerChange}
+            name="bedrooms"
+          >
             <option value="all">Ambientes</option>
-            <option value="I">I</option>
-            <option value="J">J</option>
+            {uniqueBedrooms.map((op) => (
+              <option key={op} value={op}>
+                {op}
+              </option>
+            ))}
           </select>
         </div>
-        <div className="w-full">
-          <button className="w-full h-[2.5rem] bg-black text-2xl font-bold text-white rounded-sm">
+        <div className="w-full py-2">
+          <button
+            onClick={handlerSubmit}
+            className="w-full py-2 bg-red-800 hover:bg-red-600 hover:text-black hover:duration-1000 text-white rounded-md hover:font-bold"
+          >
             Buscar
           </button>
         </div>

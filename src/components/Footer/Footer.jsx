@@ -144,7 +144,7 @@ function Footer() {
         </h3>
         {/* Redes propias */}
         <NavLink
-          to={"https://www.linkedin.com/in/monzon-mauricio/"}
+          to={"https://www.linkedin.com/in/mauricio-monzon/"}
           target="_blank"
         >
           <img src={Linkedin} alt="Linkedin " className="w-[30px]" />

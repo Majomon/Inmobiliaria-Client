@@ -1,51 +1,25 @@
-import { useEffect, useState } from "react";
-import Spinner from "../Spinner/Spinner";
-import axios from "axios";
+import { useSelector } from "react-redux";
 import PropertyCard from "../PropertyCard/PropertyCard";
+import Spinner from "../Spinner/Spinner";
 
 function ContainerProperty() {
-  const [loading, setLoading] = useState(true);
-  const [dataAxios, setDataAxios] = useState();
-
-  useEffect(() => {
-    setTimeout(() => {
-      axios
-        .get("/properties")
-        .then((response) => {
-          if (response.status === 200) {
-            const data = response.data;
-            setDataAxios(data);
-            setLoading(false);
-          } else {
-            throw new Error("La solicitud no fue exitosa.");
-          }
-        })
-        .catch((error) => {
-          console.error("Error al obtener propiedades:", error);
-          setLoading(false);
-        });
-    }, 1500);
-  }, []);
+  const properties = useSelector((state) => state.propiedades);
 
   return (
     <div>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <div className="w-full mx-auto">
-          <h2 className="text-center py-4">Propiedades destacadas</h2>
+      <div className="w-full mx-auto">
+        <h2 className="text-center pt-4 font-bold text-4xl">Todas las propiedades</h2>
 
-          <div className="flex flex-wrap justify-center">
-            {dataAxios.length > 0 ? (
-              dataAxios.map((property) => (
-                <PropertyCard key={property._id} property={property} />
-              ))
-            ) : (
-              <p>No se encontraron datos de propiedades.</p>
-            )}
-          </div>
+        <div className="w-11/12 mx-auto grid grid-cols-3">
+          {properties.length > 0 ? (
+            properties.map((property) => (
+              <PropertyCard key={property._id} property={property} />
+            ))
+          ) : (
+            <Spinner/>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

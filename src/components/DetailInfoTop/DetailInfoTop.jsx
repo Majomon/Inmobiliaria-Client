@@ -1,8 +1,5 @@
 import PropTypes from "prop-types";
 import { HiArrowNarrowRight } from "react-icons/hi";
-import Superficie from "../../assets/superficie.svg";
-import Ambientes from "../../assets/ambientes.svg";
-import Baño from "../../assets/bano.svg";
 
 function DetailInfoTop({ dataAxios }) {
   return (
