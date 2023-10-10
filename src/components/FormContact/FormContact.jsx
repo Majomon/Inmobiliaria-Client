@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { Toaster, toast } from "sonner";
 import Logo from "../../assets/logo-removebg-preview.png";
 import WhatApp from "../../assets/whatsapp.png";
 import { postResend } from "../../redux/actions";
+import { Toaster, toast } from "sonner";
+import Swal from 'sweetalert2'
 
 function FormContact() {
   const dispatch = useDispatch();
@@ -75,6 +76,13 @@ function FormContact() {
       url: currentURL,
     };
     dispatch(postResend(formData));
+    setInputForm({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+    Swal.fire('Email enviado. En breve se contactaran contigo. Gracias')
   };
 
   return (
