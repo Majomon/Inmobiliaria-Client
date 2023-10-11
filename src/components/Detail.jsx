@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {getPropertiesId } from "../redux/actions";
+import { getPropertiesId } from "../redux/actions";
 
 function Detail() {
   const { id } = useParams();
@@ -29,6 +29,7 @@ function Detail() {
         <div>
           <h1>Info detail</h1>
           <h2>{property.name}</h2>
+          <h3>Porqueria</h3>
         </div>
       )}
     </>
