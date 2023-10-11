@@ -1,10 +1,12 @@
 import Facebook from "../../assets/redes/facebook.png";
 import Instagram from "../../assets/redes/instagram.png";
 import Linkedin from "../../assets/redes/linkedin.png";
-import Logo from "../../assets/logo-removebg-preview.png";
-import { Link, NavLink } from "react-router-dom";
+import LogoDark from "../../assets/darkMode.png";
+import LogoLight from "../../assets/lightMode.png";
+import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-function Footer() {
+function Footer({ theme }) {
   const email = "test@test.com";
   const phoneNumber = "1138612819";
 
@@ -17,10 +19,10 @@ function Footer() {
   };
 
   return (
-    <div className="mt-4 bg-gray-100">
+    <div className=" bg-gray-100  dark:bg-black">
       {/* Redes */}
       <div className="my-4">
-        <h2 className="text-center text-3xl font-bold">
+        <h2 className="my-8 text-center text-3xl font-bold dark:text-white">
           Visitanos en nuestras redes
         </h2>
         <lu className="w-1/3 mx-auto my-4 flex justify-between">
@@ -28,21 +30,21 @@ function Footer() {
             <img
               src={Facebook}
               alt="Facebook"
-              className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer"
+              className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
             />
           </li>
           <li className="list-none">
             <img
               src={Instagram}
               alt="Instagram"
-              className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer"
+              className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
             />
           </li>
           <li className="list-none">
             <img
               src={Linkedin}
               alt="Linkedin"
-              className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer"
+              className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
             />
           </li>
         </lu>
@@ -51,12 +53,16 @@ function Footer() {
       <div className="w-10/12 h-[10rem]  mx-auto my-10 flex px-4 justify-between">
         {/* Logo */}
         <div>
-          <img src={Logo} alt="Logo" className="w-[150px]" />
+          {theme === "light" ? (
+            <img className="w-20" src={LogoLight} alt="LogoLight" />
+          ) : (
+            <img className="w-20" src={LogoDark} alt="LogoDark" />
+          )}
         </div>
 
         {/* Menu */}
         <div>
-          <h2 className="text-4xl font-bold border-b-2 border-black">Menu</h2>
+          <h2 className="text-4xl font-bold border-b-2 border-black dark:text-gray-100">Menu</h2>
           <div>
             <NavLink to={"/"}>
               <h3 className="pl-2 my-2 text-gray-400 hover:text-black">
@@ -78,7 +84,7 @@ function Footer() {
 
         {/* Contacto */}
         <div>
-          <h2 className="text-4xl font-bold border-b-2 border-black">
+          <h2 className="text-4xl font-bold border-b-2 border-black dark:text-gray-100">
             Contacto
           </h2>
           <div className="h-[2rem] flex items-center my-2">

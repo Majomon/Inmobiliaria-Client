@@ -36,11 +36,11 @@ function App() {
       <Navbar theme={theme} setTheme={setTheme} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/detail/:id" element={<Detail />} theme={theme}/>
+        <Route path="/contact" element={<Contact />} theme={theme}/>
+        <Route path="*" element={<NotFoundPage />} theme={theme}/>
       </Routes>
-      <Footer/>
+      <Footer theme={theme}/>
     </div>
   );
 }

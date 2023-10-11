@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { HiArrowNarrowRight } from "react-icons/hi";
 
-function DetailInfoTop({ dataAxios }) {
+function DetailInfoTop({ dataAxios,theme }) {
   return (
     <div className="w-full h-full ">
       {/* Info del vendedor o inmobiliaria */}

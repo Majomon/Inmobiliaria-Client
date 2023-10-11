@@ -7,8 +7,8 @@ function ContainerProperty() {
 
   return (
     <div>
-      <div className="w-full mx-auto">
-        <h2 className="text-center pt-4 font-bold text-4xl">Todas las propiedades</h2>
+      <div className="w-full mx-auto dark:bg-black border-t dark:border-white">
+        <h2 className="text-center pt-4 font-bold text-4xl dark:text-white">Todas las propiedades</h2>
 
         <div className="w-11/12 mx-auto grid grid-cols-3">
           {properties.length > 0 ? (

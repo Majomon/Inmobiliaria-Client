@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import Logo from "../../assets/logo-removebg-preview.png";
 import WhatApp from "../../assets/whatsapp.png";
 import { postResend } from "../../redux/actions";
 import { Toaster, toast } from "sonner";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import LogoDark from "../../assets/darkMode.png";
+import LogoLight from "../../assets/lightMode.png";
 
-function FormContact() {
+function FormContact({theme}) {
   const dispatch = useDispatch();
   const [disabled, setDisabled] = useState(true);
   const [isFocused, setIsFocused] = useState(false);
@@ -82,7 +83,7 @@ function FormContact() {
       phone: "",
       message: "",
     });
-    Swal.fire('Email enviado. En breve se contactaran contigo. Gracias')
+    Swal.fire("Email enviado. En breve se contactaran contigo. Gracias");
   };
 
   return (
@@ -91,7 +92,11 @@ function FormContact() {
       <div className="p-4 shadow-md border rounded-lg ">
         <h2 className="">Contacta al vendedor</h2>
         <div className="w-full flex gap-4">
-          <img src={Logo} alt="logo" className="w-[80px] " />
+          {theme === "light" ? (
+            <img className="w-16" src={LogoLight} alt="LogoLight" />
+          ) : (
+            <img className="w-16" src={LogoDark} alt="LogoDark" />
+          )}
           <div>
             <h2 className="text-lg "> Av. Siempre viva 1234</h2>
             <h2 className="text-lg ">4422-4433</h2>

@@ -10,7 +10,7 @@ import Spinner from "../components/Spinner/Spinner";
 import { clearDetailsState, getPropertiesId } from "../redux/actions";
 import { Toaster, toast } from "sonner";
 
-function Detail() {
+function Detail({ theme }) {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState("");
@@ -51,21 +51,22 @@ function Detail() {
 
       {property.name ? (
         <div className="w-full h-full mt-16 flex flex-col ">
-          <DetailInfoTop dataAxios={property} />
+          <DetailInfoTop dataAxios={property} theme={theme} />
           <div className="w-full flex mt-4">
             <div className="w-8/12 h-full pl-16 pr-4">
               <CarouselVersion2
                 handleImageClick={handleImageClick}
                 currentImageIndex={currentImageIndex}
+                theme={theme}
               />
               <div className="w-full text-center my-2 py-2 border shadow-md bg-yellow-400 hover:bg-yellow-500  hover:translate-y-[-2px] transition-all duration-300 ease-in-out rounded-lg text-white font-bold text-xl cursor-pointer ">
                 <button onClick={() => toast("My first toast")}>
                   Quiero que me llamen
                 </button>
               </div>
-              <DetailInfoBot dataAxios={property} />
+              <DetailInfoBot dataAxios={property} theme={theme} />
             </div>
-            <FormContact />
+            <FormContact theme={theme} />
           </div>
         </div>
       ) : (

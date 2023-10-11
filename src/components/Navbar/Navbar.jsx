@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/logo-removebg-preview.png";
+import LogoDark from "../../assets/darkMode.png"
+import LogoLight from "../../assets/lightMode.png";
 
 const options = [
   { name: "Inicio", to: "/" },
@@ -21,11 +22,11 @@ function Navbar({ theme, setTheme }) {
       {/* Icono */}
       <div className="">
         <Link to="/">
-          <img
-            className="w-16"
-            src={Logo}
-            alt="Logo"
-          />
+          {theme === "light" ? (
+            <img className="w-16" src={LogoLight} alt="LogoLight" />
+          ) : (
+            <img className="w-16" src={LogoDark} alt="LogoDark" />
+          )}
         </Link>
       </div>
       {/* Toogle Theme */}

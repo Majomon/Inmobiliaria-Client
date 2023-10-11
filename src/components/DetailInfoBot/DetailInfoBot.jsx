@@ -10,7 +10,7 @@ import Lavadero from "../../assets/services/lavadero.png";
 import Patio from "../../assets/services/patio.png";
 import Vestidor from "../../assets/services/vestidor.png";
 
-function DetailInfoBot({ dataAxios }) {
+function DetailInfoBot({ dataAxios,theme }) {
   const services = dataAxios.services;
 
   // Define un objeto que mapea nombres de servicios a sus imágenes correspondientes

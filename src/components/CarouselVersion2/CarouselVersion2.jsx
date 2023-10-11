@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 
-function CarouselVersion2({ handleImageClick, currentImageIndex }) {
-
+function CarouselVersion2({ handleImageClick, currentImageIndex, theme }) {
   const property = useSelector((state) => state.details);
 
   return (
