@@ -4,7 +4,6 @@ import Linkedin from "../../assets/redes/linkedin.png";
 import LogoDark from "../../assets/darkMode.png";
 import LogoLight from "../../assets/lightMode.png";
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 function Footer({ theme }) {
   const email = "test@test.com";
@@ -27,25 +26,31 @@ function Footer({ theme }) {
         </h2>
         <lu className="w-1/3 mx-auto my-4 flex justify-between">
           <li className="list-none">
-            <img
-              src={Facebook}
-              alt="Facebook"
-              className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
-            />
+            <NavLink to={"https://www.facebook.com"} target="_blank">
+              <img
+                src={Facebook}
+                alt="Facebook"
+                className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
+              />
+            </NavLink>
           </li>
           <li className="list-none">
-            <img
-              src={Instagram}
-              alt="Instagram"
-              className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
-            />
+            <NavLink to={"https://www.instagram.com"} target="_blank">
+              <img
+                src={Instagram}
+                alt="Instagram"
+                className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
+              />
+            </NavLink>
           </li>
           <li className="list-none">
-            <img
-              src={Linkedin}
-              alt="Linkedin"
-              className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
-            />
+            <NavLink to={"https://www.linkedin.com"} target="_blank">
+              <img
+                src={Linkedin}
+                alt="Linkedin"
+                className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
+              />
+            </NavLink>
           </li>
         </lu>
       </div>
@@ -54,28 +59,34 @@ function Footer({ theme }) {
         {/* Logo */}
         <div>
           {theme === "light" ? (
-            <img className="w-20" src={LogoLight} alt="LogoLight" />
+            <NavLink to={"/"}>
+              <img className="w-20" src={LogoLight} alt="LogoLight" />
+            </NavLink>
           ) : (
-            <img className="w-20" src={LogoDark} alt="LogoDark" />
+            <NavLink to={"/"}>
+              <img className="w-20" src={LogoDark} alt="LogoDark" />
+            </NavLink>
           )}
         </div>
 
         {/* Menu */}
         <div>
-          <h2 className="text-4xl font-bold border-b-2 border-black dark:text-gray-100">Menu</h2>
+          <h2 className="text-4xl font-bold border-b-2 border-black dark:text-gray-100">
+            Menu
+          </h2>
           <div>
             <NavLink to={"/"}>
-              <h3 className="pl-2 my-2 text-gray-400 hover:text-black">
+              <h3 className="pl-2 my-2 text-gray-400 hover:text-black dark:hover:text-gray-100">
                 Inicio
               </h3>
             </NavLink>
             <NavLink to={"/alquiler"}>
-              <h3 className="pl-2 my-2 text-gray-400 hover:text-black">
+              <h3 className="pl-2 my-2 text-gray-400 hover:text-black  dark:hover:text-gray-100">
                 Alquiler
               </h3>
             </NavLink>
             <NavLink to={"/venta"}>
-              <h3 className="pl-2 my-2 text-gray-400 hover:text-black">
+              <h3 className="pl-2 my-2 text-gray-400 hover:text-black  dark:hover:text-gray-100">
                 Venta
               </h3>
             </NavLink>
@@ -106,7 +117,7 @@ function Footer({ theme }) {
             <a
               href={`tel:${phoneNumber}`}
               onClick={handleCall}
-              className="ml-2 text-gray-400 cursor-pointer"
+              className="ml-2 text-gray-400 cursor-pointer hover:text-black  dark:hover:text-gray-100"
             >
               {phoneNumber}
             </a>
@@ -129,7 +140,7 @@ function Footer({ theme }) {
               <path d="M3 7l9 6l9 -6" />
             </svg>
             <h2
-              className="ml-2 text-gray-400 cursor-pointer"
+              className="ml-2 text-gray-400 cursor-pointer hover:text-black  dark:hover:text-gray-100"
               onClick={openEmailClient}
             >
               {email}

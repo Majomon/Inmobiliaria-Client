@@ -8,11 +8,10 @@ import Swal from "sweetalert2";
 import LogoDark from "../../assets/darkMode.png";
 import LogoLight from "../../assets/lightMode.png";
 
-function FormContact({theme}) {
+function FormContact({ theme }) {
   const dispatch = useDispatch();
   const [disabled, setDisabled] = useState(true);
   const [isFocused, setIsFocused] = useState(false);
-
   //Direccion completa de la URL
   const location = useLocation();
   const URL_BASE = "https://inmobiliaria-client.vercel.app";
@@ -87,10 +86,10 @@ function FormContact({theme}) {
   };
 
   return (
-    <div className="w-4/12 h-[100vh] mt-2 mr-16 bg-white sticky top-[80px]">
+    <div className="w-4/12 h-full my-2 mr-16 bg-white dark:bg-black sticky top-[80px] rounded-lg">
       <Toaster />
-      <div className="p-4 shadow-md border rounded-lg ">
-        <h2 className="">Contacta al vendedor</h2>
+      <div className="mb-4 p-4 shadow-md dark:shadow-gray-200 border rounded-lg ">
+        <h2 className="text-black dark:text-gray-100">Contacta al vendedor</h2>
         <div className="w-full flex gap-4">
           {theme === "light" ? (
             <img className="w-16" src={LogoLight} alt="LogoLight" />
@@ -98,9 +97,9 @@ function FormContact({theme}) {
             <img className="w-16" src={LogoDark} alt="LogoDark" />
           )}
           <div>
-            <h2 className="text-lg "> Av. Siempre viva 1234</h2>
-            <h2 className="text-lg ">4422-4433</h2>
-            <h2 className="text-lg ">test@test.com</h2>
+            <h2 className="text-base dark:text-gray-100"> Av. Siempre viva 1234</h2>
+            <h2 className="text-base dark:text-gray-100">4422-4433</h2>
+            <h2 className="text-base dark:text-gray-100">test@test.com</h2>
           </div>
         </div>
         <form className="pt-2" onSubmit={handlerSubmit}>
@@ -110,7 +109,7 @@ function FormContact({theme}) {
             value={inputForm.name}
             onChange={handlerChange}
             placeholder="Nombre"
-            className={`w-full h-full my-1 py-1 border-b-2 border-gray-400 focus:border-yellow-500 ${
+            className={`w-full h-full my-1 py-1 border-b-4 dark:bg-black dark:text-white border-gray-100 focus:border-yellow-500 ${
               isFocused ? "outline-none" : ""
             }`}
             onFocus={() => setIsFocused(true)}
@@ -122,7 +121,7 @@ function FormContact({theme}) {
             value={inputForm.email}
             onChange={handlerChange}
             placeholder="Email"
-            className={`w-full h-full my-1 py-1 border-b-2 border-gray-400 focus:border-yellow-500 ${
+            className={`w-full h-full my-1 py-1 border-b-4 dark:bg-black dark:text-white border-gray-100 focus:border-yellow-500 ${
               isFocused ? "outline-none" : ""
             }`}
             onFocus={() => setIsFocused(true)}
@@ -134,7 +133,7 @@ function FormContact({theme}) {
             value={inputForm.phone}
             onChange={handlerChange}
             placeholder="Teléfono"
-            className={`w-full h-full my-1 py-1 border-b-2 border-gray-400 focus:border-yellow-500 ${
+            className={`w-full h-full my-1 py-1 border-b-4 dark:bg-black dark:text-white border-gray-100 focus:border-yellow-500 ${
               isFocused ? "outline-none" : ""
             }`}
             onFocus={() => setIsFocused(true)}
@@ -147,7 +146,7 @@ function FormContact({theme}) {
             value={inputForm.message}
             onChange={handlerChange}
             placeholder="Vi esta propiedad y me gustaria que me contacten"
-            className={`w-full h-full my-1 py-1 border-b-2 border-gray-400 focus:border-yellow-500 ${
+            className={`w-full h-full my-1 py-1 border-b-4 dark:bg-black dark:text-white border-gray-100 focus:border-yellow-500 ${
               isFocused ? "outline-none" : ""
             }`}
             onFocus={() => setIsFocused(true)}
@@ -165,8 +164,8 @@ function FormContact({theme}) {
           </button>
         </form>
       </div>
-      <div className="h-[8rem] mt-2 flex flex-col justify-center gap-2 shadow-md border rounded-lg px-2">
-        <h3 className="text-lg font-bold">Compartir</h3>
+      <div className="h-[8rem] mt-2 flex flex-col justify-center gap-2 shadow-md border rounded-lg px-2 dark:shadow-gray-200">
+        <h3 className="text-lg font-bold dark:text-gray-100">Compartir</h3>
         <img
           src={WhatApp}
           onClick={handleWhatsAppShare}

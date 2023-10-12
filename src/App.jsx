@@ -35,12 +35,13 @@ function App() {
     <div className="w-full h-full min-h-screen flex flex-col">
       <Navbar theme={theme} setTheme={setTheme} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/detail/:id" element={<Detail />} theme={theme}/>
-        <Route path="/contact" element={<Contact />} theme={theme}/>
-        <Route path="*" element={<NotFoundPage />} theme={theme}/>
+        <Route path="/" element={<Home theme={theme} />} />
+        <Route path="/detail/:id" element={<Detail theme={theme} />} />
+        <Route path="/contact" element={<Contact theme={theme} />} />
+        <Route path="*" element={<NotFoundPage theme={theme} />} />
       </Routes>
-      <Footer theme={theme}/>
+
+      <Footer theme={theme} />
     </div>
   );
 }
