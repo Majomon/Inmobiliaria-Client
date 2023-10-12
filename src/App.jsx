@@ -12,6 +12,8 @@ import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import Contact from "./pages/Contact";
 import Detail from "./pages/Detail";
 import Home from "./pages/Home";
+import 'aos/dist/aos.css'; // Importa los estilos CSS de AOS
+import AOS from 'aos';
 
 function App() {
   const location = useLocation();
@@ -30,6 +32,12 @@ function App() {
       behavior: "smooth",
     });
   }, [location]);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1200, // Duración de la animación en milisegundos
+    });
+  }, []);
 
   return (
     <div className="w-full h-full min-h-screen flex flex-col">
