@@ -12,12 +12,10 @@ import { getAllProperties } from "../redux/actions";
 
 function Home() {
   const images = [img1, img2, img3, img4];
-  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllProperties());
-    setLoading(false);
   }, []);
 
   /*   useEffect(() => {

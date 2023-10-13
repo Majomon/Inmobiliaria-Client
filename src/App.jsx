@@ -14,6 +14,7 @@ import Detail from "./pages/Detail";
 import Home from "./pages/Home";
 import 'aos/dist/aos.css'; // Importa los estilos CSS de AOS
 import AOS from 'aos';
+import Search from "./components/Search/Search";
 
 function App() {
   const location = useLocation();
@@ -45,6 +46,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home theme={theme} />} />
         <Route path="/detail/:id" element={<Detail theme={theme} />} />
+        <Route path="/search" element={<Search theme={theme} />} />
         <Route path="/contact" element={<Contact theme={theme} />} />
         <Route path="*" element={<NotFoundPage theme={theme} />} />
       </Routes>

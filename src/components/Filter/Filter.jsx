@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Filter() {
+  const navigate = useNavigate();
   const properties = useSelector((state) => state.propiedades);
   const [orderData, setOrderData] = useState({
-    operation: "",
-    typeProperty: "",
-    province: "",
-    zone: "",
-    bedrooms: "",
+    operation: "all",
+    typeProperty: "all",
+    province: "all",
+    zone: "all",
+    bedrooms: "all",
   });
 
   const uniqueOperations = [
@@ -28,7 +30,23 @@ function Filter() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    console.log("Hola");
+    const queryParams = new URLSearchParams();
+    if (orderData.operation !== "all") {
+      queryParams.append("operation", orderData.operation);
+    }
+    if (orderData.typeProperty !== "all") {
+      queryParams.append("typeProperty", orderData.typeProperty);
+    }
+    if (orderData.province !== "all") {
+      queryParams.append("province", orderData.province);
+    }
+    if (orderData.zone !== "all") {
+      queryParams.append("zone", orderData.zone);
+    }
+    if (orderData.bedrooms !== "all") {
+      queryParams.append("bedrooms", orderData.bedrooms);
+    }
+    navigate(`/search?${queryParams.toString()}`);
   };
 
   return (
