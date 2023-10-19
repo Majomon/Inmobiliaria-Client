@@ -2,8 +2,8 @@ import axios from "axios";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 // Axios default
-/* axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app"; */
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app";
+/* axios.defaults.baseURL = "http://localhost:8080"; */
 
 // Pages
 import AOS from "aos";
@@ -42,8 +42,8 @@ function App() {
   }, []);
 
   return (
-      <div className="w-full h-full min-h-screen flex flex-col">
-        <Navbar theme={theme} setTheme={setTheme} />
+    <div className="w-full h-full min-h-screen flex flex-col">
+      <Navbar theme={theme} setTheme={setTheme} />
       <Routes>
         <Route path="/" element={<Home theme={theme} />} />
         <Route path="/detail/:id" element={<Detail theme={theme} />} />
