@@ -21,16 +21,16 @@ function Footer({ theme }) {
     <div className=" bg-gray-100  dark:bg-black">
       {/* Redes */}
       <div className="my-4">
-        <h2 className="my-8 text-center text-3xl font-bold dark:text-white">
+        <h2 className="my-8 text-center  font-bold dark:text-white text-xl md:text-2xl lg:text-3xl">
           Visitanos en nuestras redes
         </h2>
-        <lu className="w-1/3 mx-auto my-4 flex justify-between">
+        <lu className="w-2/3 lg:w-1/3 mx-auto my-4 flex justify-between">
           <li className="list-none">
             <NavLink to={"https://www.facebook.com"} target="_blank">
               <img
                 src={Facebook}
                 alt="Facebook"
-                className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
+                className="w-[40px] lg:w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
               />
             </NavLink>
           </li>
@@ -39,7 +39,7 @@ function Footer({ theme }) {
               <img
                 src={Instagram}
                 alt="Instagram"
-                className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
+                className="w-[40px] lg:w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
               />
             </NavLink>
           </li>
@@ -48,16 +48,16 @@ function Footer({ theme }) {
               <img
                 src={Linkedin}
                 alt="Linkedin"
-                className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
+                className="w-[40px] lg:w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
               />
             </NavLink>
           </li>
         </lu>
       </div>
       {/* Footer */}
-      <div className="w-10/12 h-[10rem]  mx-auto my-10 flex px-4 justify-between">
+      <div className="w-10/12 mx-auto my-10 flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:items-start">
         {/* Logo */}
-        <div>
+        <div className="py-4">
           {theme === "light" ? (
             <NavLink to={"/"}>
               <img className="w-20" src={LogoLight} alt="LogoLight" />
@@ -70,23 +70,23 @@ function Footer({ theme }) {
         </div>
 
         {/* Menu */}
-        <div>
-          <h2 className="text-4xl font-bold border-b-2 border-black dark:text-gray-100">
+        <div className="text-center py-4">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold  dark:text-gray-100">
             Menu
           </h2>
-          <div>
+          <div className="flex lg:flex-col lg:items-start">
             <NavLink to={"/"}>
-              <h3 className="pl-2 my-2 text-gray-400 hover:text-black dark:hover:text-gray-100">
+              <h3 className="text-xl md:text-2xl pl-2 my-2 text-gray-400 hover:text-black dark:hover:text-gray-100">
                 Inicio
               </h3>
             </NavLink>
-            <NavLink to={"/alquiler"}>
-              <h3 className="pl-2 my-2 text-gray-400 hover:text-black  dark:hover:text-gray-100">
+            <NavLink to={"/search?operation=Alquiler"}>
+              <h3 className="text-xl md:text-2xl pl-2 my-2 text-gray-400 hover:text-black  dark:hover:text-gray-100">
                 Alquiler
               </h3>
             </NavLink>
-            <NavLink to={"/venta"}>
-              <h3 className="pl-2 my-2 text-gray-400 hover:text-black  dark:hover:text-gray-100">
+            <NavLink to={"/search?operation=Venta"}>
+              <h3 className="text-xl md:text-2xl pl-2 my-2 text-gray-400 hover:text-black  dark:hover:text-gray-100">
                 Venta
               </h3>
             </NavLink>
@@ -94,11 +94,11 @@ function Footer({ theme }) {
         </div>
 
         {/* Contacto */}
-        <div>
-          <h2 className="text-4xl font-bold border-b-2 border-black dark:text-gray-100">
+        <div className="text-center py-4 lg:text-start  lg:items-start">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold  dark:text-gray-100">
             Contacto
           </h2>
-          <div className="h-[2rem] flex items-center my-2">
+          <div className="h-[2rem] flex items-center my-2 text-xl md:text-2xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="icon icon-tabler icon-tabler-phone"
@@ -122,7 +122,7 @@ function Footer({ theme }) {
               {phoneNumber}
             </a>
           </div>
-          <div className="h-[2rem] flex items-center my-2">
+          <div className="h-[2rem] flex items-center my-2 text-xl md:text-2xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="icon icon-tabler icon-tabler-mail"
@@ -149,16 +149,14 @@ function Footer({ theme }) {
         </div>
       </div>
       {/* Developer */}
-      <div className="w-full h-[3rem] bg-black flex justify-center items-center gap-10">
+      <div className="w-full h-[3rem] bg-black flex justify-center items-center gap-2 lg:gap-10">
         <NavLink
           to={"https://www.instagram.com/maurimonzon_j/"}
           target="_blank"
         >
           <img src={Instagram} alt="Linkedin " className="w-[30px]" />
         </NavLink>
-        <h3 className=" text-white">
-          Proyecto desarrollado por Mauricio Monzon
-        </h3>
+        <h3 className=" text-white">Programador: Mauricio Monzon</h3>
         {/* Redes propias */}
         <NavLink
           to={"https://www.linkedin.com/in/mauricio-monzon/"}

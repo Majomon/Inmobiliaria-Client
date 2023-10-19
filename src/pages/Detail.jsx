@@ -47,16 +47,14 @@ function Detail({ theme }) {
       {property.name ? (
         <div className="w-full h-full mt-16 flex flex-col ">
           <DetailInfoTop dataAxios={property} />
-          <div className="w-full flex mt-4">
-            <div className="w-8/12 h-full pl-16 pr-4">
+          <div className="w-full flex flex-col md:flex-row mt-4 px-4">
+            <div className="w-full h-full md:w-8/12 lg:pl-16 md:pr-4">
               <CarouselVersion2
                 handleImageClick={handleImageClick}
                 currentImageIndex={currentImageIndex}
               />
               <div className="w-full text-center my-2 py-2 border shadow-md bg-yellow-400 hover:bg-yellow-500  hover:translate-y-[-2px] transition-all duration-300 ease-in-out rounded-lg text-white font-bold text-xl cursor-pointer dark:shadow-gray-200">
-                <button onClick={() => toast("My first toast")}>
-                  Quiero que me llamen
-                </button>
+                <button>Quiero que me llamen</button>
               </div>
               <DetailInfoBot dataAxios={property} theme={theme} />
             </div>

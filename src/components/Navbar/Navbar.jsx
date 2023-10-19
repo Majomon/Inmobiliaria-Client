@@ -18,7 +18,7 @@ function Navbar({ theme, setTheme }) {
   };
 
   return (
-    <div className="w-full h-[4.5rem] px-10 fixed flex justify-between items-center bg-white dark:bg-black shadow-md dark:shadow-gray-100 dark: z-10">
+    <div className="w-full h-[72px] px-10 fixed flex justify-between items-center bg-white dark:bg-black shadow-md dark:shadow-gray-100 dark: z-10">
       {/* Icono */}
       <div className="">
         <Link to="/">

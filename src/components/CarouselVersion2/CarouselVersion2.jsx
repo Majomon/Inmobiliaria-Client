@@ -5,7 +5,7 @@ function CarouselVersion2({ handleImageClick, currentImageIndex, theme }) {
   const property = useSelector((state) => state.details);
 
   return (
-    <div className="w-full h-[450px] relative flex flex-col items-center mt-2 shadow-md dark:shadow-gray-200 rounded-lg ">
+    <div className="w-full  h-[400px] md:h-[450px] relative flex flex-col items-center mt-2 shadow-md dark:shadow-gray-200 rounded-lg ">
       <div className="w-full h-full">
         {property.images?.map((image, index) => (
           <img

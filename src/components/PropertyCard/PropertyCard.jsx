@@ -21,7 +21,7 @@ function PropertyCard(properties) {
   
   return (
     <Link to={`/detail/${_id}`}>
-      <div data-aos="zoom-in" className="w-[380px] mx-auto my-8 rounded-md shadow-xl duration-700 ease-in-out hover:shadow-2xl hover:shadow-yellow-300 border border-gray-300 dark:shadow-lg dark:shadow-red-100 overflow-hidden dark:hover:shadow-red-600">
+      <div data-aos="zoom-in" className="w-[280px] md:w-[320px]  2xl:w-[360px] mx-auto my-8 rounded-md shadow-xl duration-700 ease-in-out hover:shadow-2xl hover:shadow-yellow-300 border border-gray-300 dark:shadow-lg dark:shadow-red-100 overflow-hidden dark:hover:shadow-red-600">
         <h2 className="py-2 text-center font-bold bg-yellow-300">
           {property} en {operation}
         </h2>

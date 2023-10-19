@@ -1,17 +1,19 @@
-import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import PropertyCard from "../PropertyCard/PropertyCard";
 import Spinner from "../Spinner/Spinner";
 
-function ContainerProperty() {
-  const properties = useSelector((state) => state.propiedades);
-
+function ContainerProperty({ properties }) {
+  const location = useLocation();
+  const pageSearch = location.pathname === "/search";
   return (
-    <div className="w-full mx-auto dark:bg-black border-t dark:border-white relative">
-      <h2 className="text-center pt-4 font-bold text-4xl dark:text-white">
-        Todas las propiedades
-      </h2>
-
-      <div className="w-11/12 mx-auto grid grid-cols-3">
+    <div className="w-full h-full dark:bg-black dark:border-white relative ">
+      <div
+        className={`${
+          pageSearch
+            ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10"
+            : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
+        }`}
+      >
         {properties.length > 0 ? (
           properties.map((property) => (
             <PropertyCard key={property._id} property={property} />

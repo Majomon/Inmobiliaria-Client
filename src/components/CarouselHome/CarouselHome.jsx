@@ -14,7 +14,7 @@ function CarouselHome({ images }) {
   }, [images]);
 
   return (
-    <div className="w-full h-[250px] md:h-[600px] mx-auto relative overflow-hidden ">
+    <div className="w-full h-[390px] md:h-[600px] mx-auto relative overflow-hidden ">
       <div className="w-full h-full">
         {images.map((image, index) => (
           <img
