@@ -12,7 +12,7 @@ function CarouselVersion2({ handleImageClick, currentImageIndex, theme }) {
             key={index}
             src={image}
             alt={`Image ${index + 1}`}
-            className={`absolute w-full h-full opacity-0 transition-opacity border rounded-lg duration-500 ease-in-out lg:object-contain ${
+            className={`absolute w-full h-full opacity-0 transition-opacity border rounded-lg duration-500 ease-in-out ${
               index === currentImageIndex ? "opacity-100" : ""
             }`}
           />

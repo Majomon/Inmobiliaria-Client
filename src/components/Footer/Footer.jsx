@@ -21,7 +21,7 @@ function Footer({ theme }) {
     <div className=" bg-gray-100  dark:bg-black">
       {/* Redes */}
       <div className="my-4">
-        <h2 className="my-8 text-center  font-bold dark:text-white text-xl md:text-2xl lg:text-3xl">
+        <h2 className="my-8 text-center  font-bold dark:text-white text-base md:text-lg lg:text-xl">
           Visitanos en nuestras redes
         </h2>
         <lu className="w-2/3 lg:w-1/3 mx-auto my-4 flex justify-between">
@@ -30,7 +30,7 @@ function Footer({ theme }) {
               <img
                 src={Facebook}
                 alt="Facebook"
-                className="w-[40px] lg:w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
+                className="w-[30px] lg:w-[40px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
               />
             </NavLink>
           </li>
@@ -39,7 +39,7 @@ function Footer({ theme }) {
               <img
                 src={Instagram}
                 alt="Instagram"
-                className="w-[40px] lg:w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
+                className="w-[30px] lg:w-[40px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
               />
             </NavLink>
           </li>
@@ -48,7 +48,7 @@ function Footer({ theme }) {
               <img
                 src={Linkedin}
                 alt="Linkedin"
-                className="w-[40px] lg:w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
+                className="w-[30px] lg:w-[40px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
               />
             </NavLink>
           </li>
@@ -71,22 +71,22 @@ function Footer({ theme }) {
 
         {/* Menu */}
         <div className="text-center py-4">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold  dark:text-gray-100">
+          <h2 className="text-base md:text-lg lg:text-2xl font-bold  dark:text-gray-100">
             Menu
           </h2>
           <div className="flex lg:flex-col lg:items-start">
             <NavLink to={"/"}>
-              <h3 className="text-xl md:text-2xl pl-2 my-2 text-gray-400 hover:text-black dark:hover:text-gray-100">
+              <h3 className="text-base md:text-lg lg:text-xl pl-2 my-2 text-gray-400 hover:text-black dark:hover:text-gray-100">
                 Inicio
               </h3>
             </NavLink>
             <NavLink to={"/search?operation=Alquiler"}>
-              <h3 className="text-xl md:text-2xl pl-2 my-2 text-gray-400 hover:text-black  dark:hover:text-gray-100">
+              <h3 className="text-base md:text-lg lg:text-xl pl-2 my-2 text-gray-400 hover:text-black  dark:hover:text-gray-100">
                 Alquiler
               </h3>
             </NavLink>
             <NavLink to={"/search?operation=Venta"}>
-              <h3 className="text-xl md:text-2xl pl-2 my-2 text-gray-400 hover:text-black  dark:hover:text-gray-100">
+              <h3 className="text-base md:text-lg lg:text-xl pl-2 my-2 text-gray-400 hover:text-black  dark:hover:text-gray-100">
                 Venta
               </h3>
             </NavLink>
@@ -95,7 +95,7 @@ function Footer({ theme }) {
 
         {/* Contacto */}
         <div className="text-center py-4 lg:text-start  lg:items-start">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold  dark:text-gray-100">
+          <h2 className="text-base md:text-lg lg:text-2xl font-bold  dark:text-gray-100">
             Contacto
           </h2>
           <div className="h-[2rem] flex items-center my-2 text-xl md:text-2xl">
@@ -117,7 +117,7 @@ function Footer({ theme }) {
             <a
               href={`tel:${phoneNumber}`}
               onClick={handleCall}
-              className="ml-2 text-gray-400 cursor-pointer hover:text-black  dark:hover:text-gray-100"
+              className="text-base md:text-lg lg:text-xl ml-2 text-gray-400 cursor-pointer hover:text-black  dark:hover:text-gray-100"
             >
               {phoneNumber}
             </a>
@@ -140,7 +140,7 @@ function Footer({ theme }) {
               <path d="M3 7l9 6l9 -6" />
             </svg>
             <h2
-              className="ml-2 text-gray-400 cursor-pointer hover:text-black  dark:hover:text-gray-100"
+              className="text-base md:text-lg lg:text-xl ml-2 text-gray-400 cursor-pointer hover:text-black  dark:hover:text-gray-100"
               onClick={openEmailClient}
             >
               {email}

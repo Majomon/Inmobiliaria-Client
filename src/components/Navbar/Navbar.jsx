@@ -18,14 +18,14 @@ function Navbar({ theme, setTheme }) {
   };
 
   return (
-    <div className="w-full h-[72px] px-10 fixed flex justify-between items-center bg-white dark:bg-black shadow-md dark:shadow-gray-100 dark: z-10">
+    <div className="w-full h-[3rem] px-10 fixed flex justify-between items-center bg-white dark:bg-black shadow-md dark:shadow-gray-100 dark: z-10">
       {/* Icono */}
       <div className="">
         <Link to="/">
           {theme === "light" ? (
-            <img className="w-16" src={LogoLight} alt="LogoLight" />
+            <img className="w-12" src={LogoLight} alt="LogoLight" />
           ) : (
-            <img className="w-16" src={LogoDark} alt="LogoDark" />
+            <img className="w-12" src={LogoDark} alt="LogoDark" />
           )}
         </Link>
       </div>
