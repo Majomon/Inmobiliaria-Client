@@ -39,7 +39,7 @@ function CarouselMlWeb() {
   };
 
   return (
-    <div className="w-full h-full flex">
+    <div className="w-full h-full flex  rounded-md mt-4 p-4 shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900">
       <div className="w-2/12 h-full flex flex-col justify-center items-center gap-2 pt-4">
         {property.images?.map((image, index) => (
           <img
@@ -57,14 +57,14 @@ function CarouselMlWeb() {
           <img
             src={imgSelected}
             alt="Descripción de la imagen"
-            className="w-full mx-auto h-[450px] rounded-lg"
+            className="w-full mx-auto h-[450px] rounded-lg cursor-pointer"
             onClick={handlerImgModal}
           />
         ) : (
           <img
             src={firstImage}
             alt="Descripción de la imagen"
-            className="w-full mx-auto h-[450px] rounded-lg"
+            className="w-full mx-auto h-[450px] rounded-lg cursor-pointer"
             onClick={handlerImgModal}
           />
         )}

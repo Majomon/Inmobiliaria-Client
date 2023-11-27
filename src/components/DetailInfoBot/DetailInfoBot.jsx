@@ -29,14 +29,14 @@ function DetailInfoBot({ dataAxios,theme }) {
   };
   return (
     <div className="w-full h-full">
-      <div className="border rounded-lg my-4 shadow-md dark:shadow-gray-200">
+      <div className="rounded-lg my-4 shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900">
         <h2 className="px-4 py-2 font-bold text-base dark:text-gray-100">Descripción</h2>
         <div className="px-10 py-2 dark:text-gray-100">
           <p>{dataAxios.description}</p>
         </div>
       </div>
       {/* Detalles de la propiedad */}
-      <div className="h-full shadow-md dark:shadow-gray-200 border rounded-lg my-4">
+      <div className="h-full shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg my-4">
         <h2 className="px-4 py-2 font-bold text-base dark:text-gray-100">
           Detalles de la propiedad
         </h2>
@@ -84,7 +84,7 @@ function DetailInfoBot({ dataAxios,theme }) {
         </div>
       </div>
       {/* Caracteristicas */}
-      <div className="h-full shadow-md dark:shadow-gray-200 border rounded-lg my-4">
+      <div className="h-full shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg my-4">
         <h2 className="px-4 py-2 font-bold text-base">Caracteristicas</h2>
         <div className="w-full  my-4">
           <div className=" grid  grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-10">

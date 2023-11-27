@@ -39,7 +39,7 @@ function Home() {
   }, []); */
 
   return (
-    <div className="w-full h-full mt-[72px]">
+    <div className="w-full h-full mt-[3rem]">
       <CarouselHome images={images} />
       <div className="relative">
         <FilterHome />

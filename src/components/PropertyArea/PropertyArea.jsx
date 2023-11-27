@@ -1,36 +1,34 @@
-import { useSelector } from "react-redux";
-import { useSpringCarousel } from "react-spring-carousel";
+import React from "react";
 import PropertyCard from "../PropertyCard/PropertyCard";
-import { useEffect } from "react";
-import { getAllProperties } from "../../redux/actions";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import styles from "./PropertyArea.module.css";
 
-function PropertyArea() {
-  const properties = useSelector((state) => state.propiedades);
-
-  const carouselItems = properties.map((property) => ({
-    id: property._id,
-    renderItem: <PropertyCard key={property._id} property={property} />,
-  }));
-  const { carouselFragment, slideToPrevItem, slideToNextItem } =
-    useSpringCarousel({
-      itemsPerSlide: Math.min(3, properties.length), // Asegúrate de no exceder la longitud de 'properties'
-      withLoop: true,
-      items: carouselItems,
-    });
+function PropertyArea({ sliderProperty }) {
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+  };
 
   return (
-    <div className="w-full mx-auto h-full bg-gray-800">
-      <div className="w-10/12 overflow-hidden mx-auto">
-        <h2 className="text-center">Propiedades por la zona</h2>
-        <div className="">
-          <button onClick={slideToPrevItem} className=" text-white">
-            Prev item
-          </button>
-          {carouselFragment}
-          <button onClick={slideToNextItem}>Next item</button>
-        </div>
-      </div>
-    </div>
+    <Carousel responsive={responsive} className={styles.container}>
+      {sliderProperty.map((elem) => (
+        <PropertyCard key={elem._id} property={elem} />
+      ))}
+    </Carousel>
   );
 }
 

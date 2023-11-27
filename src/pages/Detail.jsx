@@ -1,35 +1,35 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { Toaster } from "sonner";
 import Error from "../assets/pageNotFound/5203299.jpg";
-import CarouselVersion2 from "../components/CarouselVersion2/CarouselVersion2";
+import CarouselMlWeb from "../components/CarouselMlWeb/CarouselMlWeb";
 import DetailInfoBot from "../components/DetailInfoBot/DetailInfoBot";
 import DetailInfoTop from "../components/DetailInfoTop/DetailInfoTop";
 import FormContact from "../components/FormContact/FormContact";
 import Spinner from "../components/Spinner/Spinner";
-import { clearDetailsState, getAllProperties, getPropertiesId } from "../redux/actions";
-import { Toaster, toast } from "sonner";
-import CarouselMlWeb from "../components/CarouselMlWeb/CarouselMlWeb";
+import {
+  clearDetailsState,
+  getAllProperties,
+  getPropertiesId,
+} from "../redux/actions";
 import PropertyArea from "../components/PropertyArea/PropertyArea";
 
 function Detail({ theme }) {
+  /*   const [selectedImage, setSelectedImage] = useState("");
+    const [currentImageIndex, setCurrentImageIndex] = useState(0); */
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState("");
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const dispatch = useDispatch();
   const property = useSelector((state) => state.details);
+  const properties = useSelector((state) => state.propiedades);
+  const [sliderProperty, setSliderProperty] = useState([]);
 
   useEffect(() => {
-    dispatch(getPropertiesId(id))
-      .then(() => {
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.error("Error al obtener propiedades:", error);
-      });
-/*     dispatch(getAllProperties())
+    dispatch(getAllProperties());
+    dispatch(getPropertiesId(id));
+    setLoading(false);
+    /*     dispatch(getPropertiesId(id))
       .then(() => {
         setLoading(false);
       })
@@ -37,21 +37,29 @@ function Detail({ theme }) {
         setLoading(false);
         console.error("Error al obtener propiedades:", error);
       }); */
-
     return () => {
       dispatch(clearDetailsState());
     };
   }, [id]);
 
-  /*  const handleImageClick = (image) => {
-    // Maneja el clic en una imagen pequeña
-    setSelectedImage(image);
-    setCurrentImageIndex(image);
-  };
-  // Verifica si los datos están cargados antes de renderizar */
+  useEffect(() => {
+    if (property._id && properties.length > 0) {
+      const foundProperty = properties.filter(
+        (elem) =>
+          elem._id !== property._id &&
+          elem.address && // Verificar si 'address' está definido
+          elem.address.zone && // Verificar si 'zone' está definido
+          elem.address.zone == property.address.zone // Evitar comparaciones si 'address' o 'zone' son undefined
+      );
+      setSliderProperty(foundProperty);
+      setLoading(false);
+    }
+  }, [property._id, properties]);
+
   if (loading) {
     return <Spinner />;
   }
+
   return (
     <div className="bg-white dark:bg-black">
       <Toaster />
@@ -72,20 +80,28 @@ function Detail({ theme }) {
             </div>
             <FormContact theme={theme} />
           </div>
-          <PropertyArea />
+          {sliderProperty.length ? (
+            <PropertyArea sliderProperty={sliderProperty} />
+          ) : (
+            ""
+          )}
         </div>
       ) : (
-        <div className="w-full h-[100vh] ">
-          <div className="w-full h-full flex flex-col justify-center items-center">
-            <img src={Error} alt="error" className="w-[400px] h-[300px]" />
-            <h2 className="text-3xl">
-              No existe la propiedad de ID: <strong>{id}</strong>
-            </h2>
-          </div>
-        </div>
+        <Spinner />
       )}
     </div>
   );
 }
 
 export default Detail;
+
+{
+  /*         <div className="w-full h-[100vh] ">
+          <div className="w-full h-full flex flex-col justify-center items-center">
+            <img src={Error} alt="error" className="w-[400px] h-[300px]" />
+            <h2 className="text-3xl">
+              No existe la propiedad de ID: <strong>{id}</strong>
+            </h2>
+          </div>
+        </div> */
+}

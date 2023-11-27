@@ -1,16 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import LogoDark from "../../assets/darkMode.png"
+import { Link, useLocation } from "react-router-dom";
+import LogoDark from "../../assets/darkMode.png";
 import LogoLight from "../../assets/lightMode.png";
 
 const options = [
   { name: "Inicio", to: "/" },
-  { name: "Contacto", to: "/contact" },
+  { name: "Alquiler", to: "/search?operation=Alquiler" },
+  { name: "Venta", to: "/search?operation=Venta" },
 ];
 
 // eslint-disable-next-line react/prop-types
 function Navbar({ theme, setTheme }) {
   const [activeMenu, setActiveMenu] = useState(false);
+  const location = useLocation();
+  const fullPath = `${location.pathname}${location.search}`;
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -18,7 +21,7 @@ function Navbar({ theme, setTheme }) {
   };
 
   return (
-    <div className="w-full h-[3rem] px-10 fixed flex justify-between items-center bg-white dark:bg-black shadow-md dark:shadow-gray-100 dark: z-10">
+    <div className="w-full h-[3rem] px-10 fixed flex justify-between items-center bg-white dark:bg-black shadow-sm  dark: z-10">
       {/* Icono */}
       <div className="">
         <Link to="/">
@@ -71,7 +74,8 @@ function Navbar({ theme, setTheme }) {
           <Link key={index} to={option.to}>
             <p
               className={
-                theme === "dark" ? "text-white text-xl" : "text-black text-xl"
+                `${theme === "dark" ? "text-gray-100 hover:text-gray-300" : "text-black hover:text-gray-500 hover:border-b-gray-500"}` +
+                `${fullPath === option.to ? " border-b-2 border-gray-900 dark:border-red-700 font-semibold " : ""}`
               }
             >
               {option.name}
@@ -120,8 +124,8 @@ function Navbar({ theme, setTheme }) {
       {/* Menu activo */}
       {activeMenu && (
         <div
-          className={`bg-white dark:bg-black absolute top-16 right-0 w-48 rounded-bl-md shadow-md ${
-            theme === "dark" ? "text-white text-xl" : "text-black text-xl"
+          className={`bg-white dark:bg-black absolute top-[3rem] right-0 w-48 rounded-bl-md shadow-md ${
+            theme === "dark" ? "text-gray-100 text-xl" : "text-xl text-gray-900"
           }`}
         >
           {options.map((option, index) => (
@@ -129,7 +133,7 @@ function Navbar({ theme, setTheme }) {
               onClick={() => setActiveMenu(!activeMenu)}
               key={index}
               to={option.to}
-              className="block py-2 px-4 hover:bg-gray-200 dark:hover:bg-yellow-400"
+              className="block py-2 px-4   hover:bg-gray-950 dark:hover:bg-yellow-400"
             >
               {option.name}
             </Link>

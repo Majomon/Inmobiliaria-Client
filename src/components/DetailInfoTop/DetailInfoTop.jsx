@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
 import { HiArrowNarrowRight } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 function DetailInfoTop({ dataAxios }) {
+
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full  mt-6 md:mt-4">
       {/* Info del vendedor o inmobiliaria */}
-      <div className="hidden md:flex w-full mt-4 justify-end gap-6 px-10">
+    {/*   <div className="hidden md:flex w-full mt-4 justify-end gap-6 px-10">
         <div className="flex justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -69,34 +71,34 @@ function DetailInfoTop({ dataAxios }) {
           </svg>
           <h2 className="text-sm  ml-2 dark:text-white">test@test.com</h2>
         </div>
-      </div>
+      </div> */}
       {/* Ubicación */}
-      <div className="w-10/12 mx-auto h-full grid grid-cols-2 mt-6 md:mt-0 md:flex md:gap-2  ">
-        <div className="text-sm flex items-center gap-2 dark:text-white">
-          <h3 className="">{dataAxios.operation}</h3>
+      <div className="w-10/12 mx-auto h-full grid grid-cols-2 md:flex md:gap-2  ">
+        <div className="text-sm flex items-center gap-2 dark:text-gray-100">
+          <Link to={`/search?operation=${dataAxios.operation}`} className="">{dataAxios.operation}</Link>
           <HiArrowNarrowRight />
         </div>
-        <div className="text-sm flex items-center gap-2 dark:text-white">
-          <h3>{dataAxios.address.province}</h3>
+        <div className="text-sm flex items-center gap-2 dark:text-gray-100">
+          <Link to={`/search?province=${dataAxios.address.province}`} >{dataAxios.address.province}</Link>
           <HiArrowNarrowRight />
         </div>
-        <div className="text-sm flex items-center gap-2 dark:text-white">
-          <h3>{dataAxios.address.zone}</h3>
+        <div className="text-sm flex items-center gap-2 dark:text-gray-100">
+          <Link  to={`/search?zone=${dataAxios.address.zone}`}>{dataAxios.address.zone}</Link>
           <HiArrowNarrowRight />
         </div>
-        <div className="text-sm flex items-center gap-2 dark:text-white">
+        <div className="text-sm flex items-center gap-2 dark:text-gray-100">
           <h3>{dataAxios.address.street}</h3>
         </div>
       </div>
       {/* Info extra del la publicacion */}
-      <div className="w-full h-full py-1 flex flex-col md:flex-row justify-center items-center bg-white shadow-md dark:bg-black border-b-2 border-gray-100">
+      <div className="w-full h-full py-1 flex flex-col md:flex-row justify-center items-center bg-white shadow-md dark:bg-black border-b-2 dark:border-yellow-600 dark:shadow-yellow-600">
         <div className="w-10/12 h-full flex flex-col md:flex-row">
           <div className="w-full h-full lg:w-7/12 flex flex-col md:flex-row">
             <div className="w-full lg:w-6/12 h-full py-2">
-              <h3 className="text-sm font-bold dark:text-white">
+              <h3 className="text-sm font-bold dark:text-gray-100">
                 {dataAxios.name}
               </h3>
-              <h4 className="text-sm dark:text-white">
+              <h4 className="text-sm dark:text-gray-100">
                 {dataAxios.address.province}, {dataAxios.address.zone}
               </h4>
               <p className="text-gray-400">

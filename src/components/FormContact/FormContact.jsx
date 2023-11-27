@@ -86,9 +86,9 @@ function FormContact({ theme }) {
   };
 
   return (
-    <div className="w-full md:w-6/12 h-full bg-white dark:bg-black sticky top-[80px] mt-4 rounded-lg">
+    <div className="w-full md:w-6/12 h-full sticky top-[80px] mt-4 rounded-lg ">
       <Toaster />
-      <div className="mb-4 p-4 shadow-md dark:shadow-gray-200 border rounded-lg">
+      <div className="mb-4 p-4 shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg">
         <h2 className="text-black dark:text-gray-100 text-center py-2">Contacta al vendedor</h2>
         <div className="w-full flex gap-4 justify-center">
           {theme === "light" ? (
@@ -164,7 +164,7 @@ function FormContact({ theme }) {
           </button>
         </form>
       </div>
-      <div className="h-[8rem] mt-2 flex flex-col justify-center items-center gap-2 shadow-md border rounded-lg px-2 dark:shadow-gray-200">
+      <div className="h-[8rem] mt-2 flex flex-col justify-center items-center gap-2 rounded-lg px-2 shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900">
         <h3 className="text-lg font-bold dark:text-gray-100">Compartir</h3>
         <img
           src={WhatApp}
