@@ -1,9 +1,15 @@
+//Propiedades
 import { GET_ALL_PROPERTIES } from "./actions";
 import { GET_PROPERTY_ID } from "./actions";
-import { GET_SEARCH_FILTER } from "./actions";
 
+//Usuarios
+import { GET_ALL_USERS } from "./actions";
+import { LOGIN_USER } from "./actions";
+
+import { GET_SEARCH_FILTER } from "./actions";
 import { CLEAR_DETAILS_STATE } from "./actions";
 import { CLEAR_SEARCH_STATE } from "./actions";
+import { LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS } from "./actions";
 
 const initialState = {
   propiedades: [],
@@ -11,6 +17,9 @@ const initialState = {
     images: [],
   },
   search: {},
+  users: [],
+  userData: null,
+  isLoggedIn: false,
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -26,7 +35,28 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         details: payload,
       };
-
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        users: payload,
+      };
+    case LOGIN_USER:
+      return {
+        ...state,
+        userData: payload,
+      };
+    case LOGIN_USER_SUCCESS:
+      return {
+        ...state,
+        userData: payload,
+        isLoggedIn: true,
+      };
+    case LOGIN_USER_FAILURE:
+      return {
+        ...state,
+        userData: null,
+        isLoggedIn: false,
+      };
     case GET_SEARCH_FILTER:
       return {
         ...state,

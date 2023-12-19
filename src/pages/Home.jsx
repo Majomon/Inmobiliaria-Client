@@ -18,26 +18,6 @@ function Home() {
     dispatch(getAllProperties());
   }, []);
 
-  /*   useEffect(() => {
-    setTimeout(() => {
-      axios
-        .get("/properties")
-        .then((response) => {
-          if (response.status === 200) {
-            const data = response.data;
-            setDataAxios(data);
-            setLoading(false);
-          } else {
-            throw new Error("La solicitud no fue exitosa.");
-          }
-        })
-        .catch((error) => {
-          console.error("Error al obtener propiedades:", error);
-          setLoading(false);
-        });
-    }, 1500);
-  }, []); */
-
   return (
     <div className="w-full h-full mt-[3rem]">
       <CarouselHome images={images} />

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 // Axios default
 axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app";
@@ -12,21 +12,40 @@ import { useEffect, useState } from "react";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
-import Contact from "./pages/Contact";
+import Dashboard from "./pages/Dashboard";
 import Detail from "./pages/Detail";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 import Search from "./pages/Search";
 
 function App() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const url = location.pathname; /*  */
+  const shouldRenderNavbar = url !== "/dashboard";
   const [theme, setTheme] = useState(
     window.localStorage.getItem("color-theme") || "light"
   );
+
+  const checkAdminUser = () => {
+    const user = JSON.parse(window.localStorage.getItem("user"));
+    return user?.email;
+  };
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
     window.localStorage.setItem("color-theme", theme);
   }, [theme]);
+
+  useEffect(() => {
+    // Verifica si el usuario es admin@admin.com
+    const isAdminUser = checkAdminUser();
+
+    // Redirige según la verificación
+    if (isAdminUser && url == "/adminYosef") {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     window.scrollTo({
@@ -43,16 +62,16 @@ function App() {
 
   return (
     <div className="w-full h-full min-h-screen flex flex-col">
-      <Navbar theme={theme} setTheme={setTheme} />
+      {shouldRenderNavbar && <Navbar theme={theme} setTheme={setTheme} />}
       <Routes>
         <Route path="/" element={<Home theme={theme} />} />
         <Route path="/detail/:id" element={<Detail theme={theme} />} />
         <Route path="/search" element={<Search theme={theme} />} />
-        <Route path="/contact" element={<Contact theme={theme} />} />
+        <Route path="/adminYosef" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFoundPage theme={theme} />} />
       </Routes>
-
-      <Footer theme={theme} />
+      {shouldRenderNavbar && <Footer theme={theme} />}
     </div>
   );
 }
