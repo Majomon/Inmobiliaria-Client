@@ -2,18 +2,17 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Toaster } from "sonner";
-import Error from "../assets/pageNotFound/5203299.jpg";
 import CarouselMlWeb from "../components/CarouselMlWeb/CarouselMlWeb";
 import DetailInfoBot from "../components/DetailInfoBot/DetailInfoBot";
 import DetailInfoTop from "../components/DetailInfoTop/DetailInfoTop";
 import FormContact from "../components/FormContact/FormContact";
+import PropertyArea from "../components/PropertyArea/PropertyArea";
 import Spinner from "../components/Spinner/Spinner";
 import {
   clearDetailsState,
   getAllProperties,
   getPropertiesId,
 } from "../redux/actions";
-import PropertyArea from "../components/PropertyArea/PropertyArea";
 
 function Detail({ theme }) {
   /*   const [selectedImage, setSelectedImage] = useState("");

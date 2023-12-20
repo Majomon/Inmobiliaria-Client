@@ -23,7 +23,7 @@ function DetailInfoBot({ dataAxios,theme }) {
     kitchen: { value: "Cocina", img: Cocina },
     sewageDrain: { value: "Desague", img: Desague },
     balcony: { value: "Balcón", img: Balcon },
-    laundry: { value: "Lavarropas", img: Lavadero },
+    laundry: { value: "Lavadero", img: Lavadero },
     yard: { value: "Patio", img: Patio },
     dressingRoom: { value: "Vestidor", img: Vestidor },
   };

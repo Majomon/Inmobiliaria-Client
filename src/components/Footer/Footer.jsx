@@ -6,8 +6,8 @@ import LogoLight from "../../assets/lightMode.png";
 import { NavLink } from "react-router-dom";
 
 function Footer({ theme }) {
-  const email = "test@test.com";
-  const phoneNumber = "1138612819";
+  const email = "iruslux@gmail.com";
+  const phoneNumber = "+5491144451012";
 
   const openEmailClient = () => {
     window.location.href = `mailto:${email}`;

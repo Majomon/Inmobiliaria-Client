@@ -88,7 +88,7 @@ function CreateProperty({ setActiveFormCreate }) {
     try {
       // Envío de la información para crear la propiedad mediante la acción correspondiente
       const res = await axios.post(
-        "/properties",
+        "http://localhost:8080/properties",
         newProperty
       );
 
