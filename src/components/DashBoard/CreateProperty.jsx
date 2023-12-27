@@ -48,7 +48,7 @@ function CreateProperty({ setActiveFormCreate }) {
     property: formData.property,
     environments: formData.environments,
     bedrooms: formData.bedrooms,
-    bathroom: formData.bathroom,
+    bathrooms: formData.bathrooms,
     area: formData.area,
     garage: formData.garage,
     state: formData.state,

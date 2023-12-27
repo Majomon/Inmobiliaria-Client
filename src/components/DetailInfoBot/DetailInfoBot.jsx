@@ -79,7 +79,7 @@ function DetailInfoBot({ dataAxios, theme }) {
           </div>
           <div className="flex flex-col md:flex-rowjustify-between py-2">
             <h3 className="dark:text-gray-100">Baños</h3>
-            <p className="text-gray-400">{dataAxios.bathrooms}</p>
+            <p className="text-gray-400">{dataAxios.bathroom}</p>
           </div>
           <div className="flex flex-col md:flex-rowjustify-between py-2">
             <h3 className="dark:text-gray-100">Habitaciones</h3>
