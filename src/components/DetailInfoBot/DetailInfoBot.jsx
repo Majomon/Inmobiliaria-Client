@@ -30,7 +30,7 @@ function DetailInfoBot({ dataAxios, theme }) {
     gas: { value: "Gas", img: Gas },
     gym: { value: "Gym", img: Gym },
     laundry: { value: "Lavadero", img: Lavadero },
-    light: { value: "Luz", img: Electricidad },
+    light: { value: "Luz", img: Luz },
     petfriendly: { value: "Apto mascotas", img: Mascotas },
     houseMaid: { value: "Mucama", img: Mucama },
     grill: { value: "Parrilla", img: Parrilla },
