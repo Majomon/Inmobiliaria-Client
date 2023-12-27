@@ -79,10 +79,8 @@ function Detail({ theme }) {
             </div>
             <FormContact theme={theme} />
           </div>
-          {sliderProperty.length ? (
+          {sliderProperty.length && (
             <PropertyArea sliderProperty={sliderProperty} />
-          ) : (
-            ""
           )}
         </div>
       ) : (

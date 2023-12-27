@@ -102,7 +102,7 @@ function DetailInfoTop({ dataAxios }) {
                 {dataAxios.address.province}, {dataAxios.address.zone}
               </h4>
               <p className="text-gray-400">
-                {dataAxios.address.street}, {dataAxios.address.postalCode}
+                {dataAxios.address.street}
               </p>
             </div>
             <div className="w-full lg:w-6/12 h-full py-2">
@@ -134,11 +134,8 @@ function DetailInfoTop({ dataAxios }) {
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
                 stroke="#E9B824"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M3 5h11" />
@@ -162,11 +159,10 @@ function DetailInfoTop({ dataAxios }) {
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+      
                 stroke="#E9B824"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+          
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M3 7v11m0 -4h18m0 4v-8a2 2 0 0 0 -2 -2h-8v6" />
@@ -185,11 +181,10 @@ function DetailInfoTop({ dataAxios }) {
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+
                 stroke="#E9B824"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+  
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-3a1 1 0 0 1 1 -1z" />
@@ -211,11 +206,10 @@ function DetailInfoTop({ dataAxios }) {
                   width="30"
                   height="30"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+          
                   stroke="#E9B824"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+            
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M5 20a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />

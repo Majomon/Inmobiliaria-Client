@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { toast } from "sonner";
 import Cloudinary from "../../components/DashBoard/Cloudinary.jsx";
-import propertiesOptions from "./optionsPostProprty.js";
+import propertiesOptions from "./optionsPostProperty.js";
 
 function CreateProperty({ setActiveFormCreate }) {
   const [formData, setFormData] = useState({
@@ -17,7 +17,6 @@ function CreateProperty({ setActiveFormCreate }) {
     availability: "",
     name: "",
     description: "",
-    country: "",
     province: "",
     zone: "",
     street: "",
@@ -42,6 +41,7 @@ function CreateProperty({ setActiveFormCreate }) {
     property: formData.property,
     environments: formData.environments,
     bedrooms: formData.bedrooms,
+    bathroom:formData.bathroom,
     area: formData.area,
     garage: formData.garage,
     state: formData.state,
@@ -49,7 +49,6 @@ function CreateProperty({ setActiveFormCreate }) {
     name: formData.name,
     description: formData.description,
     address: {
-      country: formData.country,
       province: formData.province,
       zone: formData.zone,
       street: formData.street,
@@ -84,11 +83,10 @@ function CreateProperty({ setActiveFormCreate }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(newProperty);
     try {
       // Envío de la información para crear la propiedad mediante la acción correspondiente
       const res = await axios.post(
-        `${process.env.REACT_APP_URL_BASE}/properties`,
+        `https://inmobiliaria-api-green.vercel.app/properties`,
         newProperty
       );
 

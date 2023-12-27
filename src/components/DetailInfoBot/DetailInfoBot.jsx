@@ -1,36 +1,52 @@
+import AguaCorriente from "../../assets/services/agua.png";
 import AireAcondicionado from "../../assets/services/aireAcondicionado.png";
-import AguaCorriente from "../../assets/services/grifo.png";
-import Pavimento from "../../assets/services/pavimento.png";
-import Termotanque from "../../assets/services/termotanque.png";
-import Luz from "../../assets/services/luz.png";
-import Cocina from "../../assets/services/cocina.png";
-import Desague from "../../assets/services/desague.png";
 import Balcon from "../../assets/services/balcon.png";
+import Cocina from "../../assets/services/cocina.png";
+import Estacionamiento from "../../assets/services/estacionamiento.png";
+import Gas from "../../assets/services/gas.png";
+import Gym from "../../assets/services/gym.png";
 import Lavadero from "../../assets/services/lavadero.png";
+import Luz from "../../assets/services/luz.png";
+import Mascotas from "../../assets/services/mascotas.png";
+import Mucama from "../../assets/services/mucama.png";
+import Parrilla from "../../assets/services/parrilla.png";
 import Patio from "../../assets/services/patio.png";
+import Piscina from "../../assets/services/piscina.png";
+import Seguridad from "../../assets/services/seguridad.png";
+import Termotanque from "../../assets/services/termotanque.png";
 import Vestidor from "../../assets/services/vestidor.png";
+import Wifi from "../../assets/services/wifi.png";
 
-function DetailInfoBot({ dataAxios,theme }) {
+function DetailInfoBot({ dataAxios, theme }) {
   const services = dataAxios.services;
 
   // Define un objeto que mapea nombres de servicios a sus imágenes correspondientes
   const serviceImages = {
-    airConditioning: { value: "Aire Acondicionado", img: AireAcondicionado },
     runningWater: { value: "Agua Corriente", img: AguaCorriente },
-    pavement: { value: "Pavimento", img: Pavimento },
-    waterHeater: { value: "Termotanque", img: Termotanque },
-    light: { value: "Luz", img: Luz },
-    kitchen: { value: "Cocina", img: Cocina },
-    sewageDrain: { value: "Desague", img: Desague },
+    airConditioning: { value: "Aire Acondicionado", img: AireAcondicionado },
     balcony: { value: "Balcón", img: Balcon },
+    kitchen: { value: "Cocina", img: Cocina },
+    parking: { value: "Estacionamiento", img: Estacionamiento },
+    gas: { value: "Gas", img: Gas },
+    gym: { value: "Gym", img: Gym },
     laundry: { value: "Lavadero", img: Lavadero },
+    light: { value: "Luz", img: Electricidad },
+    petfriendly: { value: "Apto mascotas", img: Mascotas },
+    houseMaid: { value: "Mucama", img: Mucama },
+    grill: { value: "Parrilla", img: Parrilla },
     yard: { value: "Patio", img: Patio },
+    swimmingpool: { value: "Piscina", img: Piscina },
+    security: { value: "Seguridad 24hs", img: Seguridad },
+    waterHeater: { value: "Termotanque", img: Termotanque },
     dressingRoom: { value: "Vestidor", img: Vestidor },
+    wifi: { value: "Internet", img: Wifi },
   };
   return (
     <div className="w-full h-full">
       <div className="rounded-lg my-4 shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900">
-        <h2 className="px-4 py-2 font-bold text-base dark:text-gray-100">Descripción</h2>
+        <h2 className="px-4 py-2 font-bold text-base dark:text-gray-100">
+          Descripción
+        </h2>
         <div className="px-10 py-2 dark:text-gray-100">
           <p>{dataAxios.description}</p>
         </div>
@@ -99,7 +115,9 @@ function DetailInfoBot({ dataAxios,theme }) {
                     alt={serviceImages[serviceKey].value}
                     className="w-[30px] sm:w-[50px]"
                   />
-                  <p className="text-xs dark:text-gray-100">{serviceImages[serviceKey].value}</p>
+                  <p className="text-xs dark:text-gray-100">
+                    {serviceImages[serviceKey].value}
+                  </p>
                 </div>
               ) : null
             )}
