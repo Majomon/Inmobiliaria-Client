@@ -188,13 +188,13 @@ function CreateProperty({ setActiveFormCreate }) {
           {propertiesOptions.map((option) => {
             if (option.component === "services") {
               return (
-                <div key={option.id}>
-                  <p>{option.name}</p>
-                  <div className="w-full grid grid-cols-3">
+                <div key={option.id} className="">
+                  <p className="text-lg">{option.name}</p>
+                  <div className="w-full grid grid-cols-3 gap-2">
                     {option.moreOptions.map((subOption) => (
                       <div
                         key={subOption.name}
-                        className="flex justify-between m-1 "
+                        className="flex justify-between py-2 px-6 border"
                       >
                         <label
                           htmlFor={subOption.component}
@@ -208,6 +208,7 @@ function CreateProperty({ setActiveFormCreate }) {
                           name={subOption.component}
                           checked={formData[subOption.component]}
                           onChange={handleChange}
+                          className="w-6 h-6"
                         />
                       </div>
                     ))}
@@ -219,7 +220,7 @@ function CreateProperty({ setActiveFormCreate }) {
           })}
         </div>
 
-        <div className="w-full grid grid-cols-2">
+        <div className="w-full grid grid-cols-2 py-2">
           {propertiesOptions.map((option) => {
             if (option.component === "images") {
               return (
