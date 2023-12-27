@@ -88,7 +88,7 @@ function CreateProperty({ setActiveFormCreate }) {
     try {
       // Envío de la información para crear la propiedad mediante la acción correspondiente
       const res = await axios.post(
-        "http://localhost:8080/properties",
+        `${process.env.REACT_APP_URL_BASE}/properties`,
         newProperty
       );
 
@@ -111,7 +111,6 @@ function CreateProperty({ setActiveFormCreate }) {
 
   return (
     <div className="w-full h-full fixed top-0 left-0 bottom-0 right-0 z-10 bg-gray-950">
-
       <form
         onSubmit={handleSubmit}
         className="w-10/12 fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col p-4 mx-auto my-10 bg-slate-600 rounded"
