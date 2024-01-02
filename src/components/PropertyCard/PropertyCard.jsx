@@ -11,7 +11,7 @@ function PropertyCard(properties) {
     operation,
     name,
     images,
-    price,
+    precio,
     bedrooms,
     bathrooms,
     environments,
@@ -40,7 +40,8 @@ function PropertyCard(properties) {
           </h3>
 
           <h4 className="text-base text-gray-600 my-2 dark:text-gray-100">
-            <strong>Precio:</strong> ${price}
+            <strong>Precio:</strong>{" "}
+            {precio.currency === "$" ? precio.currency  : precio.currency}
           </h4>
         </div>
         <div className="w-full flex justify-around items-center bg-gray-300 p-2">

@@ -22,7 +22,6 @@ function Cloudinary({ setFormData, formData }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // Comenzamos la carga
-    console.log(files);
     const formData = new FormData();
     // Agregar cada archivo al objeto FormData
     for (let file of files) {
@@ -47,8 +46,11 @@ function Cloudinary({ setFormData, formData }) {
   };
 
   return (
-    <div className="w-full">
-      <form onSubmit={handleSubmit}>
+    <div className="w-full p-2 grid grid-cols-2">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full flex justify-between items-center"
+      >
         <input
           type="file"
           id="image"
@@ -62,13 +64,24 @@ function Cloudinary({ setFormData, formData }) {
           }}
         />
         {upOk ? (
-          <h2>Archivos subidos</h2>
+          <h2 className="font-bold py-2 px-4 bg-green-500 rounded-lg">
+            Archivos subidos
+          </h2>
         ) : (
-          <button onClick={handleSubmit}>Cargarlos</button>
+          <button
+            onClick={handleSubmit}
+            className="py-2 px-4 text-gray-50 bg-[#252728] rounded-lg"
+          >
+            Subir imagenes
+          </button>
         )}
       </form>
 
-      {loading && <p>Cargando...</p>}
+      {loading && (
+        <div className="w-full flex justify-center">
+          <p className="py-2 border-b-2">Subiendo...</p>
+        </div>
+      )}
     </div>
   );
 }

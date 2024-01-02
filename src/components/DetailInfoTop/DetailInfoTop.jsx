@@ -3,11 +3,10 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
 function DetailInfoTop({ dataAxios }) {
-
   return (
     <div className="w-full h-full  mt-6 md:mt-4">
       {/* Info del vendedor o inmobiliaria */}
-    {/*   <div className="hidden md:flex w-full mt-4 justify-end gap-6 px-10">
+      {/*   <div className="hidden md:flex w-full mt-4 justify-end gap-6 px-10">
         <div className="flex justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -75,15 +74,21 @@ function DetailInfoTop({ dataAxios }) {
       {/* Ubicación */}
       <div className="w-10/12 mx-auto h-full grid grid-cols-2 md:flex md:gap-2  ">
         <div className="text-sm flex items-center gap-2 dark:text-gray-100">
-          <Link to={`/search?operation=${dataAxios.operation}`} className="">{dataAxios.operation}</Link>
+          <Link to={`/search?operation=${dataAxios.operation}`} className="">
+            {dataAxios.operation}
+          </Link>
           <HiArrowNarrowRight />
         </div>
         <div className="text-sm flex items-center gap-2 dark:text-gray-100">
-          <Link to={`/search?province=${dataAxios.address.province}`} >{dataAxios.address.province}</Link>
+          <Link to={`/search?province=${dataAxios.address.province}`}>
+            {dataAxios.address.province}
+          </Link>
           <HiArrowNarrowRight />
         </div>
         <div className="text-sm flex items-center gap-2 dark:text-gray-100">
-          <Link  to={`/search?zone=${dataAxios.address.zone}`}>{dataAxios.address.zone}</Link>
+          <Link to={`/search?zone=${dataAxios.address.zone}`}>
+            {dataAxios.address.zone}
+          </Link>
           <HiArrowNarrowRight />
         </div>
         <div className="text-sm flex items-center gap-2 dark:text-gray-100">
@@ -101,30 +106,38 @@ function DetailInfoTop({ dataAxios }) {
               <h4 className="text-sm dark:text-gray-100">
                 {dataAxios.address.province}, {dataAxios.address.zone}
               </h4>
-              <p className="text-gray-400">
-                {dataAxios.address.street}
-              </p>
+              <p className="text-gray-400">{dataAxios.address.street}</p>
             </div>
             <div className="w-full lg:w-6/12 h-full py-2">
-              {dataAxios.operation === "Alquiler" ? (
+              {dataAxios.operation === "Venta" ? (
                 <div>
-                  <p className="text-gray-400">PRECIO ALQUILER</p>
-                  <h3 className="text-base font-bold dark:text-gray-100">
-                    ${dataAxios.price}
-                  </h3>
-                  <p className="text-gray-400">Por mes</p>
+                  <p className="text-gray-400">PRECIO VENTA</p>
+                  <div className="flex gap-x-1">
+                    <strong className="text-base font-bold dark:text-gray-100">
+                      {dataAxios.precio.currency}
+                    </strong>
+                    <span>{dataAxios.precio.mount}</span>
+                  </div>
                 </div>
               ) : (
                 <div>
-                  <p className="text-gray-400">PRECIO VENTA</p>
-                  <h3 className="text-base font-bold dark:text-gray-100">
-                    U$S{dataAxios.price}
-                  </h3>
+                  <p className="text-gray-400">PRECIO ALQUILER</p>
+                  <div className="flex gap-x-1">
+                    <strong className="text-base font-bold dark:text-gray-100">
+                      {dataAxios.precio.currency}
+                    </strong>
+                    <span>{dataAxios.precio.mount}</span>
+                    <span>
+                      {dataAxios.precio.additionalExpense &&
+                        ` + ${dataAxios.precio.additionalExpense}`}
+                    </span>
+                  </div>
+                  <p className="text-gray-400">Por mes</p>
                 </div>
               )}
             </div>
           </div>
-          <div className="w-full h-0 md:w-0 md:h-[5rem] border border-gray-400"></div> 
+          <div className="w-full h-0 md:w-0 md:h-[5rem] border border-gray-400"></div>
           <div className="w-full lg:w-5/12 flex justify-between items-center md:justify-start">
             <div className="w-[20%] h-full flex flex-col justify-center items-center pl-4">
               {/* <img src={Superficie} alt="Superficice" className="w-[25px]" /> */}
@@ -159,10 +172,8 @@ function DetailInfoTop({ dataAxios }) {
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
-      
                 stroke="#E9B824"
                 fill="none"
-          
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M3 7v11m0 -4h18m0 4v-8a2 2 0 0 0 -2 -2h-8v6" />
@@ -181,10 +192,8 @@ function DetailInfoTop({ dataAxios }) {
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
-
                 stroke="#E9B824"
                 fill="none"
-  
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-3a1 1 0 0 1 1 -1z" />
@@ -197,7 +206,7 @@ function DetailInfoTop({ dataAxios }) {
               </strong>
               <span className="text-sm dark:text-gray-100">Baños</span>
             </div>
-            {dataAxios.garage && (
+            {dataAxios.garage > 0 && (
               <div className="w-[20%] flex flex-col justify-center items-center">
                 {/* <img src={Baño} alt="Baños" className="w-[25px] text-red-500" /> */}
                 <svg
@@ -206,10 +215,8 @@ function DetailInfoTop({ dataAxios }) {
                   width="30"
                   height="30"
                   viewBox="0 0 24 24"
-          
                   stroke="#E9B824"
                   fill="none"
-            
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M5 20a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />

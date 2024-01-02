@@ -90,16 +90,16 @@ function FormContact({ theme }) {
       <Toaster />
       <div className="mb-4 p-4 shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg">
         <h2 className="text-black dark:text-gray-100 text-center py-2">Contacta al vendedor</h2>
-        <div className="w-full flex gap-4 justify-center">
+        <div className="w-10/12 mx-auto h-16 flex gap-4 justify-center">
           {theme === "light" ? (
             <img className="w-16" src={LogoLight} alt="LogoLight" />
           ) : (
             <img className="w-16" src={LogoDark} alt="LogoDark" />
           )}
-          <div>
-            <h2 className="text-base dark:text-gray-100"> Av. Siempre viva 1234</h2>
-            <h2 className="text-base dark:text-gray-100">4422-4433</h2>
-            <h2 className="text-base dark:text-gray-100">test@test.com</h2>
+          <div className="flex flex-col justify-between">
+{/*             <h2 className="text-base dark:text-gray-100"> Av. Siempre viva 1234</h2> */}
+            <h2 className="text-lg font-semibold dark:text-gray-100">+5491150617146</h2>
+            <h2 className="text-lg font-semibold dark:text-gray-100">iruslux@gmail.com</h2>
           </div>
         </div>
         <form className="pt-2" onSubmit={handlerSubmit}>

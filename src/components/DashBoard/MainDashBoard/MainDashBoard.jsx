@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Toaster } from "sonner";
 import { getAllProperties } from "../../../redux/actions";
 import AllProperties from "../AllProperties/AllProperties";
-import EnabledProperties from "../EnabledProperties/EnabledProperties";
+import CreateProperty from "../CreateProperty";
 import MenuLateralDashBoard from "../MenuLateralDashBoard/MenuLateralDashBoard";
-import { Toaster, toast } from "sonner";
 
 function MainDashBoard() {
   const dispatch = useDispatch();
@@ -13,18 +13,20 @@ function MainDashBoard() {
   }, []);
 
   const [activeComponent, setActiveComponent] = useState("home");
+  
   const handleButtonClick = (componentName) => {
     setActiveComponent(componentName);
   };
   return (
     <div className="w-full h-full flex">
+    <Toaster></Toaster>
       <MenuLateralDashBoard
         activeComponent={activeComponent}
         handleButtonClick={handleButtonClick}
       />
-      <div className="w-full px-10 pt-10">
+     <div className="w-9/12 ml-auto px-6 pt-10">
         {activeComponent === "home" && <AllProperties />}
-        {activeComponent === "enabled" && <EnabledProperties />}
+        {activeComponent === "addProperty" && <CreateProperty />}
       </div>
     </div>
   );

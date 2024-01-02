@@ -85,7 +85,7 @@ function DetailInfoBot({ dataAxios, theme }) {
             <h3 className="dark:text-gray-100">Habitaciones</h3>
             <p className="text-gray-400">{dataAxios.bedrooms}</p>
           </div>
-          {dataAxios.garage && (
+          {dataAxios.garage >0 && (
             <div className="flex flex-col md:flex-rowjustify-between py-2">
               <h3 className="dark:text-gray-100">Garage</h3>
               <p className="text-gray-400">{dataAxios.garage}</p>
@@ -103,17 +103,17 @@ function DetailInfoBot({ dataAxios, theme }) {
       <div className="h-full shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg my-4">
         <h2 className="px-4 py-2 font-bold text-base">Caracteristicas</h2>
         <div className="w-full  my-4">
-          <div className=" grid  grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-10">
+          <div className=" grid  grid-cols-2 sm:grid-cols-7 sm:gap-10 px-8">
             {Object.keys(services).map((serviceKey) =>
               services[serviceKey] ? (
                 <div
                   key={serviceKey}
-                  className="flex flex-col justify-center items-center text-center"
+                  className=" w-8 sm:w-10 flex flex-col justify-between  items-center text-center"
                 >
                   <img
                     src={serviceImages[serviceKey].img}
                     alt={serviceImages[serviceKey].value}
-                    className="w-[30px] sm:w-[50px]"
+                    className="w-[30px] sm:w-[40px]"
                   />
                   <p className="text-xs dark:text-gray-100">
                     {serviceImages[serviceKey].value}

@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 
 function Footer({ theme }) {
   const email = "iruslux@gmail.com";
-  const phoneNumber = "+5491144451012";
+  const phoneNumber = "+5491150617146";
 
   const openEmailClient = () => {
     window.location.href = `mailto:${email}`;

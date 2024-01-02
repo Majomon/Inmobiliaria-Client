@@ -5,7 +5,7 @@ import MainDashBoard from "../components/DashBoard/MainDashBoard/MainDashBoard";
 function Dashboard() {
   return (
     <div className="w-full min-h-screen">
-      <NavbarDashBoard />
+{/*       <NavbarDashBoard /> */}
       <MainDashBoard/>
     </div>
   );

@@ -80,7 +80,10 @@ function Detail({ theme }) {
             <FormContact theme={theme} />
           </div>
           {sliderProperty.length && (
-            <PropertyArea sliderProperty={sliderProperty} />
+            <div className="w-10/12 mx-auto h-full py-6 mt-20">
+              <h3 className=" font-bold text-lg text-center">Otras propiedades</h3>
+              <PropertyArea sliderProperty={sliderProperty} />
+            </div>
           )}
         </div>
       ) : (

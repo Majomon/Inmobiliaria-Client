@@ -3,15 +3,15 @@ import CardPropertiesDashboard from "../CardPropertiesDashboard/CardPropertiesDa
 import { Switch } from "@headlessui/react";
 import { useState } from "react";
 import { getAllProperties, getPropertiesId } from "../../../redux/actions";
-import CreateProperty from "../CreateProperty";
+import CreateProperty from "../CreateProperty/CreateProperty";
 import { Toaster, toast } from "sonner";
+import { Link } from "react-router-dom";
 
 function AllProperties() {
   const properties = useSelector((state) => state.propiedades);
   const orderProperties = properties.sort((a, b) => b.id - a.id);
   const [currentPage, setCurrentPage] = useState(0);
   const [countPage, setCountPage] = useState(1);
-  const [activeFormCreate, setActiveFormCreate] = useState(false);
 
   const pagination = () => {
     return properties.slice(currentPage, currentPage + 8);
@@ -40,50 +40,62 @@ function AllProperties() {
     );
   };
 
+  const newDate = (date) => {
+    const fecha = new Date(date);
+    // Obtener el año, mes y día de la fecha
+    const año = fecha.getFullYear();
+    const mes = fecha.getMonth() + 1; // Se suma 1 porque los meses van de 0 a 11 en JavaScript
+    const dia = fecha.getDate();
+
+    const newFecha = `${año}-${mes}-${dia}`;
+    return newFecha;
+  };
   return (
-    <ul className="w-full h-fit px-4">
+    <ul className="w-full h-fit">
       <Toaster />
 
       <div className="w-full flex justify-between">
         <h1 className="text-lg font-bold ">Propiedades</h1>
-        <button
-          className="text-xs font-semibold p-2 bg-green-500 rounded-md"
-          onClick={() => setActiveFormCreate(true)}
-        >
-          Crear propiedad
-        </button>
       </div>
       <table className="w-full">
         <thead>
-          <tr className="h-10 font-bold text-md text-left">
-            <th>Imagen</th>
-            <th>ID</th>
-            <th>Operación</th>
-            <th>Propiedad</th>
-            <th>Precio</th>
-            <th></th>
-            <th className="w-24 pr-2">Habilitado</th>
+          <tr className="bg-[#252728] text-gray-50 font-bold text-md text-center">
+            <th className="text-xs px-4 border-r-2">Imagen</th>
+            <th className="text-xs px-4 border-r-2">Nombre de propiedad</th>
+            <th className="text-xs px-4 border-r-2">Tipo de propiedad</th>
+            <th className="text-xs px-4 border-r-2">Operación</th>
+            <th className="text-xs px-4 border-r-2">Ubicación</th>
+            <th className="text-xs px-4 border-r-2">Fecha publicación</th>
+            <th className="text-xs px-4 border-r-2">Nombre del propietario</th>
+            <th className="text-xs px-4 border-r-2">Telefono</th>
+            <th className="text-xs px-4 border-r-2">Editar</th>
+            <th className="text-xs">Habilitado</th>
           </tr>
         </thead>
         <tbody className="w-full">
           {pagination().map((prop, index) => (
             <tr
-              className={`h-16 ${
+              className={`text-center ${
                 index % 2 === 0 ? "bg-slate-100" : "bg-slate-200"
               }`}
               key={index}
             >
               <td className="">
-                <img
-                  className="w-16 h-16"
-                  src={prop.images[0]}
-                  alt={prop.name}
-                />
+                <Link to={`/detail/${prop._id}`} target="_blank">
+                  <img
+                    className="w-full h-14"
+                    src={prop.images[0]}
+                    alt={prop.name}
+                  />
+                </Link>
               </td>
-              <td>{prop._id}</td>
-              <td>{prop.operation}</td>
-              <td>{prop.property}</td>
-              <td>{prop.price}</td>
+              <td className="text-xs">{prop.name}</td>
+              <td className="text-xs">{prop.property}</td>
+              <td className="text-xs">{prop.operation}</td>
+              <td className="text-xs">{prop.address.street}</td>
+              <td className="text-xs">{newDate(prop.creacion)}</td>
+              <td className="text-xs">{prop.owner.name}</td>
+              <td className="text-xs">{prop.owner.phone}</td>
               <td>
                 <button>
                   <svg
@@ -167,9 +179,6 @@ function AllProperties() {
         <div className="w-full flex justify-center items-center pt-4">
           <h2 className="">No hay resultados encontrados</h2>
         </div>
-      )}
-      {activeFormCreate && (
-        <CreateProperty setActiveFormCreate={setActiveFormCreate} />
       )}
     </ul>
   );
