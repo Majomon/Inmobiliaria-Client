@@ -13,7 +13,7 @@ function CarouselMlWeb() {
 
   useEffect(() => {
     if (imgSelected) {
-      setNewArrayImg([imgSelected,...filteredImages]);
+      setNewArrayImg([imgSelected, ...filteredImages]);
     }
   }, [imgSelected]);
 
@@ -57,14 +57,14 @@ function CarouselMlWeb() {
           <img
             src={imgSelected}
             alt="Descripción de la imagen"
-            className="w-full mx-auto h-[450px] rounded-lg cursor-pointer"
+            className="w-full mx-auto h-[450px] rounded-lg cursor-pointer  object-cover"
             onClick={handlerImgModal}
           />
         ) : (
           <img
             src={firstImage}
             alt="Descripción de la imagen"
-            className="w-full mx-auto h-[450px] rounded-lg cursor-pointer"
+            className="w-full mx-auto h-[450px] rounded-lg cursor-pointer  object-cover"
             onClick={handlerImgModal}
           />
         )}
