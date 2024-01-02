@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Toaster } from "sonner";
 import { getAllProperties } from "../../../redux/actions";
 import AllProperties from "../AllProperties/AllProperties";
-import CreateProperty from "../CreateProperty";
+import CreateProperty from "../CreateProperty/CreateProperty";
 import MenuLateralDashBoard from "../MenuLateralDashBoard/MenuLateralDashBoard";
 
 function MainDashBoard() {
