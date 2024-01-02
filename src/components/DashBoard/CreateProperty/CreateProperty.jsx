@@ -102,6 +102,48 @@ function CreateProperty() {
     },
   };
 
+  function allFieldsCompleted() {
+    const {
+      operation,
+      property,
+      environments,
+      bedrooms,
+      bathrooms,
+      area,
+      state,
+      name,
+      description,
+      province,
+      zone,
+      street,
+      images,
+      currency,
+      mount,
+      nombre,
+      phone,
+    } = formData;
+
+    return (
+      operation &&
+      property &&
+      environments &&
+      bedrooms &&
+      bathrooms &&
+      area &&
+      state &&
+      name &&
+      description &&
+      province &&
+      zone &&
+      street &&
+      images.length>0 &&
+      currency &&
+      mount &&
+      nombre &&
+      phone
+    );
+  }
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -114,10 +156,11 @@ function CreateProperty() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       // Envío de la información para crear la propiedad mediante la acción correspondiente
       const res = await axios.post(
-        `http://localhost:8080/properties`,
+        `https://inmobiliaria-api-green.vercel.app/properties`,
         newProperty
       );
 
@@ -413,7 +456,13 @@ function CreateProperty() {
       <div className="w-full h-fit py-16 flex justify-center">
         <button
           onClick={handleSubmit}
-          className="w-8/12 text-white py-2 px-10 bg-gray-950 rounded-sm "
+          disabled={!allFieldsCompleted()}
+          className={`w-8/12 py-2 px-10 rounded-sm 
+      ${
+        allFieldsCompleted()
+          ? "text-white bg-gray-950"
+          : "text-gray-500 bg-gray-300 cursor-not-allowed"
+      }`}
         >
           CREAR
         </button>
