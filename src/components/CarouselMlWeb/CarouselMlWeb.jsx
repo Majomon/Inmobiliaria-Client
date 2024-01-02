@@ -46,7 +46,7 @@ function CarouselMlWeb() {
             key={index}
             src={image}
             alt={`Image ${index + 1}`}
-            className="w-[45px] h-[45px] rounded-lg cursor-pointer hover:shadow-md hover:shadow-gray-600"
+            className="w-[45px] h-[45px] rounded-lg cursor-pointer hover:shadow-md hover:shadow-gray-600 object-cover"
             onClick={() => handlerSelectImg(image)}
           />
         ))}
