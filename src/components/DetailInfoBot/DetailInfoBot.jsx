@@ -34,7 +34,7 @@ function DetailInfoBot({ dataAxios, theme }) {
     petfriendly: { value: "Apto mascotas", img: Mascotas },
     houseMaid: { value: "Mucama", img: Mucama },
     grill: { value: "Parrilla", img: Parrilla },
-    yard: { value: "Patio", img: Patio },
+    yard: { value: "Sum", img: Patio },
     swimmingpool: { value: "Piscina", img: Piscina },
     security: { value: "Seguridad 24hs", img: Seguridad },
     waterHeater: { value: "Termotanque", img: Termotanque },
