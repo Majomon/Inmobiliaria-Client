@@ -81,11 +81,13 @@ function DetailInfoBot({ dataAxios, theme }) {
             <h3 className="dark:text-gray-100">Baños</h3>
             <p className="text-gray-400">{dataAxios.bathrooms}</p>
           </div>
-          <div className="flex flex-col md:flex-rowjustify-between py-2">
-            <h3 className="dark:text-gray-100">Habitaciones</h3>
-            <p className="text-gray-400">{dataAxios.bedrooms}</p>
-          </div>
-          {dataAxios.garage >0 && (
+          {dataAxios.bedrooms > 0 && (
+            <div className="flex flex-col md:flex-rowjustify-between py-2">
+              <h3 className="dark:text-gray-100">Habitaciones</h3>
+              <p className="text-gray-400">{dataAxios.bedrooms}</p>
+            </div>
+          )}
+          {dataAxios.garage > 0 && (
             <div className="flex flex-col md:flex-rowjustify-between py-2">
               <h3 className="dark:text-gray-100">Garage</h3>
               <p className="text-gray-400">{dataAxios.garage}</p>
