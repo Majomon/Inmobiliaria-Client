@@ -13,7 +13,7 @@ function CarouselMlWeb() {
 
   useEffect(() => {
     if (imgSelected) {
-      setNewArrayImg([imgSelected, ...filteredImages]);
+      setNewArrayImg([imgSelected,...filteredImages]);
     }
   }, [imgSelected]);
 
@@ -47,6 +47,7 @@ function CarouselMlWeb() {
             src={image}
             alt={`Image ${index + 1}`}
             className="w-[45px] h-[45px] rounded-lg cursor-pointer hover:shadow-md hover:shadow-gray-600 object-cover"
+
             onClick={() => handlerSelectImg(image)}
           />
         ))}

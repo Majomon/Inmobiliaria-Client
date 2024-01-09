@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import Cloudinary from "../Cloudinary.jsx";
+import ImgFirebase from "../ImgFirebase";
+
 import {
   propertiesAddress,
   propertiesDescription,
@@ -12,8 +13,11 @@ import {
   propertiesPrice,
   propertiesServices,
 } from "../optionsPostProperty.js";
+import { getAllProperties } from "../../../redux/actions.js";
+import { useDispatch } from "react-redux";
 
 function CreateProperty() {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     operation: "Alquiler",
     property: "Departamento",
@@ -48,10 +52,10 @@ function CreateProperty() {
     wifi: false,
     images: [],
     currency: "$",
+    ownerNombre: "",
+    ownerPhone: "",
     mount: 0,
     additionalExpense: "",
-    nombre: "",
-    phone: "",
   });
 
   const newProperty = {
@@ -92,8 +96,8 @@ function CreateProperty() {
     },
     images: formData.images,
     owner: {
-      name: formData.nombre,
-      phone: formData.phone,
+      ownerNombre: formData.ownerNombre,
+      ownerPhone: formData.ownerPhone,
     },
     precio: {
       currency: formData.currency,
@@ -119,8 +123,8 @@ function CreateProperty() {
       images,
       currency,
       mount,
-      nombre,
-      phone,
+      ownerNombre,
+      ownerPhone,
     } = formData;
 
     return (
@@ -139,8 +143,8 @@ function CreateProperty() {
       images.length > 0 &&
       currency &&
       mount &&
-      nombre &&
-      phone
+      ownerNombre &&
+      ownerPhone
     );
   }
 
@@ -204,8 +208,8 @@ function CreateProperty() {
           currency: "$",
           mount: 0,
           additionalExpense: "",
-          nombre: "",
-          phone: "",
+          ownerNombre: "",
+          ownerPhone: "",
         });
       } else {
         // En caso de que la solicitud no sea exitosa, muestra una alerta de error
@@ -218,6 +222,9 @@ function CreateProperty() {
     }
   };
 
+  useEffect(() => {
+    dispatch(getAllProperties());
+  }, [handleSubmit]);
   return (
     <div className="w-full h-full">
       <form className="">
@@ -419,7 +426,8 @@ function CreateProperty() {
           {propertiesImages.map((option, index) => (
             <div key={`${option.id}_${index}`} className="">
               <p className="text-sm">Imagenes</p>
-              <Cloudinary setFormData={setFormData} formData={formData} />
+              {/*             <Cloudinary setFormData={setFormData} formData={formData} /> */}
+              <ImgFirebase setFormData={setFormData} />
             </div>
           ))}
         </div>
@@ -445,7 +453,7 @@ function CreateProperty() {
                     name={subOption.component}
                     checked={formData[subOption.component]}
                     onChange={handleChange}
-                    className="w-6 h-6"
+                    className="w-6 h-6 cursor-pointer"
                   />
                 </div>
               ))}
@@ -456,7 +464,10 @@ function CreateProperty() {
       <div className="w-full h-fit py-16 flex justify-center">
         <button
           onClick={handleSubmit}
-          className={`w-8/12 py-2 px-10 rounded-sm text-white bg-gray-950`}
+          disabled={!allFieldsCompleted()}
+          className={` py-2 px-10 rounded-sm text-white ${
+            allFieldsCompleted() ? "w-8/12 bg-gray-800" : "w-6/12 bg-gray-400"
+          }`}
         >
           CREAR
         </button>

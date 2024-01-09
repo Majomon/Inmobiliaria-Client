@@ -28,7 +28,7 @@ function Cloudinary({ setFormData, formData }) {
       formData.append("img", file);
     }
 
-    const res = await axios.post("https://inmobiliaria-api-green.vercel.app/cloudinary", formData, {
+    const res = await axios.post("/cloudinary", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

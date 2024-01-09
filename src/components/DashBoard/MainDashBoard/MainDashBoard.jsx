@@ -8,11 +8,11 @@ import MenuLateralDashBoard from "../MenuLateralDashBoard/MenuLateralDashBoard";
 
 function MainDashBoard() {
   const dispatch = useDispatch();
+  const [activeComponent, setActiveComponent] = useState("home");
   useEffect(() => {
     dispatch(getAllProperties());
-  }, []);
+  }, [activeComponent]);
 
-  const [activeComponent, setActiveComponent] = useState("home");
   
   const handleButtonClick = (componentName) => {
     setActiveComponent(componentName);

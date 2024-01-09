@@ -5,6 +5,8 @@ import { toast } from "sonner";
 export const GET_ALL_PROPERTIES = "GET_ALL_PROPERTIES";
 export const GET_PROPERTY_ID = "GET_PROPERTY_ID";
 export const POST_PROPERTY = "POST_PROPERTY";
+export const PUT_PROPERTY = "PUT_PROPERTY";
+
 //Usuarios
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const LOGIN_USER = "LOGIN_USER";
@@ -52,6 +54,14 @@ export const postProperty = (data) => {
       toast.error("No se creo la propiedad");
       return error.messagge;
     }
+  };
+};
+
+//Modifica propiedades
+export const putProperty = (idProperty, dataProperty) => {
+  return async (dispatch) => {
+    const { data } = await axios.put(`/properties/${idProperty}`, dataProperty);
+    return dispatch({ type: PUT_PROPERTY , payload: data });
   };
 };
 

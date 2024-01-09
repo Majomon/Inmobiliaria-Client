@@ -38,11 +38,14 @@ function PropertyCard(properties) {
           <h3 className="text-sm py-2 text-gray-400 font-semibold">
             {address.street} | {address.zone}
           </h3>
-
-          <h4 className="text-base text-gray-600 my-2 dark:text-gray-100">
-            <strong>Precio:</strong>{" "}
-            {precio.currency === "$" ? precio.currency  : precio.currency}
-          </h4>
+          <div className="flex items-center gap-x-2">
+            <h4 className="text-base text-gray-600 my-2 dark:text-gray-100">
+              <strong>Precio:</strong>
+            </h4>
+            <p>
+              {precio.currency} <span>{precio.mount}</span>
+            </p>
+          </div>
         </div>
         <div className="w-full flex justify-around items-center bg-gray-300 p-2">
           <div className="flex flex-col justify-center items-center">

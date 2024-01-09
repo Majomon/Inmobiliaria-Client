@@ -1,17 +1,26 @@
-import { useSelector } from "react-redux";
-import CardPropertiesDashboard from "../CardPropertiesDashboard/CardPropertiesDashboard";
 import { Switch } from "@headlessui/react";
 import { useState } from "react";
-import { getAllProperties, getPropertiesId } from "../../../redux/actions";
-import CreateProperty from "../CreateProperty/CreateProperty";
-import { Toaster, toast } from "sonner";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Toaster } from "sonner";
+import { getAllProperties, putProperty } from "../../../redux/actions";
+import ModalEdit from "../ModalEdit/ModalEdit";
 
 function AllProperties() {
   const properties = useSelector((state) => state.propiedades);
   const orderProperties = properties.sort((a, b) => b.id - a.id);
   const [currentPage, setCurrentPage] = useState(0);
   const [countPage, setCountPage] = useState(1);
+  const [activeEdit, setActiveEdit] = useState(false);
+  const [propertyFound, setPropertyFound] = useState({});
+
+  const dispatch = useDispatch();
+
+  const handleEdit = (propertyId) => {
+    const searchProperty = properties.find((prop) => prop._id === propertyId);
+    setPropertyFound(searchProperty);
+    setActiveEdit(true);
+  };
 
   const pagination = () => {
     return properties.slice(currentPage, currentPage + 8);
@@ -31,13 +40,11 @@ function AllProperties() {
     }
   };
 
-  const handleToggle = (propertyId, activeProperty) => {
+  const handleToggle = (propertyId, availability) => {
     setTimeout(() => {
       dispatch(getAllProperties());
     }, 300);
-    dispatch(
-      getPropertiesId(propertyId, { activeProperty: `${!activeProperty}` })
-    );
+    dispatch(putProperty(propertyId, { availability: `${!availability}` }));
   };
 
   const newDate = (date) => {
@@ -94,10 +101,10 @@ function AllProperties() {
               <td className="text-xs">{prop.operation}</td>
               <td className="text-xs">{prop.address.street}</td>
               <td className="text-xs">{newDate(prop.creacion)}</td>
-              <td className="text-xs">{prop.owner.name}</td>
-              <td className="text-xs">{prop.owner.phone}</td>
+              <td className="text-xs">{prop.owner.ownerNombre}</td>
+              <td className="text-xs">{prop.owner.ownerPhone}</td>
               <td>
-                <button>
+                <button onClick={() => handleEdit(prop._id)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -179,6 +186,13 @@ function AllProperties() {
         <div className="w-full flex justify-center items-center pt-4">
           <h2 className="">No hay resultados encontrados</h2>
         </div>
+      )}
+      {activeEdit && (
+        <ModalEdit
+          propertyFound={propertyFound}
+          setActiveEdit={setActiveEdit}
+          activeEdit={activeEdit}
+        />
       )}
     </ul>
   );

@@ -10,7 +10,7 @@ export const propertiesOptions = [
     id: 3,
     component: "property",
     name: "Tipo de propiedad",
-    options: ["Departamento", "Casa", "PH","Presidencial"],
+    options: ["Departamento", "Casa", "PH", "Presidencial"],
   },
   {
     id: 4,
@@ -64,8 +64,8 @@ export const propertiesOwner = [
     component: "owner",
     name: "Dueño",
     moreOptions: [
-      { id: 131, component: "nombre", name: "Nombre" },
-      { id: 132, component: "phone", name: "Teléfono" },
+      { id: 131, component: "ownerNombre", name: "Nombre" },
+      { id: 132, component: "ownerPhone", name: "Teléfono" },
     ],
   },
 ];
