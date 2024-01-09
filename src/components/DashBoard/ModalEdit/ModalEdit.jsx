@@ -83,7 +83,7 @@ function ModalEdit({ propertyFound, setActiveEdit, activeEdit }) {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `https://inmobiliaria-api-green.vercel.app/${editForm._id}`,
+        `https://inmobiliaria-api-green.vercel.app/properties/${editForm._id}`,
         editForm
       );
       setActiveEdit(false);
