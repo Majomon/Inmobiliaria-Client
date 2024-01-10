@@ -57,7 +57,7 @@ function ImgFirebase({ setFormData }) {
       {imageUrls.length > 0 && (
         <div>
           <p className="text-sm">Imágenes subidas:</p>
-          <ul className="grid grid-cols-6">
+          <ul className="grid grid-cols-6 gap-y-2">
             {imageUrls.map((url, index) => (
               <li key={index}>
                 <img
