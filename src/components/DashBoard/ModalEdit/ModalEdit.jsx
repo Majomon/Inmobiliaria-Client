@@ -72,10 +72,6 @@ function ModalEdit({ propertyFound, setActiveEdit, activeEdit }) {
         },
       });
     }  */ else {
-      setEditForm((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
     }
   };
 

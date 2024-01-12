@@ -119,7 +119,7 @@ function FilterSearch() {
             onChange={handlerChange}
             name="bedrooms"
           >
-            <option value="all">Ambientes</option>
+            <option value="all">Habitaciones</option>
             {uniqueBedrooms.map((op) => (
               <option key={op} value={op}>
                 {op}

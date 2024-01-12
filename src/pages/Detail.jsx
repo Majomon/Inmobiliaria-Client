@@ -43,14 +43,22 @@ function Detail({ theme }) {
 
   useEffect(() => {
     if (property._id && properties.length > 0) {
-      const foundProperty = properties.filter(
-        (elem) =>
+      const foundProperty = properties.filter((elem) => {
+        return (
           elem._id !== property._id &&
-          elem.address && // Verificar si 'address' está definido
-          elem.address.zone && // Verificar si 'zone' está definido
-          elem.address.zone == property.address.zone // Evitar comparaciones si 'address' o 'zone' son undefined
-      );
-      setSliderProperty(foundProperty);
+          /* elem.address && // Verificar si 'address' está definido
+          elem.address.zone && // Verificar si 'zone' está definido */
+          elem.address.province === property.address.province 
+        );
+      });
+
+      // Mezclar propiedades
+      const shuffledProperties = foundProperty.sort(() => Math.random() - 0.5);
+
+      // Tomar los primeros 4 elementos (o menos si hay menos de 5)
+      const randomProperties = shuffledProperties.slice(0, 5);
+
+      setSliderProperty(randomProperties);
       setLoading(false);
     }
   }, [property._id, properties]);
@@ -81,7 +89,9 @@ function Detail({ theme }) {
           </div>
           {sliderProperty.length && (
             <div className="w-10/12 mx-auto h-full py-6 mt-20">
-              <h3 className=" font-bold text-lg text-center">Otras propiedades</h3>
+              <h3 className=" font-bold text-lg text-center">
+                Otras propiedades
+              </h3>
               <PropertyArea sliderProperty={sliderProperty} />
             </div>
           )}

@@ -56,7 +56,7 @@ function DetailInfoBot({ dataAxios, theme }) {
         <h2 className="px-4 py-2 font-bold text-base dark:text-gray-100">
           Detalles de la propiedad
         </h2>
-        <div className="px-10 py-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="px-10 py-2 grid grid-cols-1 sm:grid-cols-3 sm:gap-4">
           <div className="flex flex-col md:flex-rowjustify-between py-2">
             <h3 className="dark:text-gray-100">Operación</h3>
             <p className="text-gray-500">{dataAxios.operation}</p>
@@ -105,17 +105,17 @@ function DetailInfoBot({ dataAxios, theme }) {
       <div className="h-full shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg my-4">
         <h2 className="px-4 py-2 font-bold text-base">Caracteristicas</h2>
         <div className="w-full  my-4">
-          <div className=" grid  grid-cols-2 sm:grid-cols-7 sm:gap-10 px-8">
+          <div className="grid grid-cols-3 sm:grid-cols-7 gap-4 px-8">
             {Object.keys(services).map((serviceKey) =>
               services[serviceKey] ? (
                 <div
                   key={serviceKey}
-                  className=" w-8 sm:w-10 flex flex-col justify-between  items-center text-center"
+                  className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 col-span-1 mb-4 flex flex-col justify-between items-center text-center"
                 >
                   <img
                     src={serviceImages[serviceKey].img}
                     alt={serviceImages[serviceKey].value}
-                    className="w-[30px] sm:w-[40px]"
+                    className="w-[30px] sm:w-[40px] mx-auto mb-2"
                   />
                   <p className="text-xs dark:text-gray-100">
                     {serviceImages[serviceKey].value}

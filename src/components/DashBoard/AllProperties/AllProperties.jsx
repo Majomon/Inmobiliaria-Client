@@ -80,7 +80,8 @@ function AllProperties() {
           </tr>
         </thead>
         <tbody className="w-full">
-          {pagination().map((prop, index) => (
+          {/*       {pagination().map((prop, index) => ( */}
+          {properties.map((prop, index) => (
             <tr
               className={`text-center ${
                 index % 2 === 0 ? "bg-slate-100" : "bg-slate-200"
@@ -140,7 +141,7 @@ function AllProperties() {
           ))}
         </tbody>
       </table>
-      {properties.length ? (
+      {/*       {properties.length ? (
         <div className="w-full flex justify-center items-center py-4">
           <button
             onClick={prevPage}
@@ -186,7 +187,7 @@ function AllProperties() {
         <div className="w-full flex justify-center items-center pt-4">
           <h2 className="">No hay resultados encontrados</h2>
         </div>
-      )}
+      )} */}
       {activeEdit && (
         <ModalEdit
           propertyFound={propertyFound}
