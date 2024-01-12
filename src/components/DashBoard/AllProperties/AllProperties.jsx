@@ -192,7 +192,6 @@ function AllProperties() {
         <ModalEdit
           propertyFound={propertyFound}
           setActiveEdit={setActiveEdit}
-          activeEdit={activeEdit}
         />
       )}
     </ul>

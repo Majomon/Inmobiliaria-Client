@@ -12,10 +12,13 @@ import {
 import { FaX } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
 import { getAllProperties } from "../../../redux/actions.js";
+import { toast } from "sonner";
 
-function ModalEdit({ propertyFound, setActiveEdit, activeEdit }) {
+function ModalEdit({ propertyFound, setActiveEdit }) {
   const dispatch = useDispatch();
   const [editForm, setEditForm] = useState({ ...propertyFound });
+  const [modificationSuccess, setModificationSuccess] = useState(false); // New state variable
+
   const upParrayImg = (index) => {
     const updatedImages = [...editForm.images];
     updatedImages.splice(index, 1);
@@ -72,6 +75,10 @@ function ModalEdit({ propertyFound, setActiveEdit, activeEdit }) {
         },
       });
     }  */ else {
+      setEditForm((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
     }
   };
 
@@ -79,11 +86,13 @@ function ModalEdit({ propertyFound, setActiveEdit, activeEdit }) {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `https://inmobiliaria-api-green.vercel.app/properties/${editForm._id}`,
+        `/properties/${editForm._id}`,
         editForm
       );
       setActiveEdit(false);
-      console.log("Response:", response.data);
+      setModificationSuccess(true);
+      toast.success("Propiedad modificada con exito perrito");
+/*       console.log("Response:", response.data); */
     } catch (error) {
       // Manejar cualquier error que pueda ocurrir durante la solicitud
       console.error("Error:", error);
@@ -92,8 +101,14 @@ function ModalEdit({ propertyFound, setActiveEdit, activeEdit }) {
   };
 
   useEffect(() => {
-    dispatch(getAllProperties());
-  }, [handlerSubmit]);
+    if (modificationSuccess) {
+      setModificationSuccess(false);
+    }
+    return () => {
+      dispatch(getAllProperties());
+    };
+  }, [modificationSuccess]);
+
   return (
     <div className="w-full absolute top-0 left-0 bottom-0 right-0 z-10 bg-black">
       <div className="w-full mx-auto bg-gray-100 rounded-lg relative">

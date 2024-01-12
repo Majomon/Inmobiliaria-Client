@@ -163,10 +163,7 @@ function CreateProperty() {
 
     try {
       // Envío de la información para crear la propiedad mediante la acción correspondiente
-      const res = await axios.post(
-        `https://inmobiliaria-api-green.vercel.app/properties`,
-        newProperty
-      );
+      const res = await axios.post(`/properties`, newProperty);
 
       // Verifica el estado de la solicitud
       if (res.status === 200 || res.status === 201) {
