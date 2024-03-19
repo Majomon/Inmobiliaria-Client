@@ -15,7 +15,7 @@ function CarouselHome({ images }) {
   }, [images]);
 
   return (
-    <div className="w-full h-[390px] md:h-[350px] lg:h-[500px] mx-auto relative overflow-hidden">
+    <div className="w-full h-[390px] md:h-[350px] lg:h-[400px] mx-auto relative overflow-hidden">
       <div className="absolute left-0 right-0 top-16 flex justify-center">
         <div className="w-fit p-1 rounded-lg ">
           <h1 className="text-4xl font-bold text-gray-950  text-center">
@@ -27,7 +27,7 @@ function CarouselHome({ images }) {
         </div>
       </div>
       <div className="w-full h-full">
-        <img src={imgPrincipal} alt="imgPrincipal" className="w-full h-full" />
+        <img src={imgPrincipal} alt="imgPrincipal" className="w-full h-full object-cover " />
       </div>
     </div>
   );

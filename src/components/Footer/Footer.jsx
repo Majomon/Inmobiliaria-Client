@@ -24,7 +24,7 @@ function Footer({ theme }) {
         <h2 className="text-center  font-bold dark:text-white text-base md:text-lg lg:text-xl">
           Visitanos en nuestras redes
         </h2>
-        <lu className="w-2/3 lg:w-1/3 mx-auto my-4 flex justify-between">
+        <ul className="w-2/3 lg:w-1/3 mx-auto my-4 flex justify-between">
           <li className="list-none">
             <NavLink to={"https://www.facebook.com"} target="_blank">
               <img
@@ -52,7 +52,7 @@ function Footer({ theme }) {
               />
             </NavLink>
           </li>
-        </lu>
+        </ul>
       </div>
       {/* Footer */}
       <div className="w-10/12 mx-auto flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:items-start">
@@ -101,7 +101,6 @@ function Footer({ theme }) {
           <div className="h-[2rem] flex items-center my-2 text-xl md:text-2xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-phone"
               width="22"
               height="22"
               viewBox="0 0 24 24"
@@ -122,7 +121,6 @@ function Footer({ theme }) {
           <div className="h-[2rem] flex items-center my-2 text-xl md:text-2xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-mail"
               width="22"
               height="22"
               viewBox="0 0 24 24"

@@ -51,7 +51,7 @@ function Filter() {
 
   return (
     <div className="w-full relative bottom-0 bg-black  lg:absolute lg:opacity-80">
-      <form className="w-9/12 mx-auto grid grid-cols-2 gap-4 lg:grid-cols-3">
+      <form className="w-9/12 h-24 mx-auto grid grid-cols-2 gap-4 lg:grid-cols-6 lg:items-center">
         <div className="w-full py-2">
           <select
             className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"

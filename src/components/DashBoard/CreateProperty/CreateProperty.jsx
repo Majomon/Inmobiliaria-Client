@@ -163,7 +163,10 @@ function CreateProperty() {
 
     try {
       // Envío de la información para crear la propiedad mediante la acción correspondiente
-      const res = await axios.post(`/properties`, newProperty);
+      const res = await axios.post(
+        `http://localhost:8080/properties`,
+        newProperty
+      );
 
       // Verifica el estado de la solicitud
       if (res.status === 200 || res.status === 201) {
