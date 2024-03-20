@@ -6,19 +6,27 @@ function ContainerPropertySearch({ properties }) {
   const [loading, setLoading] = useState(true);
   const [visibleProperties, setVisibleProperties] = useState([]);
   const [page, setPage] = useState(1);
-  const [sortOrder, setSortOrder] = useState("asc"); // Estado para controlar el orden de las propiedades
+  const [sortOrder, setSortOrder] = useState("asc"); 
   const propertiesPerPage = 12;
 
   useEffect(() => {
     setLoading(true);
     if (properties.length > 0) {
-      setVisibleProperties(properties.slice(0, propertiesPerPage));
+      const sortedProperties = properties.sort((a, b) => {
+        if (sortOrder === "asc") {
+          return a.precio.mount - b.precio.mount;
+        } else {
+          return b.precio.mount - a.precio.mount;
+        }
+      });
+      // Mostrar solo las primeras 'propertiesPerPage' propiedades en función de la página actual
+      setVisibleProperties(sortedProperties.slice(0, propertiesPerPage));
       setLoading(false);
     } else {
       setVisibleProperties([]);
       setLoading(false);
     }
-  }, [properties]);
+  }, [properties, sortOrder]);
 
   const handleShowMore = () => {
     const nextPage = page + 1;
@@ -32,17 +40,8 @@ function ContainerPropertySearch({ properties }) {
     setPage(nextPage);
   };
 
-  // Función para cambiar el orden de las propiedades
   const handleSortProperties = () => {
-    const sortedProperties = [...visibleProperties].sort((a, b) => {
-      if (sortOrder === "asc") {
-        return a.precio.mount - b.precio.mount;
-      } else {
-        return b.precio.mount - a.precio.mount;
-      }
-    });
-    setVisibleProperties(sortedProperties);
-    setSortOrder(sortOrder === "asc" ? "desc" : "asc"); // Cambiar el orden en función del estado actual
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc"); 
   };
 
   return (
@@ -53,7 +52,7 @@ function ContainerPropertySearch({ properties }) {
           className="w-fit font-semibold bg-gray-950 text-gray-300 hover:text-gray-100 dark:text-red-500 py-2 px-4 rounded-md hover:bg-gray-800 hover:shadow-md hover:shadow-gray-500 dark:hover:text-red-400 dark:bg-gray-100 dark:hover:bg-gray-900 dark:hover:shadow-gray-100 mr-4"
         >
           Ordenar por precio (
-            {sortOrder === "asc" ? "de menor a mayor" : "de mayor a menor"})
+          {sortOrder === "asc" ? "de menor a mayor" : "de mayor a menor"})
         </button>
       </div>
       {loading ? (

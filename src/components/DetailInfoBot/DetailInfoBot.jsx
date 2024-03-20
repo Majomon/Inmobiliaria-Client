@@ -16,6 +16,7 @@ import Seguridad from "../../assets/services/seguridad.png";
 import Termotanque from "../../assets/services/termotanque.png";
 import Vestidor from "../../assets/services/vestidor.png";
 import Wifi from "../../assets/services/wifi.png";
+import GoogleMaps from "../../assets/google_maps.png";
 
 function DetailInfoBot({ dataAxios, theme }) {
   const services = dataAxios.services;
@@ -41,18 +42,20 @@ function DetailInfoBot({ dataAxios, theme }) {
     dressingRoom: { value: "Vestidor", img: Vestidor },
     wifi: { value: "Internet", img: Wifi },
   };
+
+  const handleOpenGoogleMaps = () => {
+    const address = `${dataAxios?.address?.street}, ${dataAxios?.address?.zone}`;
+    const googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      address
+    )}`;
+
+    window.open(googleMapsURL, "_blank");
+  };
+
   let statePrecio = dataAxios ? dataAxios?.precio?.mount.toLocaleString() : "";
 
   return (
     <div className="w-full md:w-9/12 h-full">
-      <div className="rounded-lg my-4 shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900">
-        <h2 className="px-4 py-2 font-bold text-base dark:text-gray-100">
-          Descripción
-        </h2>
-        <div className="px-10 py-2 dark:text-gray-100">
-          <p>{dataAxios.description}</p>
-        </div>
-      </div>
       {/* Info extra del la publicacion */}
       <div className="h-full shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg my-4">
         {dataAxios.operation === "Venta" ? (
@@ -71,32 +74,64 @@ function DetailInfoBot({ dataAxios, theme }) {
           </div>
         ) : (
           <div className="w-full py-2">
-            <h2 className="px-4 font-bold text-base">PRECIO ALQUILER</h2>
-            <div className="px-10 py-2 flex gap-x-2">
-              <p>
-                <strong className="text-base font-bold dark:text-gray-100">
-                  {dataAxios.precio.currency}
-                </strong>
-              </p>
-              <span className=" text-gray-600 dark:text-gray-100">
-                {statePrecio}
-              </span>
-              <span className=" text-gray-600 dark:text-gray-100">
-                {dataAxios.precio.additionalExpense &&
-                  ` + ${dataAxios.precio.additionalExpense}`}
-              </span>
-              <p className="text-gray-400">Por mes</p>
+            <div className="flex justify-between items-center">
+              {/* Dirección */}
+              <div className="w-5/12 flex justify-center items-center px-10 py-2  gap-x-2">
+                <h3 className="text-sm font-bold">
+                  {dataAxios?.address?.street} | {dataAxios?.address?.zone}
+                </h3>
+                <button
+                  onClick={handleOpenGoogleMaps}
+                  className="w-full flex items-center bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 px-2 py-1 rounded-lg shadow-md"
+                >
+                  <img
+                    src={GoogleMaps}
+                    alt="Google Maps"
+                    className="w-6 h-6 mr-2"
+                  />
+                  <span className="text-xs">Ver mapa</span>
+                </button>
+              </div>
+              {/* Ingreso */}
+              <div className="w-2/12 text-sm font-bold px-10 py-2 flex gap-x-2">
+                Ingreso: {dataAxios?.admission}
+              </div>
+              {/* Precio */}
+              <div className="w-5/12 text-sm  px-10 py-2 flex justify-center items-center gap-x-2">
+                <p>
+                  <strong className="font-bold dark:text-gray-100">
+                    {dataAxios.precio.currency}
+                  </strong>
+                </p>
+                <span className=" text-gray-600 dark:text-gray-100">
+                  {statePrecio}
+                </span>
+                <span className=" text-gray-600 dark:text-gray-100">
+                  {dataAxios.precio.additionalExpense &&
+                    ` + ${dataAxios.precio.additionalExpense}`}
+                </span>
+                <p className="text-gray-400">Por mes</p>
+              </div>
             </div>
           </div>
         )}
       </div>
+      {/* Descripción */}
+      <div className="rounded-lg my-4 shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900">
+        <h2 className="px-4 py-2 font-bold text-sm dark:text-gray-100">
+          Descripción
+        </h2>
+        <div className="px-10 py-2 text-sm dark:text-gray-100">
+          <p>{dataAxios.description}</p>
+        </div>
+      </div>
 
       {/* Detalles de la propiedad */}
       <div className="h-full shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg my-4">
-        <h2 className="px-4 py-2 font-bold text-base dark:text-gray-100">
+        <h2 className="px-4 py-2 font-bold text-sm dark:text-gray-100">
           Detalles de la propiedad
         </h2>
-        <div className="px-10 py-2 grid grid-cols-1 sm:grid-cols-3">
+        <div className="px-10 py-2 grid grid-cols-1 sm:grid-cols-3 text-sm">
           <div className="flex flex-col md:flex-rowjustify-between py-2">
             <h3 className="dark:text-gray-100">Operación</h3>
             <p className="text-gray-500">{dataAxios.operation}</p>
@@ -143,9 +178,9 @@ function DetailInfoBot({ dataAxios, theme }) {
       </div>
       {/* Caracteristicas */}
       <div className="h-full shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg my-4">
-        <h2 className="px-4 py-2 font-bold text-base">Caracteristicas</h2>
+        <h2 className="px-4 py-2 font-bold text-sm">Caracteristicas</h2>
         <div className="w-full px-4 py-2">
-          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-4 px-8 place-items-center">
+          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-4 px-8 place-items-center text-sm">
             {Object.keys(services).map((serviceKey) =>
               services[serviceKey] ? (
                 <div

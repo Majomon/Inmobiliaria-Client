@@ -15,8 +15,6 @@ import {
 } from "../redux/actions";
 
 function Detail({ theme }) {
-  /*   const [selectedImage, setSelectedImage] = useState("");
-    const [currentImageIndex, setCurrentImageIndex] = useState(0); */
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
