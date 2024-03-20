@@ -2,8 +2,8 @@ import axios from "axios";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 // Axios default
-//axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app";
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app";
+/* axios.defaults.baseURL = "http://localhost:8080"; */
 
 // Pages
 /* import AOS from "aos";
@@ -54,7 +54,7 @@ function App() {
     });
   }, [location]);
 
-/*   useEffect(() => {
+  /*   useEffect(() => {
     AOS.init({
       duration: 1200, // Duración de la animación en milisegundos
     });
