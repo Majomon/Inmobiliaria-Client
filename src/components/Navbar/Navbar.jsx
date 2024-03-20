@@ -21,7 +21,7 @@ function Navbar({ theme, setTheme }) {
   };
 
   return (
-    <div className="w-full h-[3rem] px-10 fixed flex justify-between items-center bg-white dark:bg-black shadow-sm  dark: z-10">
+    <div className="w-full h-[3rem] px-10 fixed flex justify-between items-center bg-white dark:bg-black shadow-md dark:shadow-yellow-600 dark: z-10">
       {/* Icono */}
       <div className="">
         <Link to="/">
@@ -74,8 +74,16 @@ function Navbar({ theme, setTheme }) {
           <Link key={index} to={option.to}>
             <p
               className={
-                `${theme === "dark" ? "text-gray-100 hover:text-gray-300" : "text-black hover:text-gray-500 hover:border-b-gray-500"}` +
-                `${fullPath === option.to ? " border-b-2 border-gray-900 dark:border-red-700 font-semibold " : ""}`
+                `${
+                  theme === "dark"
+                    ? "text-gray-100 hover:text-gray-300"
+                    : "text-black hover:text-gray-500 hover:border-b-gray-500"
+                }` +
+                `${
+                  fullPath === option.to
+                    ? " border-b-2 border-gray-900 dark:border-red-700 font-semibold "
+                    : ""
+                }`
               }
             >
               {option.name}

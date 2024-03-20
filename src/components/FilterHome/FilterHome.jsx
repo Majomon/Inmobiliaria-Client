@@ -50,9 +50,9 @@ function Filter() {
   };
 
   return (
-    <div className="w-full relative bottom-0 bg-black  lg:absolute lg:opacity-80">
-      <form className="w-9/12 h-24 mx-auto grid grid-cols-2 gap-4 lg:grid-cols-6 lg:items-center">
-        <div className="w-full py-2">
+    <div className="w-full h-fit relative bottom-0 lg:absolute bg-black lg:bg-transparent">
+      <form className="w-9/12 mx-auto grid sm:grid-cols-3  gap-4 lg:grid-cols-6 lg:items-center py-4">
+        <div className="w-full lg:py-2">
           <select
             className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
             value={orderData.operation}
@@ -67,7 +67,7 @@ function Filter() {
             ))}
           </select>
         </div>
-        <div className="w-full py-2">
+        <div className="w-full lg:py-2">
           <select
             className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
             value={orderData.uniqueTypes}
@@ -82,7 +82,7 @@ function Filter() {
             ))}
           </select>
         </div>
-        <div className="w-full py-2">
+        <div className="w-full lg:py-2">
           <select
             className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
             value={orderData.uniqueProvinces}
@@ -97,7 +97,7 @@ function Filter() {
             ))}
           </select>
         </div>
-        <div className="w-full py-2">
+        <div className="w-full lg:py-2">
           <select
             className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
             value={orderData.uniqueZones}
@@ -112,7 +112,7 @@ function Filter() {
             ))}
           </select>
         </div>
-        <div className="w-full py-2">
+        <div className="w-full lg:py-2">
           <select
             className="block w-full py-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
             value={orderData.uniqueBedrooms}
@@ -127,7 +127,7 @@ function Filter() {
             ))}
           </select>
         </div>
-        <div className="w-full py-2">
+        <div className="w-full lg:py-2">
           <button
             onClick={handlerSubmit}
             className="w-full py-2 bg-red-800 hover:bg-red-600 hover:text-black hover:duration-1000 text-white rounded-md hover:font-bold"

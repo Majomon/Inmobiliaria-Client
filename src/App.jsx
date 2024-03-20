@@ -2,12 +2,12 @@ import axios from "axios";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 // Axios default
-axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app";
-/* axios.defaults.baseURL = "http://localhost:8080"; */
+//axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app";
+axios.defaults.baseURL = "http://localhost:8080";
 
 // Pages
-import AOS from "aos";
-import "aos/dist/aos.css"; // Importa los estilos CSS de AOS
+/* import AOS from "aos";
+import "aos/dist/aos.css"; // Importa los estilos CSS de AOS */
 import { useEffect, useState } from "react";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
@@ -54,11 +54,11 @@ function App() {
     });
   }, [location]);
 
-  useEffect(() => {
+/*   useEffect(() => {
     AOS.init({
       duration: 1200, // Duración de la animación en milisegundos
     });
-  }, []);
+  }, []); */
 
   return (
     <div className="w-full h-full min-h-screen flex flex-col">

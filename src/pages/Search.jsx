@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import ContainerProperty from "../components/ContainerProperty/ContainerProperty";
+import ContainerPropertySearch from "../components/ContainerPropertySearch/ContainerPropertySearch";
 import FilterSearch from "../components/FilterSearch/FilterSearch";
 import { getSearchFilter } from "../redux/actions";
 
@@ -32,9 +32,9 @@ function Search({ theme }) {
 
   return (
     <div className="w-full h-full mt-[3rem] dark:bg-black">
-      <div className="w-full md:w-11/12 mx-auto flex flex-col md:flex-row justify-between">
+      <div className="w-full flex flex-col justify-betwee bg-white">
         <FilterSearch />
-        <ContainerProperty properties={properties} />
+        <ContainerPropertySearch properties={properties} />
       </div>
     </div>
   );

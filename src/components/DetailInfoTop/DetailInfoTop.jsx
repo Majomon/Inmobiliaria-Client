@@ -3,76 +3,12 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
 function DetailInfoTop({ dataAxios }) {
+/*   let statePrecio = dataAxios ? dataAxios?.precio?.mount.toLocaleString() : ""; */
+
   return (
     <div className="w-full h-full  mt-6 md:mt-4">
-      {/* Info del vendedor o inmobiliaria */}
-      {/*   <div className="hidden md:flex w-full mt-4 justify-end gap-6 px-10">
-        <div className="flex justify-center items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-home-2"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            //Contorno
-            stroke="#E9B824"
-            //Background
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-            <path d="M10 12h4v4h-4z" />
-          </svg>
-          <h2 className="text-sm ml-2 dark:text-white">
-            Av. Siempre viva 1234
-          </h2>
-        </div>
-        <p className="flex justify-center items-center dark:text-white">|</p>
-        <div className="flex justify-center items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-phone"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="#E9B824"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
-          </svg>
-          <h2 className="text-sm  ml-2 dark:text-white">4422-4433</h2>
-        </div>
-        <p className="flex justify-center items-center dark:text-white">|</p>
-        <div className="flex justify-center items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-mail"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="#E9B824"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
-            <path d="M3 7l9 6l9 -6" />
-          </svg>
-          <h2 className="text-sm  ml-2 dark:text-white">test@test.com</h2>
-        </div>
-      </div> */}
       {/* Ubicación */}
-      <div className="w-10/12 mx-auto h-full grid grid-cols-2 md:flex md:gap-2  ">
+      <div className="w-10/12 mx-auto h-full flex flex-wrap gap-x-2 font-bold">
         <div className="text-sm flex items-center gap-2 dark:text-gray-100">
           <Link to={`/search?operation=${dataAxios.operation}`} className="">
             {dataAxios.operation}
@@ -96,7 +32,7 @@ function DetailInfoTop({ dataAxios }) {
         </div>
       </div>
       {/* Info extra del la publicacion */}
-      <div className="w-full h-full py-1 flex flex-col md:flex-row justify-center items-center bg-white shadow-md dark:bg-black border-b-2 dark:border-yellow-600 dark:shadow-yellow-600">
+   {/*    <div className="w-full h-full py-1 flex flex-col md:flex-row justify-center items-center bg-white shadow-md dark:bg-black border-b-2 dark:border-yellow-600 dark:shadow-yellow-600">
         <div className="w-10/12 h-full flex flex-col md:flex-row">
           <div className="w-full h-full lg:w-7/12 flex flex-col md:flex-row">
             <div className="w-full lg:w-6/12 h-full py-2">
@@ -116,7 +52,7 @@ function DetailInfoTop({ dataAxios }) {
                     <strong className="text-base font-bold dark:text-gray-100">
                       {dataAxios.precio.currency}
                     </strong>
-                    <span>{dataAxios.precio.mount}</span>
+                    <span>{statePrecio}</span>
                   </div>
                 </div>
               ) : (
@@ -126,7 +62,7 @@ function DetailInfoTop({ dataAxios }) {
                     <strong className="text-base font-bold dark:text-gray-100">
                       {dataAxios.precio.currency}
                     </strong>
-                    <span>{dataAxios.precio.mount}</span>
+                    <span>{statePrecio}</span>
                     <span>
                       {dataAxios.precio.additionalExpense &&
                         ` + ${dataAxios.precio.additionalExpense}`}
@@ -140,10 +76,8 @@ function DetailInfoTop({ dataAxios }) {
           <div className="w-full h-0 md:w-0 md:h-[5rem] border border-gray-400"></div>
           <div className="w-full lg:w-5/12 flex justify-between items-center md:justify-start">
             <div className="w-[20%] h-full flex flex-col justify-center items-center pl-4">
-              {/* <img src={Superficie} alt="Superficice" className="w-[25px]" /> */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-dimensions"
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
@@ -165,10 +99,8 @@ function DetailInfoTop({ dataAxios }) {
               <span className="text-sm dark:text-gray-100">Sup.</span>
             </div>
             <div className="w-[20%] flex flex-col justify-center items-center">
-              {/*    <img src={Ambientes} alt="Ambientes" className="w-[25px]" /> */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-bed"
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
@@ -185,10 +117,8 @@ function DetailInfoTop({ dataAxios }) {
               <span className="text-sm dark:text-gray-100">Ambientes</span>
             </div>
             <div className="w-[20%] flex flex-col justify-center items-center">
-              {/* <img src={Baño} alt="Baños" className="w-[25px] text-red-500" /> */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-bath"
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
@@ -208,10 +138,8 @@ function DetailInfoTop({ dataAxios }) {
             </div>
             {dataAxios.garage > 0 && (
               <div className="w-[20%] flex flex-col justify-center items-center">
-                {/* <img src={Baño} alt="Baños" className="w-[25px] text-red-500" /> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-car-garage"
                   width="30"
                   height="30"
                   viewBox="0 0 24 24"
@@ -232,7 +160,7 @@ function DetailInfoTop({ dataAxios }) {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -14,14 +14,16 @@ function FilterSearch() {
   });
 
   const uniqueOperations = [
-    ...new Set(properties.map((prop) => prop.operation)),
+    ...new Set(properties?.map((prop) => prop?.operation)),
   ];
-  const uniqueTypes = [...new Set(properties.map((prop) => prop.property))];
+  const uniqueTypes = [...new Set(properties?.map((prop) => prop?.property))];
   const uniqueProvinces = [
-    ...new Set(properties.map((prop) => prop.address.province)),
+    ...new Set(properties?.map((prop) => prop?.address?.province)),
   ];
-  const uniqueZones = [...new Set(properties.map((prop) => prop.address.zone))];
-  const uniqueBedrooms = [...new Set(properties.map((prop) => prop.bedrooms))];
+  const uniqueZones = [
+    ...new Set(properties?.map((prop) => prop?.address?.zone)),
+  ];
+  const uniqueBedrooms = [...new Set(properties?.map((prop) => prop?.bedrooms))];
 
   const handlerChange = (event) => {
     const { name, value } = event.target;
@@ -31,36 +33,40 @@ function FilterSearch() {
   const handlerSubmit = (e) => {
     e.preventDefault();
     const queryParams = new URLSearchParams();
-    if (orderData.operation !== "all") {
-      queryParams.append("operation", orderData.operation);
+    if (orderData?.operation !== "all") {
+      queryParams?.append("operation", orderData.operation);
     }
-    if (orderData.typeProperty !== "all") {
-      queryParams.append("typeProperty", orderData.typeProperty);
+    if (orderData?.typeProperty !== "all") {
+      queryParams?.append("typeProperty", orderData.typeProperty);
     }
-    if (orderData.province !== "all") {
-      queryParams.append("province", orderData.province);
+    if (orderData?.province !== "all") {
+      queryParams?.append("province", orderData.province);
     }
-    if (orderData.zone !== "all") {
-      queryParams.append("zone", orderData.zone);
+    if (orderData?.zone !== "all") {
+      queryParams?.append("zone", orderData.zone);
     }
-    if (orderData.bedrooms !== "all") {
-      queryParams.append("bedrooms", orderData.bedrooms);
+    if (orderData?.bedrooms !== "all") {
+      queryParams?.append("bedrooms", orderData.bedrooms);
     }
     navigate(`/search?${queryParams.toString()}`);
   };
 
+  useEffect(()=>{
+    console.log(uniqueOperations);
+  },[])
+  
   return (
-    <div className="w-full md:w-[350px] md:h-[25rem] md:mr-10 my-4 md:my-8 flex justify-center items-center md:border md:border-gray-300 rounded-md md:sticky top-[100px]">
-      <form className="w-full mx-4 grid grid-cols-2 gap-2 sm:grid-cols-1">
+    <div className="w-full h-full bg-black">
+      <form className="w-full grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 p-4 gap-x-4">
         <div className="w-full py-2">
           <select
             className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
-            value={orderData.operation}
+            value={orderData?.operation}
             onChange={handlerChange}
             name="operation"
           >
             <option value="all">Operación</option>
-            {uniqueOperations.map((op) => (
+            {uniqueOperations?.map((op) => (
               <option key={op} value={op}>
                 {op}
               </option>
@@ -70,12 +76,12 @@ function FilterSearch() {
         <div className="w-full py-2">
           <select
             className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
-            value={orderData.uniqueTypes}
+            value={orderData?.typeProperty}
             onChange={handlerChange}
             name="typeProperty"
           >
             <option value="all">Propiedad</option>
-            {uniqueTypes.map((op) => (
+            {uniqueTypes?.map((op) => (
               <option key={op} value={op}>
                 {op}
               </option>
@@ -85,12 +91,12 @@ function FilterSearch() {
         <div className="w-full py-2">
           <select
             className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
-            value={orderData.uniqueProvinces}
+            value={orderData?.province}
             onChange={handlerChange}
             name="province"
           >
             <option value="all">Provincia</option>
-            {uniqueProvinces.map((op) => (
+            {uniqueProvinces?.map((op) => (
               <option key={op} value={op}>
                 {op}
               </option>
@@ -100,12 +106,12 @@ function FilterSearch() {
         <div className="w-full py-2">
           <select
             className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
-            value={orderData.uniqueZones}
+            value={orderData?.zone}
             onChange={handlerChange}
             name="zone"
           >
             <option value="all">Barrio</option>
-            {uniqueZones.map((op) => (
+            {uniqueZones?.map((op) => (
               <option key={op} value={op}>
                 {op}
               </option>
@@ -115,12 +121,12 @@ function FilterSearch() {
         <div className="w-full py-2">
           <select
             className="block w-full py-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"
-            value={orderData.uniqueBedrooms}
+            value={orderData?.bedrooms}
             onChange={handlerChange}
             name="bedrooms"
           >
             <option value="all">Habitaciones</option>
-            {uniqueBedrooms.map((op) => (
+            {uniqueBedrooms?.map((op) => (
               <option key={op} value={op}>
                 {op}
               </option>

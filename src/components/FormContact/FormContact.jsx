@@ -98,8 +98,8 @@ function FormContact({ theme }) {
           )}
           <div className="flex flex-col justify-between">
 {/*             <h2 className="text-base dark:text-gray-100"> Av. Siempre viva 1234</h2> */}
-            <h2 className="text-lg font-semibold dark:text-gray-100">+5491150617146</h2>
-            <h2 className="text-lg font-semibold dark:text-gray-100">iruslux@gmail.com</h2>
+            <h2 className="text-base font-semibold dark:text-gray-100">+5491150617146</h2>
+            <h2 className="text-base font-semibold dark:text-gray-100">iruslux@gmail.com</h2>
           </div>
         </div>
         <form className="pt-2" onSubmit={handlerSubmit}>

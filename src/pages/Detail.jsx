@@ -28,14 +28,6 @@ function Detail({ theme }) {
     dispatch(getAllProperties());
     dispatch(getPropertiesId(id));
     setLoading(false);
-    /*     dispatch(getPropertiesId(id))
-      .then(() => {
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.error("Error al obtener propiedades:", error);
-      }); */
     return () => {
       dispatch(clearDetailsState());
     };
@@ -48,7 +40,7 @@ function Detail({ theme }) {
           elem._id !== property._id &&
           /* elem.address && // Verificar si 'address' está definido
           elem.address.zone && // Verificar si 'zone' está definido */
-          elem.address.province === property.address.province 
+          elem.address.province === property.address.province
         );
       });
 
@@ -73,22 +65,17 @@ function Detail({ theme }) {
       {property.name ? (
         <div className="w-full h-full mt-12 flex flex-col">
           <DetailInfoTop dataAxios={property} />
-          <div className="w-10/12 mx-auto flex flex-col md:flex-row mt-4 gap-16">
-            <div className="w-full h-full">
-              {/*    <CarouselVersion2
-                handleImageClick={handleImageClick}
-                currentImageIndex={currentImageIndex}
-              /> */}
-              {/*     <div className="w-full text-center my-2 py-2 border shadow-md bg-yellow-400 hover:bg-yellow-500  hover:translate-y-[-2px] transition-all duration-300 ease-in-out rounded-lg text-white font-bold text-xl cursor-pointer dark:shadow-gray-200">
-                <button>Quiero que me llamen</button>
-              </div> */}
+          <div className="w-10/12 mx-auto  mt-4 ">
+            <div className="w-full h-full flex flex-col">
               <CarouselMlWeb />
-              <DetailInfoBot dataAxios={property} theme={theme} />
+              <div className="w-full flex flex-col md:flex-row gap-8">
+                <DetailInfoBot dataAxios={property} theme={theme} />
+                <FormContact theme={theme} />
+              </div>
             </div>
-            <FormContact theme={theme} />
           </div>
           {sliderProperty.length && (
-            <div className="w-10/12 mx-auto h-full py-6 mt-20">
+            <div className="w-10/12 mx-auto h-full py-6 mt-10 ">
               <h3 className=" font-bold text-lg text-center">
                 Otras propiedades
               </h3>

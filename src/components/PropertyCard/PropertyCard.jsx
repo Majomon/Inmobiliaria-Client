@@ -18,15 +18,17 @@ function PropertyCard(properties) {
     area,
   } = properties.property;
 
+  let statePrecio = precio ? precio.mount.toLocaleString() : "";
+
+  /*  
+Esto va dentro del div de la linea 28
+data-aos="zoom-in" */
   return (
     <Link to={`/detail/${_id}`}>
-      <div
-        data-aos="zoom-in"
-        className="w-[240px] md:w-[280px]  2xl:w-[360px] mx-auto my-8 rounded-sm  shadow-lg shadow-gray-700  duration-700 ease-in-out hover:shadow-xl hover:shadow-gray-900  dark:shadow-lg dark:hover:shadow-xl  dark:shadow-gray-300 overflow-hidden dark:hover:shadow-gray-100"
-      >
-        <h2 className="py-2 text-center font-bold bg-gray-900 text-gray-100 text-sm">
+      <div className="w-[210px] md:w-[240px] 2xl:w-[280px] mx-auto my-8 rounded-sm  shadow-lg shadow-gray-700  duration-700 ease-in-out hover:shadow-xl hover:shadow-gray-900  dark:shadow-lg dark:hover:shadow-xl  dark:shadow-gray-300 overflow-hidden dark:hover:shadow-gray-100">
+        <h3 className="py-2 text-center font-bold bg-gray-900 text-gray-100 text-sm">
           {property} en {operation}
-        </h2>
+        </h3>
         <div className="w-full h-[240px]  border-b-2 border-gray-900 overflow-hidden">
           <img
             src={images[0]}
@@ -42,8 +44,8 @@ function PropertyCard(properties) {
             <h4 className="text-base text-gray-600 my-2 dark:text-gray-100">
               <strong>Precio:</strong>
             </h4>
-            <p>
-              {precio.currency} <span>{precio.mount}</span>
+            <p className="text-base text-gray-600 my-2 dark:text-gray-100">
+              {precio.currency} <span>{statePrecio}</span>
             </p>
           </div>
         </div>
