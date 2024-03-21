@@ -2,8 +2,8 @@ import axios from "axios";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 // Axios default
-axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app";
-/* axios.defaults.baseURL = "http://localhost:8080"; */
+//axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app";
+axios.defaults.baseURL = "http://localhost:8080";
 
 // Pages
 /* import AOS from "aos";
@@ -13,6 +13,7 @@ import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import Dashboard from "./pages/Dashboard";
+import DashboardEdit from "./pages/DashboardEdit";
 import Detail from "./pages/Detail";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -54,7 +55,7 @@ function App() {
     });
   }, [location]);
 
-  /*   useEffect(() => {
+/*   useEffect(() => {
     AOS.init({
       duration: 1200, // Duración de la animación en milisegundos
     });
@@ -69,6 +70,7 @@ function App() {
         <Route path="/search" element={<Search theme={theme} />} />
         <Route path="/adminYosef" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/:id" element={<DashboardEdit />} />
         <Route path="*" element={<NotFoundPage theme={theme} />} />
       </Routes>
       {shouldRenderNavbar && <Footer theme={theme} />}

@@ -105,3 +105,7 @@ export const propertiesServices = [
     ],
   },
 ];
+
+export const propertiesAdmission = [
+  { id: 5, component: "admission", name: "Ingreso" },
+];

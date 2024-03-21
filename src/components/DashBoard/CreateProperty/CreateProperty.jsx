@@ -12,6 +12,7 @@ import {
   propertiesOwner,
   propertiesPrice,
   propertiesServices,
+  propertiesAdmission,
 } from "../optionsPostProperty.js";
 import { getAllProperties } from "../../../redux/actions.js";
 import { useDispatch } from "react-redux";
@@ -56,6 +57,7 @@ function CreateProperty() {
     ownerPhone: "",
     mount: 0,
     additionalExpense: "",
+    admission: "Inmediato",
   });
 
   const newProperty = {
@@ -104,6 +106,7 @@ function CreateProperty() {
       mount: formData.mount,
       additionalExpense: formData.additionalExpense,
     },
+    admission: formData.admission,
   };
 
   function allFieldsCompleted() {
@@ -207,6 +210,7 @@ function CreateProperty() {
           additionalExpense: "",
           ownerNombre: "",
           ownerPhone: "",
+          admission: "Inmediato",
         });
       } else {
         // En caso de que la solicitud no sea exitosa, muestra una alerta de error
@@ -222,6 +226,7 @@ function CreateProperty() {
   useEffect(() => {
     dispatch(getAllProperties());
   }, [handleSubmit]);
+
   return (
     <div className="w-full h-full">
       <form className="">
@@ -428,6 +433,25 @@ function CreateProperty() {
             </div>
           ))}
         </div>
+        {/* Ingreso */}
+        {propertiesAdmission.map((option, index) => (
+          <div
+            key={`${option.id}_${index}`}
+            className="w-fit flex flex-col gap-x-4 py-4"
+          >
+            <label htmlFor={option.component} className="text-sm">
+              {option.name}
+            </label>
+            <input
+              type="text"
+              id={option.component}
+              name={option.component}
+              value={formData[option.component]}
+              onChange={handleChange}
+              className="bg-gray-50 rounded-sm border"
+            />
+          </div>
+        ))}
         {/* Servicios */}
         <div className="w-full h-full">
           <p className="text-sm py-4">Servicios</p>

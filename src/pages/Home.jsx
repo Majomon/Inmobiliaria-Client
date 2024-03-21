@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import img1 from "../assets/img/1.webp";
 import img2 from "../assets/img/2.webp";
@@ -12,12 +12,17 @@ import { getAllProperties } from "../redux/actions";
 function Home() {
   const images = [img1, img2, img3, img4];
   const dispatch = useDispatch();
-  const properties = useSelector((state) => state.propiedades);
+  const properties = useSelector((state) => state?.propiedades);
+  const [filteredProperties, setFilteredProperties] = useState([]);
 
   useEffect(() => {
     dispatch(getAllProperties());
   }, []);
 
+  useEffect(() => {
+    const filtered = properties.filter((property) => property?.availability);
+    setFilteredProperties(filtered);
+  }, [properties]);
   return (
     <div className="w-full mt-[3rem]">
       <CarouselHome images={images} />
@@ -27,7 +32,7 @@ function Home() {
       <h2 className="text-center py-4 font-bold dark:bg-black dark:text-white text-xl md:text-2xl lg:text-3xl">
         Todas las propiedades
       </h2>
-      <ContainerPropertyHome properties={properties} />
+      <ContainerPropertyHome properties={filteredProperties} />
     </div>
   );
 }

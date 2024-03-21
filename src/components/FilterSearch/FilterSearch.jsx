@@ -51,9 +51,6 @@ function FilterSearch() {
     navigate(`/search?${queryParams.toString()}`);
   };
 
-  useEffect(()=>{
-    console.log(uniqueOperations);
-  },[])
   
   return (
     <div className="w-full h-full bg-black">

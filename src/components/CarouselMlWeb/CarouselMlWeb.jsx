@@ -65,7 +65,7 @@ function CarouselMlWeb() {
           <img
             src={imgSelected}
             alt="Descripción de la imagen"
-            className="w-full mx-auto h-[450px] rounded-lg cursor-pointer  object-cover"
+            className="w-full mx-auto h-[450px] rounded-lg cursor-pointer object-cover"
             onClick={handlerImgModal}
           />
         ) : (

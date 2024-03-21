@@ -25,7 +25,7 @@ function ContainerPropertyHome({ properties }) {
     <div className="w-full h-full dark:bg-black dark:border-white relative py-4 object-cover">
       <div className="w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {loading ? (
-          <div className="col-span-3">
+          <div className="col-span-full">
             <Spinner />
           </div>
         ) : visibleProperties.length > 0 ? (

@@ -39,7 +39,7 @@ export const getPropertiesId = (id) => {
       const detail = await axios.get(`/properties/${id}`);
       dispatch({ type: GET_PROPERTY_ID, payload: detail.data });
     } catch (error) {
-      return [];
+      return error;
     }
   };
 };
@@ -61,7 +61,7 @@ export const postProperty = (data) => {
 export const putProperty = (idProperty, dataProperty) => {
   return async (dispatch) => {
     const { data } = await axios.put(`/properties/${idProperty}`, dataProperty);
-    return dispatch({ type: PUT_PROPERTY , payload: data });
+    return dispatch({ type: PUT_PROPERTY, payload: data });
   };
 };
 

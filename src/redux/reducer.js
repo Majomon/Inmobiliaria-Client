@@ -16,7 +16,7 @@ const initialState = {
   details: {
     images: [],
   },
-  search: {},
+  search: [],
   users: [],
   userData: null,
   isLoggedIn: false,

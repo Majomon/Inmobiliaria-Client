@@ -9,7 +9,12 @@ function Search({ theme }) {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const dispatch = useDispatch();
-  const properties = useSelector((state) => state.search);
+  const allProperties = useSelector((state) => state.search);
+
+  // Filtrar propiedades habilitadas
+  const properties = allProperties.filter(
+    (property) => property?.availability === true
+  );
 
   // Obtiene los valores de los parámetros de consulta de la URL
   const operation = queryParams.get("operation");

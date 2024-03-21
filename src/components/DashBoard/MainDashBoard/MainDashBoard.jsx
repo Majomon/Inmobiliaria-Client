@@ -25,7 +25,7 @@ function MainDashBoard() {
         activeComponent={activeComponent}
         handleButtonClick={handleButtonClick}
       />
-     <div className="w-9/12 ml-auto px-6 pt-10">
+     <div className="w-9/12 ml-auto p-6">
         {activeComponent === "home" && <AllProperties />}
         {activeComponent === "addProperty" && <CreateProperty />}
       </div>

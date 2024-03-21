@@ -8,6 +8,7 @@ import DetailInfoTop from "../components/DetailInfoTop/DetailInfoTop";
 import FormContact from "../components/FormContact/FormContact";
 import PropertyArea from "../components/PropertyArea/PropertyArea";
 import Spinner from "../components/Spinner/Spinner";
+import PropertyNotFoundError from "../components/PropertyNotFoundError/PropertyNotFoundError";
 import {
   clearDetailsState,
   getAllProperties,
@@ -24,15 +25,17 @@ function Detail({ theme }) {
 
   useEffect(() => {
     dispatch(getAllProperties());
-    dispatch(getPropertiesId(id));
-    setLoading(false);
+    dispatch(getPropertiesId(id))
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
+
     return () => {
       dispatch(clearDetailsState());
     };
-  }, [id]);
+  }, [dispatch, id]);
 
   useEffect(() => {
-    if (property._id && properties.length > 0) {
+    if (property && property._id && properties.length > 0) {
       const foundProperty = properties.filter((elem) => {
         return (
           elem._id !== property._id &&
@@ -50,11 +53,21 @@ function Detail({ theme }) {
 
       setSliderProperty(randomProperties);
       setLoading(false);
+    } else {
+      setLoading(false);
     }
-  }, [property._id, properties]);
+  }, [property, properties]);
 
   if (loading) {
     return <Spinner />;
+  }
+
+  if (!property || !property.name) {
+    return <PropertyNotFoundError />;
+  }
+
+  if (!property.availability) {
+    return <PropertyNotFoundError />;
   }
 
   return (
