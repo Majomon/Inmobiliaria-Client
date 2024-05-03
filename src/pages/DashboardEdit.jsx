@@ -1,12 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { clearDetailsState, getPropertiesId } from "../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "flowbite-react";
-import PropertyNotFoundError from "../components/PropertyNotFoundError/PropertyNotFoundError";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { Toaster, toast } from "sonner";
+import ImgFirebase from "../components/DashBoard/ImgFirebase.jsx";
 import {
   propertiesAddress,
+  propertiesAdmission,
   propertiesDescription,
   propertiesDetail,
   propertiesImages,
@@ -14,15 +15,14 @@ import {
   propertiesOwner,
   propertiesPrice,
   propertiesServices,
-  propertiesAdmission,
 } from "../components/DashBoard/optionsPostProperty.js";
+import PropertyNotFoundError from "../components/PropertyNotFoundError/PropertyNotFoundError";
+import { clearDetailsState, getPropertiesId } from "../redux/actions";
 import { getAllProperties } from "../redux/actions.js";
-import { Toaster, toast } from "sonner";
-import ImgFirebase from "../components/DashBoard/ImgFirebase.jsx";
-import { useNavigate } from "react-router-dom";
 
 function DashboardEdit() {
   const { id } = useParams();
+
   const dispatch = useDispatch();
   const property = useSelector((state) => state?.details);
   const [loading, setLoading] = useState(true);
@@ -64,22 +64,15 @@ function DashboardEdit() {
     ownerPhone: "",
     mount: 0,
     additionalExpense: "",
-    admission: "Inmediato", // valor inicial definido para la admisión
+    admission: "Inmediato",
   });
   const [modificationSuccess, setModificationSuccess] = useState(false);
   const navigate = useNavigate();
-
-  const upParrayImg = (index) => {
-    const updatedImages = [...editForm.images];
-    updatedImages.splice(index, 1);
-    setEditForm({
-      ...editForm,
-      images: updatedImages,
-    });
-  };
+  const [formChanges, setFormChanges] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    setFormChanges(true);
     if (type === "checkbox") {
       setEditForm({
         ...editForm,
@@ -226,7 +219,7 @@ function DashboardEdit() {
                 <div key={`${option.id}_${index}`} className="flex flex-col">
                   <label
                     htmlFor={option.component}
-                    className="text-sm font-bold"
+                    className="text-sm font-bold "
                   >
                     {option.name}
                   </label>
@@ -236,7 +229,7 @@ function DashboardEdit() {
                       name={option.component}
                       value={editForm[option.component]}
                       onChange={handleChange}
-                      className="bg-gray-50 rounded-sm border pl-2"
+                      className="bg-gray-50 rounded-sm border pl-2 border-gray-400"
                     >
                       {option.options.map((optionValue, optionIndex) => (
                         <option key={optionIndex} value={optionValue}>
@@ -251,7 +244,7 @@ function DashboardEdit() {
                       name={option.component}
                       value={editForm.name}
                       onChange={handleChange}
-                      className="bg-gray-50 rounded-sm border pl-2"
+                      className="bg-gray-50 rounded-sm border pl-2 border-gray-400"
                     />
                   )}
                 </div>
@@ -277,7 +270,7 @@ function DashboardEdit() {
                     name={option.component}
                     value={editForm[option.component]}
                     onChange={handleChange}
-                    className="h-64  bg-gray-50 rounded-sm border p-2"
+                    className="h-64  bg-gray-50 rounded-sm border p-2 border-gray-400"
                   />
                 </div>
               ))}
@@ -300,7 +293,7 @@ function DashboardEdit() {
                       name={option.component}
                       value={editForm[option.component]}
                       onChange={handleChange}
-                      className=" bg-gray-50 rounded-sm border pl-2"
+                      className=" bg-gray-50 rounded-sm border pl-2 border-gray-400"
                     />
                   </div>
                 ))}
@@ -334,7 +327,7 @@ function DashboardEdit() {
                           editForm.address[subOption.component]
                         }
                         onChange={handleChange}
-                        className="bg-gray-50 rounded-sm border pl-2"
+                        className="bg-gray-50 rounded-sm border pl-2 border-gray-400"
                       />
                     </div>
                   ))}
@@ -350,7 +343,7 @@ function DashboardEdit() {
                   {propertiesPrice.map((option, index) => (
                     <div
                       key={`${option.id}_${index}`}
-                      className="grid grid-cols-2 gap-x-4"
+                      className="grid grid-cols-2 gap-x-4 border-gray-400"
                     >
                       {option.moreOptions.map((subOption, subIndex) => (
                         <div
@@ -372,7 +365,7 @@ function DashboardEdit() {
                                 editForm?.precio[subOption.component]
                               }
                               onChange={handleChange}
-                              className="bg-gray-50 rounded-sm border pl-2"
+                              className="bg-gray-50 rounded-sm border pl-2 border-gray-400"
                             >
                               {subOption.options.map(
                                 (currencyOption, currencyIndex) => (
@@ -395,7 +388,7 @@ function DashboardEdit() {
                                 editForm?.precio[subOption.component]
                               }
                               onChange={handleChange}
-                              className="bg-gray-50 rounded-sm border pl-2"
+                              className="bg-gray-50 rounded-sm border pl-2 border-gray-400"
                             />
                           )}
                         </div>
@@ -431,7 +424,7 @@ function DashboardEdit() {
                               editForm?.owner[subOption.component]
                             }
                             onChange={handleChange}
-                            className=" bg-gray-50 rounded-sm border pl-2"
+                            className=" bg-gray-50 border pl-2 rounded-sm border-gray-400"
                           />
                         </div>
                       ))}
@@ -487,7 +480,7 @@ function DashboardEdit() {
                   name={option.component}
                   value={editForm[option.component]}
                   onChange={handleChange}
-                  className="bg-gray-50 rounded-sm border pl-2"
+                  className="bg-gray-50 rounded-sm border pl-2 border-gray-400"
                 />
               </div>
             ))}
@@ -497,12 +490,19 @@ function DashboardEdit() {
                 <div key={`${option.id}_${index}`} className="">
                   <p className="text-sm">Imagenes</p>
                   {/*             <Cloudinary setFormData={setFormData} formData={formData} /> */}
-                  <ImgFirebase setFormData={setEditForm} />
+                  <ImgFirebase setFormData={setEditForm} editForm={editForm} />
                 </div>
               ))}
             </div>
-            <div className="w-4/12 mx-auto h-full flex justify-center items-center py-10">
-              <button className="w-full h-fit bg-gray-950 text-white py-4 rounded-lg">
+            <div className="w-4/12 mx-auto h-full flex justify-center items-center py-10 transition-all">
+              <button
+                className={`w-full h-fit py-4 rounded-lg ${
+                  !formChanges
+                    ? "bg-gray-500 text-gray-300 cursor-not-allowed"
+                    : "bg-gray-950 text-white"
+                }`}
+                disabled={!formChanges}
+              >
                 Guardar cambios
               </button>
             </div>

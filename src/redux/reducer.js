@@ -9,7 +9,7 @@ import { LOGIN_USER } from "./actions";
 import { GET_SEARCH_FILTER } from "./actions";
 import { CLEAR_DETAILS_STATE } from "./actions";
 import { CLEAR_SEARCH_STATE } from "./actions";
-import { LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS } from "./actions";
+import { LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS, LOGOUT_USER } from "./actions";
 
 const initialState = {
   propiedades: [],
@@ -57,6 +57,14 @@ function rootReducer(state = initialState, { type, payload }) {
         userData: null,
         isLoggedIn: false,
       };
+
+    case LOGOUT_USER:
+      return {
+        ...state,
+        userData: null,
+        isLoggedIn: false,
+      };
+      
     case GET_SEARCH_FILTER:
       return {
         ...state,

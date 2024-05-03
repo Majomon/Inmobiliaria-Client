@@ -19,6 +19,7 @@ export const CLEAR_SEARCH_STATE = "CLEAR_SEARCH_STATE";
 
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGIN_USER_FAILURE = "LOGIN_USER_FAILURE";
+export const LOGOUT_USER = "LOGOUT_USER";
 
 // Trae todas las propiedades
 export const getAllProperties = () => {
@@ -85,6 +86,7 @@ export const loginUser = (user) => {
       window.localStorage.setItem("user", JSON.stringify(response.data));
       toast.success("Logeado");
       dispatch(loginUserSuccess(response.data));
+      window.location.href = "/dashboard";
     } catch (error) {
       dispatch(loginUserFailure());
       toast.error("Los datos ingresados son incorrectos");
@@ -102,6 +104,17 @@ export const loginUserFailure = () => ({
   type: LOGIN_USER_FAILURE,
 });
 
+export const logoutUser = () => {
+  return async (dispatch) => {
+    try {
+      localStorage.removeItem("user");
+      dispatch({ type: LOGOUT_USER });
+      toast.success("Has cerrado sesión exitosamente.");
+    } catch (error) {
+      toast.error("Error al cerrar sesión. Por favor, inténtalo de nuevo.");
+    }
+  };
+};
 // Enviar email
 export const postResend = (formData) => {
   return async (dispatch) => {

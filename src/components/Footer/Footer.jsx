@@ -1,9 +1,8 @@
-import Facebook from "../../assets/redes/facebook.png";
-import Instagram from "../../assets/redes/instagram.png";
-import Linkedin from "../../assets/redes/linkedin.png";
+import { Link, NavLink } from "react-router-dom";
 import LogoDark from "../../assets/darkMode.png";
 import LogoLight from "../../assets/lightMode.png";
-import { Link, NavLink } from "react-router-dom";
+import Instagram from "../../assets/redes/instagram.png";
+import Linkedin from "../../assets/redes/linkedin.png";
 
 function Footer({ theme }) {
   const email = "iruslux@gmail.com";

@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { Toaster } from "sonner";
 import { loginUser } from "../redux/actions";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const userData = useSelector((state) => state.userData);
-
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [userData, setUserData] = useState("");
   const [inputForm, setInputForm] = useState({
     email: "",
     password: "",
@@ -28,14 +27,6 @@ function Login() {
     };
     await dispatch(loginUser(data));
   };
-
-  useEffect(() => {
-    if (userData != null) {
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 1500);
-    }
-  }, [userData, navigate]);
 
   return (
     <div className="w-full min-h-screen bg-gray-950 flex justify-center items-center">
@@ -63,7 +54,9 @@ function Login() {
             className="my-0"
           />
         </div>
-        <button className="p-2 bg-yellow-400 rounded-sm font-bold text-lg ">Ingresar</button>
+        <button className="p-2 bg-yellow-400 rounded-sm font-bold text-lg ">
+          Ingresar
+        </button>
       </form>
     </div>
   );
