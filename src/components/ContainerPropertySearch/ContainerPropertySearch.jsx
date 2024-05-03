@@ -10,8 +10,7 @@ function ContainerPropertySearch({ properties }) {
   const propertiesPerPage = 12;
 
   useEffect(() => {
-    setLoading(true);
-    if (properties.length > 0) {
+    if (properties?.length > 0) {
       const sortedProperties = properties.sort((a, b) => {
         if (sortOrder === "asc") {
           return a.precio.mount - b.precio.mount;
@@ -21,11 +20,11 @@ function ContainerPropertySearch({ properties }) {
       });
       // Mostrar solo las primeras 'propertiesPerPage' propiedades en función de la página actual
       setVisibleProperties(sortedProperties.slice(0, propertiesPerPage));
-      setLoading(false);
     } else {
       setVisibleProperties([]);
-      setLoading(false);
     }
+    setLoading(false);
+
   }, [properties, sortOrder]);
 
   const handleShowMore = () => {
@@ -61,7 +60,7 @@ function ContainerPropertySearch({ properties }) {
         </div>
       ) : (
         <div className="w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {visibleProperties.length > 0 ? (
+          {visibleProperties?.length > 0 ? (
             visibleProperties.map((property) => (
               <PropertyCard key={property._id} property={property} />
             ))

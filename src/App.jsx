@@ -3,7 +3,7 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 // Axios default
 axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app";
-/* axios.defaults.baseURL = "http://localhost:8080"; */
+// axios.defaults.baseURL = "http://localhost:8080";
 
 // Pages
 /* import AOS from "aos";
@@ -62,7 +62,7 @@ function App() {
   }, []); */
 
   return (
-    <div className="w-full h-full min-h-screen flex flex-col">
+    <div className="w-full h-full min-h-screen flex flex-col bg-[#D3D3D3]">
       {shouldRenderNavbar && <Navbar theme={theme} setTheme={setTheme} />}
       <Routes>
         <Route path="/" element={<Home theme={theme} />} />

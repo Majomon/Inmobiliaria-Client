@@ -79,7 +79,7 @@ function Detail({ theme }) {
           <div className="w-10/12 mx-auto  mt-4 ">
             <div className="w-full h-full flex flex-col">
               <CarouselMlWeb />
-              <div className="w-full flex flex-col md:flex-row gap-8">
+              <div className="w-full flex flex-col lg:flex-row gap-8">
                 <DetailInfoBot dataAxios={property} theme={theme} />
                 <FormContact theme={theme} />
               </div>

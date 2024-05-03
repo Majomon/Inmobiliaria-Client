@@ -4,7 +4,7 @@ export const propertiesOptions = [
     id: 2,
     component: "operation",
     name: "Operación",
-    options: ["Alquiler", "Alquiler temporario"],
+    options: ["Alquiler", "Alquiler temporario","Venta"],
   },
   {
     id: 3,

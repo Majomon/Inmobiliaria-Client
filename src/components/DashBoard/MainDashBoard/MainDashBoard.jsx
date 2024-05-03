@@ -9,23 +9,22 @@ import MenuLateralDashBoard from "../MenuLateralDashBoard/MenuLateralDashBoard";
 function MainDashBoard() {
   const dispatch = useDispatch();
   const [activeComponent, setActiveComponent] = useState("home");
-  
+
   useEffect(() => {
     dispatch(getAllProperties());
   }, []);
 
-  
   const handleButtonClick = (componentName) => {
     setActiveComponent(componentName);
   };
   return (
     <div className="w-full h-full flex">
-    <Toaster></Toaster>
+      <Toaster/>
       <MenuLateralDashBoard
         activeComponent={activeComponent}
         handleButtonClick={handleButtonClick}
       />
-     <div className="w-9/12 ml-auto p-6">
+      <div className="w-9/12 ml-auto p-6">
         {activeComponent === "home" && <AllProperties />}
         {activeComponent === "addProperty" && <CreateProperty />}
       </div>

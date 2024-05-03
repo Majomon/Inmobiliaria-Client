@@ -3,11 +3,11 @@ import Instagram from "../../assets/redes/instagram.png";
 import Linkedin from "../../assets/redes/linkedin.png";
 import LogoDark from "../../assets/darkMode.png";
 import LogoLight from "../../assets/lightMode.png";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Footer({ theme }) {
   const email = "iruslux@gmail.com";
-  const phoneNumber = "+5491150617146";
+  const phoneNumber = "+5491144451012";
 
   const openEmailClient = () => {
     window.location.href = `mailto:${email}`;
@@ -24,7 +24,7 @@ function Footer({ theme }) {
         <h2 className="text-center  font-bold dark:text-white text-base md:text-lg lg:text-xl">
           Visitanos en nuestras redes
         </h2>
-        <ul className="w-2/3 lg:w-1/3 mx-auto my-4 flex justify-between">
+        {/*  <ul className="w-2/3 lg:w-1/3 mx-auto my-4 flex justify-between">
           <li className="list-none">
             <NavLink to={"https://www.facebook.com"} target="_blank">
               <img
@@ -52,7 +52,7 @@ function Footer({ theme }) {
               />
             </NavLink>
           </li>
-        </ul>
+        </ul> */}{/*  */}
       </div>
       {/* Footer */}
       <div className="w-10/12 mx-auto flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:items-start">
@@ -67,6 +67,17 @@ function Footer({ theme }) {
               <img className="w-20" src={LogoDark} alt="LogoDark" />
             </NavLink>
           )}
+          <div className="text-xs mt-2 flex flex-col gap-2">
+            <Link
+              to={
+                "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/535188"
+              }
+              target="_blank"
+            >
+              Normativa de Alquiler temporario y fines Turísticos
+            </Link>
+            <h3>Asociado con Cucicba 6874</h3>
+          </div>
         </div>
 
         {/* Menu */}
@@ -139,6 +150,12 @@ function Footer({ theme }) {
           </div>
         </div>
       </div>
+      {/* Derechos reservados */}
+      <div className="flex justify-center items-center py-2 font-bold text-sm">
+
+      <h2>© 2023-2024 Ruslux Todos los derechos reservados</h2>
+      </div>
+      <div></div>
       {/* Developer */}
       <div className="w-full h-[3rem] bg-gray-950 flex justify-center items-center gap-2 lg:gap-10">
         <NavLink

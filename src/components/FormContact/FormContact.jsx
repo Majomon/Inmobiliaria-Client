@@ -24,7 +24,7 @@ function FormContact({ theme }) {
     message: "",
   });
 
-/*   const handleWhatsAppShare = () => {
+  /*   const handleWhatsAppShare = () => {
     const whatsappURL = `https://api.whatsapp.com/send?text= Hola, te comparto esta ficha: ${encodeURIComponent(
       currentURL
     )}`;
@@ -33,14 +33,14 @@ function FormContact({ theme }) {
   }; */
 
   const handleWhatsAppShare = () => {
-    const phoneNumber = "+5491150617146";
+    const phoneNumber = "+5491144451012";
     const message = `Hola, me interesa esta propiedad: ${currentURL}`;
     const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
       message
     )}`;
     window.open(whatsappURL, "_blank");
   };
-  
+
   useEffect(() => {
     if (
       inputForm.name &&
@@ -95,9 +95,9 @@ function FormContact({ theme }) {
   };
 
   return (
-    <div className="w-full md:w-4/12 h-full sticky top-[80px] mt-4 rounded-lg ">
+    <div className="w-full lg:w-4/12 h-full sticky top-[80px] mt-4 rounded-lg ">
       <Toaster />
-      <div className="mb-4 p-4 shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg">
+      <div className="mb-4 py-4 px-10 shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg">
         <h2 className="text-black dark:text-gray-100 text-center py-2">
           Contacta al vendedor
         </h2>
@@ -108,16 +108,15 @@ function FormContact({ theme }) {
             <img className="w-16" src={LogoDark} alt="LogoDark" />
           )}
           <div className="flex flex-col justify-between">
-            {/*             <h2 className="text-base dark:text-gray-100"> Av. Siempre viva 1234</h2> */}
-            <h2 className="text-base font-semibold dark:text-gray-100">
-              +5491150617146
+            <h2 className="text-sm font-semibold dark:text-gray-100">
+              +5491144451012
             </h2>
-            <h2 className="text-base font-semibold dark:text-gray-100">
+            <h2 className="text-sm font-semibold dark:text-gray-100">
               iruslux@gmail.com
             </h2>
           </div>
         </div>
-        <form className="pt-2" onSubmit={handlerSubmit}>
+        <form className="text-sm pt-2" onSubmit={handlerSubmit}>
           <input
             type="text"
             name="name"
@@ -180,18 +179,6 @@ function FormContact({ theme }) {
         </form>
       </div>
       <div className="mt-2 px-10 py-4 flex justify-between items-center gap-2 rounded-lg shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900">
-{/*         <div>
-          <h3 className="text-lg font-bold dark:text-gray-100">Compartir</h3>
-          <div>
-            <img
-              src={WhatApp}
-              onClick={handleWhatsAppShare}
-              alt="whatapp"
-              className="w-[25px] cursor-pointer"
-            />
-          </div>
-        </div>
-        <div className="w-1 h-8 bg-gray-500 "></div> */}
         <div className="w-full flex flex-col justify-center items-center">
           <h3 className="text-lg font-bold dark:text-gray-100">Contactar</h3>
           <img

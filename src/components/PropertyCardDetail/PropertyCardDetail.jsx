@@ -1,11 +1,11 @@
 import React from "react";
-import Baño from "../../assets/iconos/ducha.png";
+import { Link } from "react-router-dom";
 import Habitacion from "../../assets/iconos/habitacion.png";
+import Baño from "../../assets/iconos/ducha.png";
 import Superficie from "../../assets/iconos/superficie.png";
 import WhatApp from "../../assets/whatsapp.png";
-import { CarouselImgCard } from "../CarouselImgCard/CarouselImgCart";
 
-function PropertyCard(properties) {
+function PropertyCardDetail(properties) {
   const {
     _id,
     address,
@@ -36,11 +36,18 @@ function PropertyCard(properties) {
   };
 
   return (
-    <div className="w-[210px] md:w-[240px] 2xl:w-[280px] mx-auto my-8 rounded-sm  shadow-lg shadow-gray-700  duration-700 ease-in-out hover:shadow-xl hover:shadow-gray-900  dark:shadow-lg dark:hover:shadow-xl  dark:shadow-gray-300  dark:hover:shadow-[#00b4d8] relative">
+    <div className="w-[210px] md:w-[240px] 2xl:w-[280px] mx-auto my-8 rounded-sm  shadow-lg shadow-gray-700  duration-700 ease-in-out hover:shadow-xl hover:shadow-gray-900  dark:shadow-lg dark:hover:shadow-xl  dark:shadow-gray-300  dark:hover:shadow-gray-100 relative">
       <h3 className="py-2 text-center font-bold bg-gray-900 text-gray-100 text-xs ">
         {property} en {operation}
       </h3>
-      <CarouselImgCard images={images} id={_id} />
+      <Link to={`/detail/${_id}`}>
+        <div className="w-full h-[200px]  border-b-2 border-gray-900 overflow-hidden">
+          <img
+            src={images[0]}
+            className="w-full h-full transition-transform duration-700 ease-in-out transform hover:scale-110"
+          />
+        </div>
+      </Link>
       <div className="w-full px-4 flex justify-between items-center">
         <div className="text-sm  font-bold  text-gray-600 my-2 dark:text-gray-100 mt-2">
           <p>
@@ -91,4 +98,4 @@ function PropertyCard(properties) {
   );
 }
 
-export default PropertyCard;
+export default PropertyCardDetail;

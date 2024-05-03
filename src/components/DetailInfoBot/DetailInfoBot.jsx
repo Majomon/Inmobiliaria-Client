@@ -54,8 +54,10 @@ function DetailInfoBot({ dataAxios, theme }) {
 
   let statePrecio = dataAxios ? dataAxios?.precio?.mount.toLocaleString() : "";
 
+  console.log();
+
   return (
-    <div className="w-full md:w-9/12 h-full">
+    <div className="w-full lg:w-8/12 h-full">
       {/* Info extra del la publicacion */}
       <div className="h-full shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg my-4">
         {dataAxios.operation === "Venta" ? (
@@ -73,16 +75,19 @@ function DetailInfoBot({ dataAxios, theme }) {
             </div>
           </div>
         ) : (
-          <div className="w-full py-2">
-            <div className="flex justify-between items-center">
+          <div>
+            <h2 className="px-4 py-2 font-bold text-sm dark:text-gray-100">
+              Información general
+            </h2>
+            <div className=" mx-auto py-2 grid grid-cols-1 sm:grid-cols-2 gap-4 px-10">
               {/* Dirección */}
-              <div className="w-5/12 flex justify-center items-center px-10 py-2  gap-x-2">
+              <div className="flex flex-col">
                 <h3 className="text-sm font-bold">
                   {dataAxios?.address?.street} | {dataAxios?.address?.zone}
                 </h3>
                 <button
                   onClick={handleOpenGoogleMaps}
-                  className="w-full flex items-center bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 px-2 py-1 rounded-lg shadow-md"
+                  className="w-fit px-2 py-1 flex items-center bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-lg shadow-md"
                 >
                   <img
                     src={GoogleMaps}
@@ -93,24 +98,32 @@ function DetailInfoBot({ dataAxios, theme }) {
                 </button>
               </div>
               {/* Ingreso */}
-              <div className="w-2/12 text-sm font-bold px-10 py-2 flex gap-x-2">
-                Ingreso: {dataAxios?.admission}
+              <div className="flex flex-col gap-y-1">
+                <h2 className="font-bold">Ingreso:</h2>
+                <p> {dataAxios?.admission}</p>
               </div>
               {/* Precio */}
-              <div className="w-5/12 text-sm  px-10 py-2 flex justify-center items-center gap-x-2">
-                <p>
-                  <strong className="font-bold dark:text-gray-100">
-                    {dataAxios.precio.currency}
-                  </strong>
-                </p>
-                <span className=" text-gray-600 dark:text-gray-100">
-                  {statePrecio}
-                </span>
-                <span className=" text-gray-600 dark:text-gray-100">
-                  {dataAxios.precio.additionalExpense &&
-                    ` + ${dataAxios.precio.additionalExpense}`}
-                </span>
-                <p className="text-gray-400">Por mes</p>
+              <div className="text-xs gap-y-2">
+                <h2 className="font-bold">Precio:</h2>
+                <div className=" flex gap-4">
+                  <p>
+                    <strong className="font-bold dark:text-gray-100">
+                      {dataAxios.precio.currency}
+                    </strong>
+                  </p>
+                  <span className=" text-gray-600 dark:text-gray-100">
+                    {statePrecio}
+                  </span>
+                  <span className=" text-gray-600 dark:text-gray-100">
+                    {dataAxios.precio.additionalExpense &&
+                      ` + ${dataAxios.precio.additionalExpense}`}
+                  </span>
+                  <p className="text-gray-400">Por mes</p>
+                </div>
+              </div>
+              <div className="text-xs gap-y-2">
+                <h2 className="font-bold">Area:</h2>
+                <h2>{dataAxios.area} M²</h2>
               </div>
             </div>
           </div>
@@ -122,7 +135,7 @@ function DetailInfoBot({ dataAxios, theme }) {
           Descripción
         </h2>
         <div className="px-10 py-2 text-sm dark:text-gray-100">
-          <p>{dataAxios.description}</p>
+          <p className="leading-5">{dataAxios.description}</p>
         </div>
       </div>
 
@@ -180,12 +193,12 @@ function DetailInfoBot({ dataAxios, theme }) {
       <div className="h-full shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg my-4">
         <h2 className="px-4 py-2 font-bold text-sm">Caracteristicas</h2>
         <div className="w-full px-4 py-2">
-          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-4 px-8 place-items-center text-sm">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 md:px-10 justify-items-center">
             {Object.keys(services).map((serviceKey) =>
               services[serviceKey] ? (
                 <div
                   key={serviceKey}
-                  className="w-full h-16 sm:w-1/2 md:w-1/3 lg:w-1/4 col-span-1 mb-4 flex flex-col justify-between items-center text-center"
+                  className="w-full h-16 sm:w-1/2 md:w-1/3 lg:w-2/4 col-span-1 mb-4 flex flex-col justify-between items-center text-center"
                 >
                   <img
                     src={serviceImages[serviceKey].img}

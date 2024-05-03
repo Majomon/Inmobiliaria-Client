@@ -3,13 +3,13 @@ import React from "react";
 
 function CarouselModal({ images, closeModal, newArrayImg }) {
   return (
-    <div className="w-full h-screen fixed top-0 left-0 bottom-0 right-0  z-40 bg-black flex justify-center items-center">
+    <div className="w-full h-screen fixed top-0 left-0 bottom-0 right-0  bg-black flex justify-center items-center z-50">
       <div className=" absolute z-50 top-6 right-6">
         <h2
-          className="text-gray-100 bg-gray-700 p-4 rounded-md cursor-pointer hover:text-yellow-400 hover:bg-gray-700 hover:shadow-lg hover:shadow-yellow-400 "
+          className=" rounded-full text-gray-100 bg-gray-700 w-10 h-10 cursor-pointer hover:text-yellow-400 hover:bg-gray-700 hover:shadow-lg hover:shadow-yellow-400 flex justify-center items-center"
           onClick={() => closeModal()}
         >
-          CERRAR
+          X
         </h2>
       </div>
       <Carousel>

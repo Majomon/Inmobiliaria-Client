@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import LogoDark from "../../assets/darkMode.png";
 import LogoLight from "../../assets/lightMode.png";
+import LogoBTC from "../../assets/Logo_btc.webp";
 
 const options = [
   { name: "Inicio", to: "/" },
   { name: "Alquiler", to: "/search?operation=Alquiler" },
   { name: "Alquiler temporario", to: "/search?operation=Alquiler+temporario" },
+  { name: "Venta", to: "/search?operation=Venta" },
 ];
 
 // eslint-disable-next-line react/prop-types
@@ -34,7 +36,8 @@ function Navbar({ theme, setTheme }) {
           </Link>
         </div>
         {/* Toogle Theme */}
-        <div className="lg:order-1">
+        <div className="lg:order-1 flex gap-x-2">
+          <img className="w-9 rounded-full" src={LogoBTC} alt="LogoBTC" />
           <button
             onClick={toggleTheme}
             className={theme === "light" ? "block" : "hidden"}

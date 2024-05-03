@@ -1,19 +1,6 @@
-import { useEffect, useState } from "react";
 import imgPrincipal from "../../assets/img/principal.jpg";
 
-function CarouselHome({ images }) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [images]);
-
+function CarouselHome() {
   return (
     <div className="w-full h-[390px] md:h-[350px] lg:h-[400px] mx-auto relative overflow-hidden">
       <div className="absolute left-0 right-0 top-16 flex justify-center">

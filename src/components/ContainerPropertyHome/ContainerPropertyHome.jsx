@@ -28,7 +28,7 @@ function ContainerPropertyHome({ properties }) {
           <div className="col-span-full">
             <Spinner />
           </div>
-        ) : visibleProperties.length > 0 ? (
+        ) : visibleProperties?.length > 0 ? (
           visibleProperties.map((property) => (
             <PropertyCard key={property._id} property={property} />
           ))
@@ -40,7 +40,7 @@ function ContainerPropertyHome({ properties }) {
           </div>
         )}
       </div>
-      {properties.length > propertiesToShowInitially && (
+      {properties?.length > propertiesToShowInitially && (
         <div className="w-full text-center mt-4">
           <Link
             to="/search"
