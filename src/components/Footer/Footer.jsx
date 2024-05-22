@@ -17,7 +17,7 @@ function Footer({ theme }) {
   };
 
   return (
-    <div className=" bg-gradient-to-b  from-grisClaro-100 to-grisOscuro-100 dark:bg-gradient-to-t dark:from-rojitoOscuro-100  dark:to-rojitoClaro-100 ">
+    <div className=" bg-gradient-to-b  from-grisClaro-100 to-grisOscuro-100 dark:bg-gradient-to-t dark:from-blue-500 dark:to-blue-950 ">
       {/* Redes */}
       <div className="py-2">
         <h2 className="text-center  font-bold dark:text-white text-base md:text-lg lg:text-xl">
@@ -51,27 +51,36 @@ function Footer({ theme }) {
               />
             </NavLink>
           </li>
-        </ul> */}{/*  */}
+        </ul> */}
+        {/*  */}
       </div>
       {/* Footer */}
       <div className="w-10/12 mx-auto flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:items-start">
         {/* Logo */}
         <div className="py-4">
           {theme === "light" ? (
-            <NavLink to={"/"}>
-              <img className="w-20" src={LogoLight} alt="LogoLight" />
-            </NavLink>
+            <div className="w-full flex justify-center">
+              <NavLink to={"/"}>
+                <img className="w-20" src={LogoLight} alt="LogoLight" />
+              </NavLink>
+            </div>
           ) : (
-            <NavLink to={"/"}>
-              <img className="w-20" src={LogoDark} alt="LogoDark" />
-            </NavLink>
+            <div className="w-full flex justify-center">
+              <NavLink to={"/"}>
+                <img className="w-20" src={LogoDark} alt="LogoDark" />
+              </NavLink>
+            </div>
           )}
-          <div className="text-xs mt-2 flex flex-col gap-2">
+          <div className="text-xs mt-2 flex flex-col gap-2 text-gray-50">
+            <h3>
+              Somos inmobiliarios expertos en Alquileres Temporarios y Ventas
+            </h3>
             <Link
               to={
                 "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/535188"
               }
               target="_blank"
+              className="hover:text-gray-950"
             >
               Normativa de Alquiler temporario y fines Turísticos
             </Link>
@@ -150,9 +159,8 @@ function Footer({ theme }) {
         </div>
       </div>
       {/* Derechos reservados */}
-      <div className="flex justify-center items-center py-2 font-bold text-sm">
-
-      <h2>© 2023-2024 Ruslux Todos los derechos reservados</h2>
+      <div className="flex w-6/12 text-center mx-auto md:w-full md:justify-center md:items-center py-2 font-bold text-sm">
+        <h2>© 2023-2024 Ruslux Todos los derechos reservados</h2>
       </div>
       <div></div>
       {/* Developer */}

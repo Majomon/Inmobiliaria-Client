@@ -66,15 +66,7 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
           [name]: value,
         },
       });
-    } /* else if (propertiesServices.some((option) => option.component === name)) {
-      setEditForm({
-        ...editForm,
-        services: {
-          ...editForm.services,
-          [name]: value,
-        },
-      });
-    }  */ else {
+    } else {
       setEditForm((prevState) => ({
         ...prevState,
         [name]: value,
@@ -85,18 +77,13 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
   const handlerSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(
-        `/properties/${editForm._id}`,
-        editForm
-      );
+      const response = await axios.put(`/properties/${editForm._id}`, editForm);
       setActiveEdit(false);
       setModificationSuccess(true);
       toast.success("Propiedad modificada con exito perrito");
-/*       console.log("Response:", response.data); */
+      /*       console.log("Response:", response.data); */
     } catch (error) {
-      // Manejar cualquier error que pueda ocurrir durante la solicitud
       console.error("Error:", error);
-      // Aquí podrías mostrar un mensaje de error al usuario
     }
   };
 
@@ -110,14 +97,14 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
   }, [modificationSuccess]);
 
   return (
-    <div className="w-full absolute top-0 left-0 bottom-0 right-0 z-10 bg-black">
-      <div className="w-full mx-auto bg-gray-100 rounded-lg relative">
+    <div className="w-full absolute top-0 left-0 bottom-0 right-0 z-10 ">
+      <div className="w-full mx-auto rounded-lg relative">
         {/* Ícono de cerrar */}
         <div className="absolute top-4 right-4 w-8 h-8 bg-black flex justify-center items-center rounded-full cursor-pointer">
           <FaX onClick={() => setActiveEdit(false)} color="red" />
         </div>
         <form onSubmit={handlerSubmit}>
-          <div className="pt-12 px-10">
+          <div className="pt-12 px-10 bg-black">
             {/* Primeras opciones */}
             <div className="w-full h-full grid grid-cols-4 gap-x-6 pb-4 ">
               {propertiesOptions.map((option, index) => (

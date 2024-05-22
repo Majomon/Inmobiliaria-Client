@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import LogoDark from "../../assets/darkMode.png";
-import LogoLight from "../../assets/lightMode.png";
 import LogoBTC from "../../assets/Logo_btc.webp";
+import RusluxTexto from "../../assets/logos/light/ruslux.png";
+import RusluxLogoLIght from "../../assets/logos/light/logoCasa.png";
+import RusluxTextoDark from "../../assets/logos/dark/texto.png";
+import RusluxLogoDark from "../../assets/logos/dark/casa.png";
 
 const options = [
   { name: "Inicio", to: "/" },
@@ -23,21 +25,27 @@ function Navbar({ theme, setTheme }) {
   };
 
   return (
-    <div className="w-full h-[3rem] px-10 fixed  bg-white dark:bg-black shadow-md dark:shadow-yellow-600 dark: z-50">
+    <div className="w-full h-[3.5em] px-10 fixed  bg-white dark:bg-black shadow-md dark:shadow-yellow-600 dark: z-50">
       <div className="w-11/12 mx-auto flex justify-between items-center">
         {/* Icono */}
         <div className="">
           <Link to="/">
             {theme === "light" ? (
-              <img className="w-12" src={LogoLight} alt="LogoLight" />
+              <div className="flex justify-center items-center">
+                <img className="w-16" src={RusluxLogoLIght} alt="LogoLight" />
+                <img className="w-16" src={RusluxTexto} alt="RusluxTexto" />
+              </div>
             ) : (
-              <img className="w-12" src={LogoDark} alt="LogoDark" />
+              <div className="flex justify-center items-center">
+                <img className="w-16" src={RusluxLogoDark} alt="LogoLight" />
+                <img className="w-16" src={RusluxTextoDark} alt="RusluxTexto" />
+              </div>
             )}
           </Link>
         </div>
         {/* Toogle Theme */}
         <div className="lg:order-1 flex gap-x-2">
-          <img className="w-9 rounded-full" src={LogoBTC} alt="LogoBTC" />
+          <img className="w-10 rounded-full" src={LogoBTC} alt="LogoBTC" />
           <button
             onClick={toggleTheme}
             className={theme === "light" ? "block" : "hidden"}
@@ -80,12 +88,12 @@ function Navbar({ theme, setTheme }) {
                 className={
                   `${
                     theme === "dark"
-                      ? "text-gray-100 hover:text-gray-300"
-                      : "text-black hover:text-gray-500 hover:border-b-gray-500"
+                      ? "text-gray-100 hover:text-gray-300 text-lg"
+                      : "text-black hover:text-gray-500 hover:border-b-gray-500 text-lg"
                   }` +
                   `${
                     fullPath === option.to
-                      ? " border-b-2 border-gray-900 dark:border-red-700 font-semibold "
+                      ? " border-b-2 border-gray-900 dark:border-red-700 font-semibold text-lg"
                       : ""
                   }`
                 }

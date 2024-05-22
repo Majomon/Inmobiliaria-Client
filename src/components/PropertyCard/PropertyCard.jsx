@@ -36,7 +36,7 @@ function PropertyCard(properties) {
   };
 
   return (
-    <div className="w-[210px] md:w-[240px] 2xl:w-[280px] mx-auto my-8 rounded-sm  shadow-lg shadow-gray-700  duration-700 ease-in-out hover:shadow-xl hover:shadow-gray-900  dark:shadow-lg dark:hover:shadow-xl  dark:shadow-gray-300  dark:hover:shadow-[#00b4d8] relative">
+    <div className="w-[210px] bg-white md:w-[240px] 2xl:w-[280px] mx-auto my-8 rounded-sm  shadow-lg shadow-gray-700  duration-700 ease-in-out hover:shadow-xl hover:shadow-gray-900  dark:shadow-lg dark:hover:shadow-xl  dark:shadow-gray-300  dark:hover:shadow-blue-900 relative">
       <h3 className="py-2 text-center font-bold bg-gray-900 text-gray-100 text-xs ">
         {property} en {operation}
       </h3>
@@ -51,7 +51,7 @@ function PropertyCard(properties) {
           <h4>Ingreso: {admission}</h4>
         </div>
       </div>
-      <div className="w-full flex justify-around items-center bg-gray-100 p-2">
+      <div className="w-full flex justify-around items-center  p-2">
         <div className="flex flex-col justify-center items-center">
           <img src={Superficie} className="w-5" />
           <p className="text-xs text-gray-900 font-semibold dark:text-gray-700">

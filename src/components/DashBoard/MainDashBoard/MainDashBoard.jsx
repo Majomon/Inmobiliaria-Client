@@ -19,7 +19,7 @@ function MainDashBoard() {
   };
   return (
     <div className="w-full h-full flex">
-      <Toaster/>
+      <Toaster />
       <MenuLateralDashBoard
         activeComponent={activeComponent}
         handleButtonClick={handleButtonClick}

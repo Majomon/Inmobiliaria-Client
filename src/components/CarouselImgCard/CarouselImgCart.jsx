@@ -19,7 +19,7 @@ export const CarouselImgCard = ({ images, id }) => {
   };
 
   return (
-    <div className="w-full h-[200px] border-b-2 border-gray-900 relative">
+    <div className="w-full h-[200px] border-b-2 border-gray-900 relative z-0">
       <button
         onClick={goToPrevImage}
         className="absolute left-0 top-1/2 z-50 pl-2"

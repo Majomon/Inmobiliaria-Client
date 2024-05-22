@@ -33,7 +33,7 @@ function CreateProperty() {
     province: "",
     zone: "",
     street: "",
-    runningWater: false,
+    // runningWater: false,
     airConditioning: false,
     balcony: false,
     kitchen: false,
@@ -77,7 +77,7 @@ function CreateProperty() {
       street: formData.street,
     },
     services: {
-      runningWater: formData.runningWater,
+      // runningWater: formData.runningWater,
       airConditioning: formData.airConditioning,
       balcony: formData.balcony,
       kitchen: formData.kitchen,
@@ -186,7 +186,7 @@ function CreateProperty() {
           province: "",
           zone: "",
           street: "",
-          runningWater: false,
+          // runningWater: false,
           airConditioning: false,
           balcony: false,
           kitchen: false,
@@ -458,7 +458,7 @@ function CreateProperty() {
           {propertiesServices.map((option, index) => (
             <div
               key={`${option.id}_${index}`}
-              className="grid grid-cols-3 gap-x-20"
+              className="grid grid-cols-4 gap-x-20"
             >
               {option.moreOptions.map((subOption, index) => (
                 <div

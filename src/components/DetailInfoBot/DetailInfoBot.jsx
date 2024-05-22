@@ -31,7 +31,7 @@ function DetailInfoBot({ dataAxios, theme }) {
     gas: { value: "Gas", img: Gas },
     gym: { value: "Gym", img: Gym },
     laundry: { value: "Lavadero", img: Lavadero },
-    light: { value: "Luz", img: Luz },
+    light: { value: "Electricidad", img: Luz },
     petfriendly: { value: "Apto mascotas", img: Mascotas },
     houseMaid: { value: "Mucama", img: Mucama },
     grill: { value: "Parrilla", img: Parrilla },
@@ -82,29 +82,35 @@ function DetailInfoBot({ dataAxios, theme }) {
             <div className=" mx-auto py-2 grid grid-cols-1 sm:grid-cols-2 gap-4 px-10">
               {/* Dirección */}
               <div className="flex flex-col">
-                <h3 className="text-sm font-bold">
+                <h3 className="text-sm font-bold dark:text-gray-100">
                   {dataAxios?.address?.street} | {dataAxios?.address?.zone}
                 </h3>
                 <button
                   onClick={handleOpenGoogleMaps}
-                  className="w-fit px-2 py-1 flex items-center bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-lg shadow-md"
+                  className="w-fit px-2 py-1 my-2 flex items-center bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-lg shadow-md"
                 >
                   <img
                     src={GoogleMaps}
                     alt="Google Maps"
                     className="w-6 h-6 mr-2"
                   />
-                  <span className="text-xs">Ver mapa</span>
+                  <span className="text-xs dark:text-gray-100">Ver mapa</span>
                 </button>
               </div>
               {/* Ingreso */}
               <div className="flex flex-col gap-y-1">
-                <h2 className="font-bold">Ingreso:</h2>
-                <p> {dataAxios?.admission}</p>
+                <h2 className="font-bold dark:text-gray-100 text-sm">
+                  Ingreso:
+                </h2>
+                <p className=" dark:text-gray-100 text-sm">
+                  {dataAxios?.admission}
+                </p>
               </div>
               {/* Precio */}
               <div className="text-xs gap-y-2">
-                <h2 className="font-bold">Precio:</h2>
+                <h2 className="font-bold dark:text-gray-100 text-sm">
+                  Precio:
+                </h2>
                 <div className=" flex gap-4">
                   <p>
                     <strong className="font-bold dark:text-gray-100">
@@ -123,7 +129,9 @@ function DetailInfoBot({ dataAxios, theme }) {
               </div>
               <div className="text-xs gap-y-2">
                 <h2 className="font-bold">Area:</h2>
-                <h2>{dataAxios.area} M²</h2>
+                <p className=" dark:text-gray-100 text-sm">
+                  {dataAxios.area} M²
+                </p>
               </div>
             </div>
           </div>
@@ -191,9 +199,11 @@ function DetailInfoBot({ dataAxios, theme }) {
       </div>
       {/* Caracteristicas */}
       <div className="h-full shadow-md  shadow-gray-700 dark:shadow-yellow-600 border-2 border-gray-200 dark:border-gray-900 rounded-lg my-4">
-        <h2 className="px-4 py-2 font-bold text-sm">Caracteristicas</h2>
+        <h2 className="px-4 py-2 font-bold text-sm dark:text-gray-100">
+          Caracteristicas
+        </h2>
         <div className="w-full px-4 py-2">
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 md:px-10 justify-items-center">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 md:px-10 justify-items-center gap-4">
             {Object.keys(services).map((serviceKey) =>
               services[serviceKey] ? (
                 <div
@@ -201,12 +211,12 @@ function DetailInfoBot({ dataAxios, theme }) {
                   className="w-full h-16 sm:w-1/2 md:w-1/3 lg:w-2/4 col-span-1 mb-4 flex flex-col justify-between items-center text-center"
                 >
                   <img
-                    src={serviceImages[serviceKey].img}
-                    alt={serviceImages[serviceKey].value}
-                    className="w-[30px] sm:w-[40px] mx-auto mb-2"
+                    src={serviceImages[serviceKey]?.img}
+                    alt={serviceImages[serviceKey]?.value}
+                    className="w-[30px] sm:w-[40px] mx-auto mb-2 dark:bg-gray-50 dark:rounded dark:p-1"
                   />
                   <p className="text-xs dark:text-gray-100">
-                    {serviceImages[serviceKey].value}
+                    {serviceImages[serviceKey]?.value}
                   </p>
                 </div>
               ) : null

@@ -208,7 +208,7 @@ function DashboardEdit() {
   }
 
   return (
-    <div className="w-full h-full p-20">
+    <div className="w-full h-full p-20 bg-gray-700">
       <Toaster></Toaster>
       <div className="w-10/12 mx-auto bg-gray-100 rounded-lg relative">
         <form onSubmit={handlerSubmit}>
@@ -229,7 +229,7 @@ function DashboardEdit() {
                       name={option.component}
                       value={editForm[option.component]}
                       onChange={handleChange}
-                      className="bg-gray-50 rounded-sm border pl-2 border-gray-400"
+                      className="bg-gray-50 rounded-sm border-2 pl-2  border-gray-900"
                     >
                       {option.options.map((optionValue, optionIndex) => (
                         <option key={optionIndex} value={optionValue}>
@@ -244,7 +244,7 @@ function DashboardEdit() {
                       name={option.component}
                       value={editForm.name}
                       onChange={handleChange}
-                      className="bg-gray-50 rounded-sm border pl-2 border-gray-400"
+                      className="bg-gray-50 rounded-sm border-2 pl-2 border-gray-900"
                     />
                   )}
                 </div>
@@ -270,7 +270,7 @@ function DashboardEdit() {
                     name={option.component}
                     value={editForm[option.component]}
                     onChange={handleChange}
-                    className="h-64  bg-gray-50 rounded-sm border p-2 border-gray-400"
+                    className="h-64  bg-gray-50 rounded-sm border-2 pl-2 border-gray-900"
                   />
                 </div>
               ))}
@@ -293,7 +293,7 @@ function DashboardEdit() {
                       name={option.component}
                       value={editForm[option.component]}
                       onChange={handleChange}
-                      className=" bg-gray-50 rounded-sm border pl-2 border-gray-400"
+                      className=" bg-gray-50 rounded-sm border-2 pl-2  border-gray-900"
                     />
                   </div>
                 ))}
@@ -327,7 +327,7 @@ function DashboardEdit() {
                           editForm.address[subOption.component]
                         }
                         onChange={handleChange}
-                        className="bg-gray-50 rounded-sm border pl-2 border-gray-400"
+                        className="bg-gray-50 rounded-sm border-2 pl-2 border-gray-900"
                       />
                     </div>
                   ))}
@@ -343,7 +343,7 @@ function DashboardEdit() {
                   {propertiesPrice.map((option, index) => (
                     <div
                       key={`${option.id}_${index}`}
-                      className="grid grid-cols-2 gap-x-4 border-gray-400"
+                      className="grid grid-cols-2 gap-x-4"
                     >
                       {option.moreOptions.map((subOption, subIndex) => (
                         <div
@@ -365,7 +365,7 @@ function DashboardEdit() {
                                 editForm?.precio[subOption.component]
                               }
                               onChange={handleChange}
-                              className="bg-gray-50 rounded-sm border pl-2 border-gray-400"
+                              className="bg-gray-50 rounded-sm border-2 pl-2 border-gray-900"
                             >
                               {subOption.options.map(
                                 (currencyOption, currencyIndex) => (
@@ -388,7 +388,7 @@ function DashboardEdit() {
                                 editForm?.precio[subOption.component]
                               }
                               onChange={handleChange}
-                              className="bg-gray-50 rounded-sm border pl-2 border-gray-400"
+                              className="bg-gray-50 rounded-sm border-2 pl-2 border-gray-900"
                             />
                           )}
                         </div>
@@ -424,7 +424,7 @@ function DashboardEdit() {
                               editForm?.owner[subOption.component]
                             }
                             onChange={handleChange}
-                            className=" bg-gray-50 border pl-2 rounded-sm border-gray-400"
+                            className=" bg-gray-50 border-2 pl-2 rounded-sm border-gray-900"
                           />
                         </div>
                       ))}
@@ -480,7 +480,7 @@ function DashboardEdit() {
                   name={option.component}
                   value={editForm[option.component]}
                   onChange={handleChange}
-                  className="bg-gray-50 rounded-sm border pl-2 border-gray-400"
+                  className="bg-gray-50 rounded-sm border-2 pl-2 border-gray-900"
                 />
               </div>
             ))}

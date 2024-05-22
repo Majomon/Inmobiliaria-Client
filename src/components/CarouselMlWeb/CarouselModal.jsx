@@ -15,10 +15,10 @@ function CarouselModal({ images, closeModal, newArrayImg }) {
       <Carousel>
         {newArrayImg.length > 0
           ? newArrayImg.map((image, index) => (
-              <img key={index} src={image} alt={image} className="w-6/12 rounded-md shadow-lg shadow-yellow-400" />
+              <img key={index} src={image} alt={image} className="w-11/12  rounded-md shadow-lg shadow-yellow-400" />
             ))
           : images.map((image, index) => (
-              <img key={index} src={image} alt={image} className="w-6/12 rounded-md" />
+              <img key={index} src={image} alt={image} className="w-11/12 rounded-md" />
             ))}
       </Carousel>
     </div>

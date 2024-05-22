@@ -84,7 +84,7 @@ export const propertiesServices = [
     component: "services",
     name: "Servicios",
     moreOptions: [
-      { id: 151, component: "runningWater", name: "Agua corriente Central" },
+      // { id: 151, component: "runningWater", name: "Agua corriente Central" },
       { id: 152, component: "airConditioning", name: "Aire acondicionado" },
       { id: 153, component: "balcony", name: "Balcón" },
       { id: 154, component: "kitchen", name: "Cocina" },

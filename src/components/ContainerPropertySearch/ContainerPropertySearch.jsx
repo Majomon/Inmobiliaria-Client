@@ -73,14 +73,14 @@ function ContainerPropertySearch({ properties }) {
       <div className="flex justify-center mt-4">
         <button
           onClick={handleSortByPrice}
-          className="w-fit font-semibold bg-gray-950 text-gray-300 hover:text-gray-100 dark:text-red-500 py-2 px-4 rounded-md hover:bg-gray-800 hover:shadow-md hover:shadow-gray-500 dark:hover:text-red-400 dark:bg-gray-100 dark:hover:bg-gray-900 dark:hover:shadow-gray-100 mr-4"
+          className="w-fit font-semibold bg-gray-950 text-gray-300 hover:text-gray-100 dark:text-blue-500 py-2 px-4 rounded-md hover:bg-gray-800 hover:shadow-md hover:shadow-gray-500 dark:hover:text-blue-400 dark:bg-gray-100 dark:hover:bg-gray-900 dark:hover:shadow-gray-100 mr-4"
         >
           Ordenar por precio (
           {priceSortOrder === "asc" ? "de menor a mayor" : "de mayor a menor"})
         </button>
         <button
           onClick={handleSortAlphabetically}
-          className="w-fit font-semibold bg-gray-950 text-gray-300 hover:text-gray-100 dark:text-red-500 py-2 px-4 rounded-md hover:bg-gray-800 hover:shadow-md hover:shadow-gray-500 dark:hover:text-red-400 dark:bg-gray-100 dark:hover:bg-gray-900 dark:hover:shadow-gray-100"
+          className="w-fit font-semibold bg-gray-950 text-gray-300 hover:text-gray-100 dark:text-blue-500 py-2 px-4 rounded-md hover:bg-gray-800 hover:shadow-md hover:shadow-gray-500 dark:hover:text-blue-400 dark:bg-gray-100 dark:hover:bg-gray-900 dark:hover:shadow-gray-100"
         >
           Ordenar alfabéticamente (
           {alphabeticalSortOrder === "asc" ? "A-Z" : "Z-A"})
