@@ -33,7 +33,7 @@ export const CarouselImgCard = ({ images, id }) => {
         {images.map((image, index) => (
           <img
             key={index}
-            className={`absolute w-full h-full ease-in-out transition-opacity ${
+            className={`absolute w-full h-full ease-in-out transition-opacity object-cover ${
               index === currentIndex ? "opacity-100" : "opacity-0"
             }`}
             src={image}

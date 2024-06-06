@@ -44,7 +44,7 @@ function PropertyCardDetail(properties) {
         <div className="w-full h-[200px]  border-b-2 border-gray-900 overflow-hidden">
           <img
             src={images[0]}
-            className="w-full h-full transition-transform duration-700 ease-in-out transform hover:scale-110"
+            className="w-full h-full transition-transform duration-700 ease-in-out transform hover:scale-110 object-cover"
           />
         </div>
       </Link>
