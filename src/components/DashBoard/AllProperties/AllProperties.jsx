@@ -36,7 +36,6 @@ function AllProperties() {
     prop.name?.toLowerCase().includes(searchTerm.toLowerCase().trim())
   );
 
-  console.log(filteredProperties);
 
   const totalPages = Math.ceil(filteredProperties.length / itemsPerPage);
 
