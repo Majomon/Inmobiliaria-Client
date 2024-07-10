@@ -27,6 +27,7 @@ export const getAllProperties = () => {
     try {
       const prop = await axios.get(`/properties`);
       dispatch({ type: GET_ALL_PROPERTIES, payload: prop.data });
+      console.log(prop);
     } catch (error) {
       return [];
     }
