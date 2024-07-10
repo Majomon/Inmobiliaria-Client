@@ -33,8 +33,10 @@ function AllProperties() {
 
   // Filtrar por nombre
   const filteredProperties = allProperties.filter((prop) =>
-    prop.name.toLowerCase().includes(searchTerm.toLowerCase())
+    prop.name?.toLowerCase().includes(searchTerm.toLowerCase().trim())
   );
+
+  console.log(filteredProperties);
 
   const totalPages = Math.ceil(filteredProperties.length / itemsPerPage);
 
@@ -108,7 +110,7 @@ function AllProperties() {
               <td className="text-xs">{prop.owner.ownerNombre}</td>
               <td className="text-xs">{prop.owner.ownerPhone}</td>
               <td>
-                <Link to={`/dashboard/${prop._id}`} >
+                <Link to={`/dashboard/${prop._id}`}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
