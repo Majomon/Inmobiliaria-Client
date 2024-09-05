@@ -47,7 +47,7 @@ function CarouselMlWeb() {
             key={`${image}-${index}`}
             src={image}
             alt={`Image ${index + 1}`}
-            className="w-[60px] h-[60px] rounded-lg cursor-pointer hover:shadow-md hover:shadow-gray-600 object-cover"
+            className="w-[60px] h-[60px] rounded-lg cursor-pointer hover:shadow-md hover:shadow-gray-600"
             onClick={() => handlerSelectImg(image)}
           />
         ))}
@@ -65,14 +65,14 @@ function CarouselMlWeb() {
           <img
             src={imgSelected}
             alt="Descripción de la imagen"
-            className="w-full mx-auto h-[350px] md:h-[450px] rounded-lg cursor-pointer object-cover"
+            className="w-full mx-auto h-[350px] md:h-[450px] rounded-lg cursor-pointer"
             onClick={handlerImgModal}
           />
         ) : (
           <img
             src={firstImage}
             alt="Descripción de la imagen"
-            className="w-full mx-auto h-[350px] md:h-[450px] rounded-lg cursor-pointer object-cover"
+            className="w-full mx-auto h-[350px] md:h-[450px] rounded-lg cursor-pointer"
             onClick={handlerImgModal}
           />
         )}

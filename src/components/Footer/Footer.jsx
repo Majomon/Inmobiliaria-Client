@@ -90,7 +90,7 @@ function Footer({ theme }) {
 
         {/* Menu */}
         <div className="text-center py-4">
-          <h2 className="text-base md:text-lg lg:text-2xl font-bold  dark:text-gray-100">
+          <h2 className="text-base md:text-lg lg:text-2xl font-semibold  dark:text-gray-100">
             Menu
           </h2>
           <div className="flex lg:flex-col lg:items-start">
@@ -114,7 +114,7 @@ function Footer({ theme }) {
 
         {/* Contacto */}
         <div className="text-center py-4 lg:text-start  lg:items-start">
-          <h2 className="text-base md:text-lg lg:text-xl font-bold  dark:text-gray-100">
+          <h2 className="text-base md:text-lg lg:text-xl font-semibold  dark:text-gray-100">
             Contacto
           </h2>
           <div className="h-[2rem] flex items-center my-2 text-xl md:text-2xl">
